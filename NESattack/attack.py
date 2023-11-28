@@ -8,6 +8,7 @@ import os
 import sys
 import time
 import scipy.misc
+import imageio
 import PIL
 
 import matplotlib
@@ -77,8 +78,9 @@ def main(args, gpus):
     is_targeted = 1 if target_class >= 0 else -1
 
     # SESSION INITIALIZATION
-    sess = tf.InteractiveSession()
-    x = tf.placeholder(tf.float32, initial_img.shape)
+    sess = tf.compat.v1.InteractiveSession()
+    tf.compat.v1.disable_eager_execution()
+    x = tf.compat.v1.placeholder(tf.float32, initial_img.shape)
     eval_logits, eval_preds = model(sess, tf.expand_dims(x, 0))
     if target_class >= 0:
         eval_percent_adv = tf.equal(eval_preds[0], tf.constant(target_class, tf.int64))
@@ -86,13 +88,13 @@ def main(args, gpus):
         eval_percent_adv = tf.not_equal(eval_preds[0], tf.constant(orig_class, tf.int64))
 
     # TENSORBOARD SETUP
-    empirical_loss = tf.placeholder(dtype=tf.float32, shape=())
-    lr_placeholder = tf.placeholder(dtype=tf.float32, shape=())
+    empirical_loss = tf.compat.v1.placeholder(dtype=tf.float32, shape=())
+    lr_placeholder = tf.compat.v1.placeholder(dtype=tf.float32, shape=())
     loss_vs_queries = tf.summary.scalar('empirical loss vs queries', empirical_loss)
     loss_vs_steps = tf.summary.scalar('empirical loss vs step', empirical_loss)
     lr_vs_queries = tf.summary.scalar('lr vs queries', lr_placeholder)
     lr_vs_steps = tf.summary.scalar('lr vs step', lr_placeholder)
-    writer = tf.summary.FileWriter(out_dir, graph=sess.graph)
+    writer =  tf.compat.v1.summary.FileWriter(out_dir, graph=sess.graph)
     log_file = open(os.path.join(out_dir, 'log.txt'), 'w+')
     with open(os.path.join(out_dir, 'args.json'), 'w') as args_file:
         json.dump(args.__dict__, args_file)
@@ -137,7 +139,7 @@ def main(args, gpus):
     for i, device in enumerate(gpus):
         with tf.device(device):
             print('loading on gpu %d of %d' % (i+1, len(gpus)))
-            noise_pos = tf.random_normal((batch_per_gpu//2,) + initial_img.shape)
+            noise_pos = tf.random.normal((batch_per_gpu//2,) + initial_img.shape)
             noise = tf.concat([noise_pos, -noise_pos], axis=0)
             eval_points = x + args.sigma * noise
             losses, noise = loss_fn(eval_points, noise)
@@ -257,6 +259,7 @@ def main(args, gpus):
         log_file.write(log_text + '\n')
         print(log_text)
 
+        """
         if i % log_iters == 0:
             lvq, lvs, lrvq, lrvs = sess.run([loss_vs_queries, loss_vs_steps,
                                              lr_vs_queries, lr_vs_steps], {
@@ -267,10 +270,11 @@ def main(args, gpus):
             writer.add_summary(lrvq, num_queries)
             writer.add_summary(lvs, i)
             writer.add_summary(lrvs, i)
-
+        """ 
         if (i+1) % args.save_iters == 0 and args.save_iters > 0:
             np.save(os.path.join(out_dir, '%s.npy' % (i+1)), adv)
-            scipy.misc.imsave(os.path.join(out_dir, '%s.png' % (i+1)), adv)
+            # scipy.misc.imsave(os.path.join(out_dir, '%s.png' % (i+1)), adv)
+            imageio.imwrite(os.path.join(out_dir, '%s.png' % (i+1)), (adv*255).astype(np.uint8))
     log_output(sess, eval_logits, eval_preds, x, adv, initial_img, \
             target_class, out_dir, orig_class, num_queries)
 
