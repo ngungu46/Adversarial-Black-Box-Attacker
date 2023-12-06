@@ -12,3 +12,11 @@ HSJattack/valid
 HSJattack/imagenet_val_subset
 HSJattack/__pycache__
 HSJattack/archive
+
+output
+data
+misc
+./env.txt
+
+*.JPEG
+*.txt

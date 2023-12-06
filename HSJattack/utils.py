@@ -1,7 +1,5 @@
 import cv2
 import random
-import GPyOpt as gy
-import noise as ns
 import tensorflow as tf
 import torch
 import torchvision
@@ -17,63 +15,38 @@ import math
 
 import time as time
 
-pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=True)
-pretrained_model = pretrained_model.to("cuda")
-pretrained_model.eval()
+def load_image(image_path, image_size):
+    raw_image = Image.open(image_path)
+    image = tf.keras.preprocessing.image.img_to_array(raw_image)
+    
+    image = tf.cast(image, tf.float32)
+    image = image / 255
+    image = tf.image.resize(image, (image_size, image_size))
+    
+    # Add batch dimension
+    # 1, 299, 299, 3
+    image = image[None, ...]
 
-decode_predictions = tf.keras.applications.inception_v3.decode_predictions
+    if np.shape(image) == (1, image_size, image_size, 1):
+        image = tf.image.grayscale_to_rgb(image)
+    elif np.shape(image) == (1, image_size, image_size, 4):
+        image = tf.image.grayscale_to_rgb(image)
 
-imagesize=299
+    label = os.path.basename(os.path.dirname(image_path))
 
-def get_imagenet_label(probs):
-    if len(probs) > 1:
-        return decode_predictions(probs, top=6)
-    return decode_predictions(probs, top=6)[0]
+    return image, label
 
-def torch_transform(image):
-    """
-    input: numpy images of shape (B, H, W, C), normalized to (0, 1)
-    output: tensor of images of shape (B, C, H, W), normalized to mean [.485, .456, .406], std [.229, .224, .225]
-    """
 
-    # print(type(image))
-    # print(image.shape)
-    if not isinstance(image, np.ndarray):
-        image = image.numpy()
-    image = torch.tensor(image, dtype=torch.float32)
-    if len(image.shape) <= 4:
-        image = torch.unsqueeze(image, 1)
-    # B, 1, H, W, C
-    assert image.shape[-1] == 3
-    image = torch.transpose(image, 1, 4)
-    # B, C, H, W, 1
-    assert image.shape[1] == 3 and image.shape[3] == 299
-    image = torch.squeeze(image, dim=4)
-    # B, C, H, W
-    assert image.shape[1] == 3 and image.shape[3] == 299 and len(image.shape) == 4
-    transform = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    image = transform(image)
-    # print(image.shape)
-    return image
+def display_images(model, image, save_path = None, image_name = None, suffix = ''):
+    if suffix != '':
+        suffix = f'_{suffix}'
 
-def predict(image):
-    """
-    input: normalized tensor of shape (B, H, W, C)
-    output: numpy array of predictions
-    """
-    # print("predicting")
-    predict.counter += 1
-    with torch.no_grad():
-        preds = pretrained_model(torch_transform(image).to("cuda"))
-    return preds.cpu().detach().numpy()
-
-def display_images(image, save_path = None, img_name = None):
-    guessdata = get_imagenet_label(predict(image))
+    guess_data = model.predict(image)
     arr = []
-    for guess in guessdata:
+    for guess in guess_data:
         print(guess[1] + ": " + str(guess[2]))
         arr.append(guess[1] + ": " + str(guess[2]))
-    np.savetxt(f"{save_path}/top_k.txt", np.array(arr), fmt='%s')
+    np.savetxt(f"{save_path}/top_k{suffix}.txt", np.array(arr), fmt='%s')
         
     plt.figure()
     plt.imshow(image[0])
@@ -81,7 +54,7 @@ def display_images(image, save_path = None, img_name = None):
                                                  #  label, confidence*100))
     # plt.show()
     if save_path is not None:
-        plt.savefig(f"{save_path}/{img_name}")
+        plt.savefig(f"{save_path}/{image_name}{suffix}.jpg")
 
 def norm(image, image2):
     y = image[0]
@@ -118,7 +91,7 @@ def project(original_image, perturbed_image, alphas, l):
         )
         return out_images
     
-def approximate_gradient(sample, num_evals, delta, l):
+def approximate_gradient(model, sample, num_evals, delta, l):
     clip_max=1
     clip_min =1
 
@@ -133,16 +106,17 @@ def approximate_gradient(sample, num_evals, delta, l):
     perturbed = sample + delta * rv
     rv = (perturbed - sample) / delta
 
-    check2 = get_imagenet_label(predict(sample))
+    check2 = model.predict(sample)
     check2 = np.array(check2[0][0])
 
     print("Perturbed shape", perturbed.shape)
+    print(perturbed[0*256:0*256+256, :].shape)
     for i in range(math.ceil(perturbed.shape[0]/256)):
         if i == 0:
-            check1 = np.array([prob[0][0] for prob in get_imagenet_label(predict(perturbed[i*256:i*256+256, :]))])
+            check1 = np.array([prob[0][0] for prob in model.predict(perturbed[i*256:i*256+256, :])])
             decisions = (check1 != check2)
         else:
-            check1 = np.array([prob[0][0] for prob in get_imagenet_label(predict(perturbed[i*256:i*256+256, :]))])
+            check1 = np.array([prob[0][0] for prob in model.predict(perturbed[i*256:i*256+256, :])])
             decisions = np.append(decisions, (check1 != check2), axis=0)
         
     # check1 = np.array([prob[0][0] for prob in check1])
@@ -165,14 +139,14 @@ def approximate_gradient(sample, num_evals, delta, l):
 
     return gradf
 
-def geometric_progression(x, update, dist, cur_iter):
+def geometric_progression(model, x, update, dist, cur_iter):
 
     epsilon = dist / np.sqrt(cur_iter) 
 
     def phi(epsilon):
         new = x + epsilon * update
-        check1 = get_imagenet_label(predict(new))
-        check2 = get_imagenet_label(predict(x))
+        check1 = model.predict(new)
+        check2 = model.predict(x)
         success = [check1[0][0] != check2[0][0]]
         return success
 
@@ -181,35 +155,36 @@ def geometric_progression(x, update, dist, cur_iter):
 
     return epsilon
 
-def random_noise_hsja(imgobj):
+def random_noise_hsja(model, image):
+    image_size = image.shape[1]
+
     tries = 0
     while tries < 1000:
         tries += 1
-        noise = np.random.uniform(0,1,[1,imagesize,imagesize,3])
-        if imgobj.decision(noise):
+        noise = np.random.uniform(0, 1, [1, image_size, image_size, 3])
+        if model.decision(noise):
             break
     
     lo = 0.0
     hi = 1.0
     while hi - lo > 0.001:
         mid = (hi + lo) / 2.0
-        blended = (1 - mid) * imgobj.img + mid * noise 
-        if imgobj.decision(blended):
+        blended = (1 - mid) * image + mid * noise 
+        if model.decision(blended):
             hi = mid
         else:
             lo = mid
     
-    final = (1 - hi) * imgobj.img + hi * noise
+    final = (1 - hi) * image + hi * noise
     return final
     
-def binary_search_hsja(perturbed, imgobj, theta, l='l2'):
-    
+def binary_search_hsja(model, image, perturbed, theta, l='l2'):
     distances = []
     for p in perturbed:
         if l == 'l2':
-            distances.append(norm(p, imgobj.img)[0])
+            distances.append(norm(p, image)[0])
         else:
-            distances.append(norm(p, imgobj.img)[1])    
+            distances.append(norm(p, image)[1])    
     distances = np.array(distances)
     if l == 'linf':
         highs = distances
@@ -227,8 +202,8 @@ def binary_search_hsja(perturbed, imgobj, theta, l='l2'):
         decisions = np.array([])
         
         for p in range(len(perturbed)):
-            mid_image = project(imgobj.img, perturbed[p], mids[p], l)
-            d = imgobj.decision(mid_image)
+            mid_image = project(image, perturbed[p], mids[p], l)
+            d = model.decision(mid_image)
             decisions = np.append(decisions, [d])
             
         # Update highs and lows based on model decisions.
@@ -237,14 +212,14 @@ def binary_search_hsja(perturbed, imgobj, theta, l='l2'):
         highs = np.where(decisions == 1, mids, highs)
 
 
-    outputs = [project(imgobj.img, perturbed[p], highs[p], l) for p in range(len(perturbed))]
+    outputs = [project(image, perturbed[p], highs[p], l) for p in range(len(perturbed))]
     
     finaldists = []
     for p in perturbed:
         if l == 'l2':
-            finaldists.append(norm(p, imgobj.img)[0])
+            finaldists.append(norm(p, image)[0])
         else:
-            finaldists.append(norm(p, imgobj.img)[1])
+            finaldists.append(norm(p, image)[1])
             
     idx = np.argmin(finaldists)
 
@@ -252,31 +227,33 @@ def binary_search_hsja(perturbed, imgobj, theta, l='l2'):
     out_image = outputs[idx]
     return out_image, dist
 
-def hsja(imgobj, #instance of class randomimg
-            constraint = 'l2',
-            num_iterations = 30,
-            gamma = 1,
-            max_num_evals = 1e4,
-            init_num_evals = 100,
-            verbose = True
-            ):
-    d = np.prod(imgobj.img.shape)
+def hsja(
+    model, #instance of class Model
+    image,
+    constraint = 'l2',
+    num_iterations = 30,
+    gamma = 1,
+    max_num_evals = 1e4,
+    init_num_evals = 100,
+    verbose = True
+):
+    d = np.prod(image.shape)
     
     if constraint == 'l2':
         theta = gamma / d**(3/2)
     else:
         theta = gamma / d**2
         
-    perturbed = random_noise_hsja(imgobj)
+    perturbed = random_noise_hsja(model, image)
     
-    perturbed, dist_post = binary_search_hsja([perturbed], imgobj, theta, constraint)
+    perturbed, dist_post = binary_search_hsja(model, image, [perturbed], theta, constraint)
     
     if constraint == 'l2': 
         
-        dist = norm(perturbed, imgobj.img)[0]
+        dist = norm(perturbed, image)[0]
         print(dist)
     else:
-        dist = norm(perturbed, imgobj.img)[1]
+        dist = norm(perturbed, image)[1]
     
     for j in np.arange(num_iterations):
         start = time.time()
@@ -295,7 +272,7 @@ def hsja(imgobj, #instance of class randomimg
         
         # approximate gradient.
         start_time = time.time()
-        gradf = approximate_gradient(perturbed, num_evals, 
+        gradf = approximate_gradient(model, perturbed, num_evals, 
             delta, constraint)
         print('Approximate Gradient Time:', time.time() - start_time)
         
@@ -305,7 +282,7 @@ def hsja(imgobj, #instance of class randomimg
             update = gradf
         # find step size.
         start_time = time.time()
-        epsilon = geometric_progression(perturbed, 
+        epsilon = geometric_progression(model, perturbed, 
         update, dist, c_iter)
         print('Geometric Progression Time:', time.time() - start_time)
         print(epsilon)
@@ -314,14 +291,14 @@ def hsja(imgobj, #instance of class randomimg
 
         # Binary search to return to the boundary. 
         start_time = time.time()
-        perturbed, dist_post = binary_search_hsja(perturbed, imgobj, theta, constraint)
+        perturbed, dist_post = binary_search_hsja(model, image, perturbed, theta, constraint)
         print('Binary Search Time:', time.time() - start_time)
         
         # compute new distance.
         if constraint == 'l2': 
-            dist = norm(perturbed, imgobj.img)[0]
+            dist = norm(perturbed, image)[0]
         else:
-            dist = norm(perturbed, imgobj.img)[1]
+            dist = norm(perturbed, image)[1]
             
         if verbose:
             print('iteration: {:d}, {:s} distance {:.4E}'.format(j+1, constraint, dist))

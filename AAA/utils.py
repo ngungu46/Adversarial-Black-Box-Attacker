@@ -1,18 +1,20 @@
-import torch
-import torchvision
-import torch.nn as nn
 import torch.nn.functional as F
-
-import os
 import numpy as np
-import cv2
-import time
-import shutil
 
-import argparse
-import PIL.Image
-import matplotlib.pyplot as plt
-import random
+def loss(y, logits, targeted=False, loss_type='margin_loss'):
+    if loss_type == 'margin_loss':
+        preds_correct_class = (logits * y).sum(1, keepdims=True)
+        diff = preds_correct_class - logits
+        diff[y] = np.inf
+        margin = diff.min(1, keepdims=True)
+        loss = margin * -1 if targeted else margin
+    elif loss_type == 'cross_entropy':
+        probs = F.softmax(logits)
+        loss = -np.log(probs[y])
+        loss = loss * -1 if not targeted else loss
+    else:
+        raise ValueError('Wrong loss.')
+    return loss.flatten()
 
 def softmax(x, axis=1):
     x = x - x.max(axis=axis, keepdims=True).values
@@ -48,3 +50,4 @@ def ece_score(y_pred, y_test, n_bins=15):
     for m in range(n_bins):
         ece += Bm[m] * np.abs((acc[m] - conf[m]))
     return ece / sum(Bm)
+    
