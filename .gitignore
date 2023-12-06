@@ -4,3 +4,11 @@ HSJattack/time.onnx
 HSJattack/time.h5
 HSJattack/EfficientNetB0_butterfly.h5
 HSJattack/Butterfly.onnx
+HSJattack/ILSVRC
+HSJattack/output_images
+HSJattack/output_images_3_iter
+HSJattack/imagenet_val
+HSJattack/valid
+HSJattack/imagenet_val_subset
+HSJattack/__pycache__
+HSJattack/archive

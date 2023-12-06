@@ -24,14 +24,14 @@ print(rawimage)
 # image = tf.image.resize(image, (image_size, image_size))
 # image = image[None, ...]
 
-# image = tf.keras.preprocessing.image.img_to_array(rawimage)
+image = tf.keras.preprocessing.image.img_to_array(rawimage)
 
-# image = tf.cast(image, tf.float32)
-# # image = image/255
-# image = tf.image.resize(image, (image_size, image_size))
-# image = image[None, ...]
+image = tf.cast(image, tf.float32)
+# image = image/255
+image = tf.image.resize(image, (image_size, image_size))
+image = image[None, ...]
 
-# output = model.predict(image, steps=1)
-# print(output)
-# print(output.shape)
-# print(output.max(), output.argmax())
+output = model.predict(image, steps=1)
+print(output)
+print(output.shape)
+print(output.max(), output.argmax())
