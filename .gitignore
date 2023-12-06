@@ -13,6 +13,12 @@ HSJattack/imagenet_val_subset
 HSJattack/__pycache__
 HSJattack/archive
 
+NESattack/imagenet*
+NESattack/butterfly*
+
+data/
+NESattack/EfficientNetB0-100-(224 X 224)- 97.59.h5
+
 output
 data
 misc

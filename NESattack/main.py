@@ -4,90 +4,84 @@ import shutil
 import argparse
 from tensorflow.python.client import device_lib
 
-import attacks 
+from NESAttack import *
+from POAttack import *
+from utils import *
 
-BATCH_SIZE = 50
-SIGMA = 1e-3
-EPSILON = 0.05
-SAMPLES_PER_DRAW = 50
-LEARNING_RATE = 1e-2
-LOG_ITERS_FACTOR = 2
-IMAGENET_PATH = '../imagenet64'
+SIGMA = 0.001
+EPS_DECAY = 0.001
+EPS_0 = 0.5
+N = 100
+K = 1
+E_ADV = 0.05
+MAX_QUERIES = 20000
+MAX_LR = 0.01
+MIN_LR = 0.001
+LR = 0.01
+ATTACK_TYPE = 'PO'
+ORIG_PATH = './imagenet_val/n01751748/ILSVRC2012_val_00000001.JPEG'
+ADV_PATH = './imagenet_val/n02105855/ILSVRC2012_val_00000003.JPEG'
 
 def main():
+
+    print("hey")
     parser = argparse.ArgumentParser()
-    parser.add_argument('--samples-per-draw', type=int, default=SAMPLES_PER_DRAW)
-    parser.add_argument('--batch-size', type=int, default=BATCH_SIZE)
-    parser.add_argument('--target-class', type=int, help='negative => untargeted')
-    parser.add_argument('--orig-class', type=int)
+    parser.add_argument('--orig_image-dir', type=str, default=ORIG_PATH)
+    parser.add_argument('--adv-image-dir', type=str, default=ADV_PATH)
+    parser.add_argument('--adv-cls', type=int, required=True)
+    parser.add_argument('--batch-size', type=int, default=N)
     parser.add_argument('--sigma', type=float, default=SIGMA)
-    parser.add_argument('--epsilon', type=float, default=EPSILON)
-    parser.add_argument('--img-path', type=str)
-    parser.add_argument('--img-index', type=int)
-    parser.add_argument('--out-dir', type=str, required=True,
-                        help='dir to save to if not gridding; otherwise parent \
-                        dir of grid directories')
-    parser.add_argument('--log-iters', type=int, default=1)
-    parser.add_argument('--restore', type=str, help='restore path of img')
-    parser.add_argument('--momentum', type=float, default=0.9)
-    parser.add_argument('--max-queries', type=int, default=10000)
-    parser.add_argument('--save-iters', type=int, default=50)
-    parser.add_argument('--plateau-drop', type=float, default=2.0)
-    parser.add_argument('--min-lr-ratio', type=int, default=200)
-    parser.add_argument('--plateau-length', type=int, default=5)
-    parser.add_argument('--gpus', type=int, help='number of GPUs to use')
-    parser.add_argument('--imagenet-path', type=str)
-    parser.add_argument('--visualize', action='store_true')
-    parser.add_argument('--max-lr', type=float, default=1e-2)
-    parser.add_argument('--min-lr', type=float, default=5e-5)
-    # PARTIAL INFORMATION ARGUMENTS
-    parser.add_argument('--top-k', type=int, default=-1)
-    parser.add_argument('--adv-thresh', type=float, default=-1.0)
-    # LABEL ONLY ARGUMENTS
-    parser.add_argument('--label-only', action='store_true')
-    parser.add_argument('--zero-iters', type=int, default=100, help="how many points to use for the proxy score")
-    parser.add_argument('--label-only-sigma', type=float, default=1e-3, help="distribution width for proxy score")
-    parser.add_argument('--starting-eps', type=float, default=1.0)
-    parser.add_argument('--starting-delta-eps', type=float, default=0.5)
-    parser.add_argument('--min-delta-eps', type=float, default=0.1)
-    parser.add_argument('--conservative', type=int, default=2, help="How conservative we should be in epsilon decay; increase if no convergence")
+    parser.add_argument('--start-epsilon', type=float, default=EPS_0)
+    parser.add_argument('--target-epsilon', type=float, default=E_ADV)
+    parser.add_argument('--num-classes', type=int, default=K)
+    parser.add_argument('--max-queries', type=int, default=MAX_QUERIES)
+    parser.add_argument('--lr', type=float, default=LR)
+    parser.add_argument('--max-lr', type=float, default=MAX_LR)
+    parser.add_argument('--min-lr', type=float, default=MIN_LR)
+    parser.add_argument('--epsilon-decay', type=float, default=EPS_DECAY)
+    parser.add_argument('--attack-type', type=str, default=ATTACK_TYPE)
     args = parser.parse_args()
 
-    # Data checks
-    if not (args.img_path is None and args.img_index is not None or
-            args.img_path is not None and args.img_index is None):
-        raise ValueError('can only set one of img-path, img-index')
-    if args.img_path and not (args.orig_class or args.target_class):
-        raise ValueError('orig and target class required with image path')
-    if (args.target_class is None and args.img_index is None):
-        raise ValueError('must give target class if not using index')
-    assert args.samples_per_draw % args.batch_size == 0
-    gpus = get_available_gpus()
-    if args.gpus:
-        if args.gpus > len(gpus):
-            raise RuntimeError('not enough GPUs! (requested %d, found %d)' % (args.gpus, len(gpus)))
-        gpus = gpus[:args.gpus]
-    if not gpus:
-        raise NotImplementedError('no support for using CPU-only because lazy')
-    if args.batch_size % 2*len(gpus) != 0:
-        raise ValueError('batch size must be divisible by 2 * number of GPUs (batch_size=%d, gpus=%d)' % (
-            batch_size,
-            len(gpus)
-        ))
+    img_orig, _ = get_image(args.orig_image_dir)
+    img_adv, _ = get_image(args.adv_image_dir)
+    y_adv = args.adv_cls
+    if args.attack_type == 'PO':
+        attacker = PartialInfoAttack(
+            args.target_epsilon,
+            args.start_epsilon,
+            args.sigma,
+            args.batch_size,
+            args.epsilon_decay,
+            args.max_lr,
+            args.min_lr,
+            args.num_classes,
+            args.max_queries
+        )
 
-    # CLEAR THE PATH
-    if os.path.exists(args.out_dir):
-        shutil.rmtree(args.out_dir)
-    os.makedirs(args.out_dir)
+        x_adv, y_res, out, count = attacker.attack(img_adv, y_adv, img_orig)
+        if out:
+            print(f"Successfully attack with {count} queries")
+        else:
+            print(f"Unsuccessfully attack under {args.max_queries} queries")
 
-    # PRINT PARAMS
-    args_text = json.dumps(args.__dict__)
-    print(args_text)
-    attacks.main(args, gpus)
+    else:
+        attacker = NESAttack(
+            args.target_epsilon,
+            args.lr,
+            args.batch_size,
+            args.sigma,
+            args.max_queries
+        )
 
-def get_available_gpus():
-    local_device_protos = device_lib.list_local_devices()
-    return [x.name for x in local_device_protos if x.device_type == 'GPU']
+        res, _, prob, count, out = attacker.attack(img_orig, y_adv)
+        if out:
+            print(f"Successfully attack with {count} queries, prob class {prob}")
+        else:
+            print(f"Unsuccessfully attack under {args.max_queries} queries")
+
+    
+    display_images(res.reshape(1, 299, 299, 3))
 
 if __name__ == "__main__":
+    print("helo")
     main()
