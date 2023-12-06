@@ -4,10 +4,9 @@ final project for ECE 685 - Duke University
 
 ## Setting up Environment and Directory Structure 
 
-Set up a conda environment and download the following packages indicated in the `requirements.txt` file. 
+Create a new conda environment with the following packages indicated in the `environment.yml` file. 
 ```
-conda create -n "myEnv" python=3.10 
-conda activate myEnv 
+conda env create -f environment.yml 
 ```
 Clone this repo and make `data` directory. Then, download the datasets with the following commands, unzip them, and move them to this directory. Note that you must have kaggle set up on your machine to download it from the CLI. Otherwise, you can download the dataset [here](https://www.kaggle.com/datasets/gpiosenka/butterfly-images40-species?rvi=1). 
 ```
