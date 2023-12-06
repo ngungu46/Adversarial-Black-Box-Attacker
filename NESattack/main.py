@@ -60,9 +60,9 @@ def main():
 
         x_adv, y_res, out, count = attacker.attack(img_adv, y_adv, img_orig)
         if out:
-            print(f"Successully attack with {count} queries")
+            print(f"Successfully attack with {count} queries")
         else:
-            print(f"Unsuccessully attack under {args.max_queries} queries")
+            print(f"Unsuccessfully attack under {args.max_queries} queries")
 
     else:
         attacker = NESAttack(
@@ -75,9 +75,9 @@ def main():
 
         res, _, prob, count, out = attacker.attack(img_orig, y_adv)
         if out:
-            print(f"Successully attack with {count} queries, prob class {prob}")
+            print(f"Successfully attack with {count} queries, prob class {prob}")
         else:
-            print(f"Unsuccessully attack under {args.max_queries} queries")
+            print(f"Unsuccessfully attack under {args.max_queries} queries")
 
     
     display_images(res.reshape(1, 299, 299, 3))
