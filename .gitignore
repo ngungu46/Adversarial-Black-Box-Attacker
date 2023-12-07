@@ -26,3 +26,5 @@ misc
 
 *.JPEG
 *.txt
+
+NESattack/outputs/run_*/*.jpg

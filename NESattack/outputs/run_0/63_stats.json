@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00025280.JPEG",
+    "original_label": "437 - beacon",
+    "adversarial_target": "311 - grasshopper",
+    "adversarial prediction": "311 - grasshopper",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 8900,
+    "top_k_predictions": {
+        "grasshopper": "0.07612642",
+        "tile_roof": "0.066478856",
+        "thatch": "0.040976476",
+        "beacon": "0.02517204",
+        "monastery": "0.022118632",
+        "alp": "0.016029336",
+        "lakeside": "0.015279928",
+        "bell_cote": "0.010490377",
+        "amphibian": "0.009321577",
+        "boathouse": "0.007778559"
+    },
+    "runtime": "1613.0794124603271",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00038805.JPEG",
+    "original_label": "607 - jack-o'-lantern",
+    "adversarial_target": "451 - bolo tie",
+    "adversarial prediction": "451 - bolo tie",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 3000,
+    "top_k_predictions": {
+        "bolo_tie": "0.08964419",
+        "spaghetti_squash": "0.08411151",
+        "jack-o'-lantern": "0.06671792",
+        "backpack": "0.026261544",
+        "artichoke": "0.025980404",
+        "head_cabbage": "0.021654136",
+        "swab": "0.01906972",
+        "bassinet": "0.018236445",
+        "overskirt": "0.016438257",
+        "hoopskirt": "0.01590379"
+    },
+    "runtime": "190.21677660942078",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

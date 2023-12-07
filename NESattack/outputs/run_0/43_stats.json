@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00001395.JPEG",
+    "original_label": "747 - punching bag",
+    "adversarial_target": "224 - groenendael",
+    "adversarial prediction": "224 - groenendael",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 6700,
+    "top_k_predictions": {
+        "groenendael": "0.10103247",
+        "Pomeranian": "0.080720365",
+        "chow": "0.076765746",
+        "hamster": "0.06402288",
+        "guinea_pig": "0.05589145",
+        "schipperke": "0.02743244",
+        "miniature_pinscher": "0.021683976",
+        "spindle": "0.020556815",
+        "bathtub": "0.014360382",
+        "Samoyed": "0.0138167925"
+    },
+    "runtime": "1079.2205257415771",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00007791.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "425 - barn",
+    "adversarial prediction": "425 - barn",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 11700,
+    "top_k_predictions": {
+        "barn": "0.024003405",
+        "thatch": "0.022588808",
+        "wallet": "0.017223265",
+        "lacewing": "0.01334786",
+        "diamondback": "0.01206096",
+        "mitten": "0.010214193",
+        "spider_web": "0.010194574",
+        "bustard": "0.008371418",
+        "worm_fence": "0.0082863895",
+        "peacock": "0.0078107403"
+    },
+    "runtime": "2269.5477600097656",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

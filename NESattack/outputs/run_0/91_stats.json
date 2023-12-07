@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00038401.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "448 - birdhouse",
+    "adversarial prediction": "448 - birdhouse",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 1200,
+    "top_k_predictions": {
+        "birdhouse": "0.09152964",
+        "thatch": "0.058731765",
+        "earthstar": "0.04606571",
+        "yurt": "0.036279805",
+        "mushroom": "0.032169215",
+        "water_tower": "0.019983444",
+        "candle": "0.014992107",
+        "worm_fence": "0.008607434",
+        "milk_can": "0.008182117",
+        "picket_fence": "0.007226759"
+    },
+    "runtime": "2312.906791448593",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00019379.JPEG",
+    "original_label": "906 - Windsor tie",
+    "adversarial_target": "865 - toyshop",
+    "adversarial prediction": "865 - toyshop",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 19700,
+    "top_k_predictions": {
+        "toyshop": "0.11242458",
+        "wool": "0.110849194",
+        "sock": "0.060575653",
+        "mitten": "0.052677043",
+        "scabbard": "0.02847945",
+        "spindle": "0.024099663",
+        "cardigan": "0.017690638",
+        "Christmas_stocking": "0.015142267",
+        "ski_mask": "0.01491391",
+        "jean": "0.0147536835"
+    },
+    "runtime": "267.77647399902344",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660255372524261,
+    "L_inf_distance3": 0.15000002086162567
+}

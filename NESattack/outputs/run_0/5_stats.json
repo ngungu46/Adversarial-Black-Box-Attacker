@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00008064.JPEG",
+    "original_label": "684 - ocarina",
+    "adversarial_target": "57 - garter snake",
+    "adversarial prediction": "57 - garter snake",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 14600,
+    "top_k_predictions": {
+        "garter_snake": "0.053272367",
+        "nipple": "0.050762434",
+        "beaker": "0.039906807",
+        "catamaran": "0.023333434",
+        "pop_bottle": "0.017094785",
+        "trimaran": "0.015391082",
+        "ocarina": "0.011944043",
+        "hognose_snake": "0.01152199",
+        "lighter": "0.011342158",
+        "horned_viper": "0.011141149"
+    },
+    "runtime": "177.6490514278412",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

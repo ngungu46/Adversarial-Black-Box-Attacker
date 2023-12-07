@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00033040.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "161 - basset",
+    "adversarial prediction": "161 - basset",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 9800,
+    "top_k_predictions": {
+        "basset": "0.05143874",
+        "malinois": "0.04893097",
+        "bloodhound": "0.04533788",
+        "vizsla": "0.02217839",
+        "Welsh_springer_spaniel": "0.021226509",
+        "stone_wall": "0.020878706",
+        "thatch": "0.018926442",
+        "Irish_setter": "0.017441884",
+        "German_shepherd": "0.013042618",
+        "beagle": "0.010515284"
+    },
+    "runtime": "1652.3250079154968",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

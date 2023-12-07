@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00036984.JPEG",
+    "original_label": "601 - hoopskirt",
+    "adversarial_target": "914 - yawl",
+    "adversarial prediction": "914 - yawl",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 11400,
+    "top_k_predictions": {
+        "yawl": "0.13158382",
+        "yurt": "0.12166794",
+        "vestment": "0.06186971",
+        "hoopskirt": "0.03066926",
+        "apron": "0.028437126",
+        "mosquito_net": "0.02372251",
+        "cradle": "0.022755874",
+        "torch": "0.019796738",
+        "lab_coat": "0.019098094",
+        "four-poster": "0.01800597"
+    },
+    "runtime": "1139.9744243621826",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

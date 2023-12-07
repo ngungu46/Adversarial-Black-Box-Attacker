@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00045067.JPEG",
+    "original_label": "370 - guenon",
+    "adversarial_target": "738 - pot",
+    "adversarial prediction": "738 - pot",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 3600,
+    "top_k_predictions": {
+        "pot": "0.052763734",
+        "slug": "0.04886295",
+        "mortar": "0.042458598",
+        "scorpion": "0.034664836",
+        "knot": "0.031215897",
+        "common_newt": "0.021952573",
+        "dumbbell": "0.021585256",
+        "ringneck_snake": "0.015909724",
+        "chain": "0.013771661",
+        "Mexican_hairless": "0.013263637"
+    },
+    "runtime": "405.33622884750366",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

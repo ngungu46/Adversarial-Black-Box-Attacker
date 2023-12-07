@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00012254.JPEG",
+    "original_label": "499 - cleaver",
+    "adversarial_target": "735 - poncho",
+    "adversarial prediction": "735 - poncho",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 1200,
+    "top_k_predictions": {
+        "poncho": "0.07455484",
+        "handkerchief": "0.048075803",
+        "mosquito_net": "0.038652636",
+        "shower_cap": "0.03852404",
+        "spindle": "0.036742598",
+        "shower_curtain": "0.036366154",
+        "lampshade": "0.035968244",
+        "quilt": "0.030632412",
+        "plastic_bag": "0.028056933",
+        "broom": "0.025209986"
+    },
+    "runtime": "529.5169336795807",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

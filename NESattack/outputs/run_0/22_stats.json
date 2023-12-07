@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00003819.JPEG",
+    "original_label": "672 - mountain tent",
+    "adversarial_target": "208 - Labrador retriever",
+    "adversarial prediction": "208 - Labrador retriever",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 7900,
+    "top_k_predictions": {
+        "Labrador_retriever": "0.065937616",
+        "mountain_tent": "0.05799468",
+        "ballplayer": "0.042910066",
+        "jean": "0.024444757",
+        "car_mirror": "0.022220423",
+        "pajama": "0.014094305",
+        "swimming_trunks": "0.01060477",
+        "golf_ball": "0.010250739",
+        "lawn_mower": "0.009749868",
+        "tennis_ball": "0.009574916"
+    },
+    "runtime": "561.3661091327667",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}
