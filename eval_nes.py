@@ -6,6 +6,9 @@ import numpy as np
 import cv2
 import time 
 import json 
+import onnx
+import keras 
+
 
 # import utility and helper functions/classes 
 from src.model import *
@@ -41,6 +44,20 @@ def set_device():
     
     return device
 
+def getModel(dataset, device): 
+    if dataset == "imagenet64": 
+        pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=True).to(device) 
+        pretrained_model.eval()
+        return pretrained_model 
+    
+    elif dataset == "butterflies_and_moths": 
+        pretrained_model = keras.models.load_model(os.path.join("HSJattack", "EfficientNetB0_butterfly.h5"), custom_objects={'F1_score':'F1_score'}) 
+        pretrained_model.trainable = False 
+        return pretrained_model 
+    
+    else: 
+        raise Exception("Not a valid dataset name.")
+
 def main(): 
     
     now = time.time() 
@@ -67,8 +84,7 @@ def main():
         
         # load pretrained inception v3 model
         # this must be called inside the loop since we end up changing the weights of the model somehow within this loop 
-        pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=True).to(device) 
-        pretrained_model.eval()
+        pretrained_model = getModel(args["dataset"], device)
         
         # instantiate NESattack class 
         ex = NESAttack(
@@ -106,7 +122,7 @@ def main():
         
         print(f"Original/Adversarial Class : {image_idx2cls[y_orig_idx]}/{image_idx2cls[y_adv_idx]}") 
         
-        res, _, prob, count, succ, top_k_predictions = ex.attack(image, y_adv_idx, y_orig_idx) 
+        res, _, prob, count, succ, top_k_predictions = ex.attack(image, y_adv_idx) 
         
         
         # save the original and adversarial image into output files 

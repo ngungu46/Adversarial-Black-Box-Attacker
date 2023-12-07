@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00049876.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "430 - basketball",
+    "adversarial prediction": "430 - basketball",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 8000,
+    "top_k_predictions": {
+        "basketball": "0.11879053",
+        "parallel_bars": "0.11808402",
+        "coucal": "0.05163188",
+        "sleeping_bag": "0.051435366",
+        "horizontal_bar": "0.04512869",
+        "tarantula": "0.024940927",
+        "platypus": "0.018316729",
+        "chimpanzee": "0.017146047",
+        "stretcher": "0.013702474",
+        "scorpion": "0.013079501"
+    },
+    "runtime": "38.08988642692566",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

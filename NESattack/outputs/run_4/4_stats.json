@@ -1,0 +1,35 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00004467.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "257 - Great Pyrenees",
+    "adversarial prediction": "816 - spindle",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 500,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "spindle": "0.0567562",
+        "sleeping_bag": "0.05578839",
+        "sock": "0.029404711",
+        "wool": "0.028742816",
+        "jigsaw_puzzle": "0.027673297",
+        "prayer_rug": "0.023225818",
+        "quilt": "0.019818082",
+        "swab": "0.017554497",
+        "studio_couch": "0.014647733",
+        "pinwheel": "0.012008345"
+    },
+    "runtime": "13.348147869110107",
+    "L_inf_distance1": 0.04901009798049927,
+    "L_inf_distance2": 0.08488775044679642,
+    "L_inf_distance3": 0.14702989161014557
+}

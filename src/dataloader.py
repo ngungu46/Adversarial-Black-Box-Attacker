@@ -59,6 +59,9 @@ def class2index(dataset):
         return classes 
 
     elif dataset == "butterflies_and_moths": 
+        class_names = sorted(os.listdir(os.path.join("data", "butterflies_and_moths", "train"))) 
+        
+        classes = {cls: i for i, cls in enumerate(class_names)}
         
         return classes 
     

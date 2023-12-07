@@ -1,0 +1,35 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00049876.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "763 - revolver",
+    "adversarial prediction": "797 - sleeping bag",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 500,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "sleeping_bag": "0.20537122",
+        "tarantula": "0.08191219",
+        "Sussex_spaniel": "0.035489652",
+        "rifle": "0.032572057",
+        "Labrador_retriever": "0.017516946",
+        "hermit_crab": "0.01643305",
+        "assault_rifle": "0.011939073",
+        "bee": "0.011377967",
+        "plastic_bag": "0.009781963",
+        "affenpinscher": "0.008136253"
+    },
+    "runtime": "8.376179933547974",
+    "L_inf_distance1": 0.04900997877120972,
+    "L_inf_distance2": 0.08488775044679642,
+    "L_inf_distance3": 0.14702989161014557
+}

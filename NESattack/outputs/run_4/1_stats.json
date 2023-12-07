@@ -1,0 +1,35 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00047505.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "698 - palace",
+    "adversarial prediction": "797 - sleeping bag",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 500,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "sleeping_bag": "0.057411052",
+        "bib": "0.056468338",
+        "sweatshirt": "0.04866225",
+        "mitten": "0.0352155",
+        "brassiere": "0.0334393",
+        "poncho": "0.010576687",
+        "vestment": "0.010509848",
+        "ski_mask": "0.010272066",
+        "backpack": "0.009449574",
+        "diaper": "0.009278261"
+    },
+    "runtime": "5.880679368972778",
+    "L_inf_distance1": 0.04900997877120972,
+    "L_inf_distance2": 0.08488773554563522,
+    "L_inf_distance3": 0.14702987670898438
+}

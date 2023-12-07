@@ -1,0 +1,35 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00038805.JPEG",
+    "original_label": "607 - jack-o'-lantern",
+    "adversarial_target": "860 - tobacco shop",
+    "adversarial prediction": "607 - jack-o'-lantern",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 500,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "jack-o'-lantern": "0.095659055",
+        "French_loaf": "0.09047934",
+        "spaghetti_squash": "0.032481965",
+        "swab": "0.02770609",
+        "overskirt": "0.022780314",
+        "plastic_bag": "0.022488039",
+        "hoopskirt": "0.019953499",
+        "sarong": "0.019450443",
+        "mailbag": "0.017608745",
+        "bassinet": "0.017464703"
+    },
+    "runtime": "18.196842670440674",
+    "L_inf_distance1": 0.04901009798049927,
+    "L_inf_distance2": 0.08488781005144119,
+    "L_inf_distance3": 0.14702999591827393
+}

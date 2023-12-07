@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00047505.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "872 - tripod",
+    "adversarial prediction": "872 - tripod",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 1400,
+    "top_k_predictions": {
+        "tripod": "0.14414766",
+        "sleeping_bag": "0.08939632",
+        "sweatshirt": "0.04578776",
+        "plastic_bag": "0.028581824",
+        "brassiere": "0.025317807",
+        "poncho": "0.02409402",
+        "hoopskirt": "0.022147227",
+        "cloak": "0.022053037",
+        "mountain_tent": "0.02083761",
+        "mosquito_net": "0.01866831"
+    },
+    "runtime": "8.911819696426392",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}
