@@ -14,6 +14,8 @@ from src.model import *
 from src.dataloader import * 
 from src.utils import * 
 
+from AAA.models import AAALinear, AAASine
+from AAA.utils import loss
 
 cudnn.benchmark = True 
 
@@ -29,7 +31,7 @@ parser.add_argument('--momentum', default=0.9, type=float)
 parser.add_argument('--dataset', default="imagenet_val", type=str)
 parser.add_argument('--dataset_size', default=100, type=int)
 parser.add_argument('--verbose', default=False, type=bool)
-
+parser.add_argument('--defender', default=False, type=bool)
 
 args = vars(parser.parse_args())
 
@@ -87,6 +89,25 @@ def main():
         # this must be called inside the loop since we end up changing the weights of the model somehow within this loop 
         pretrained_model = getModel(args["dataset"], device)
         is_torch = (args["dataset"] == "imagenet64")
+        predict_defender = lambda x: predict_model(x, pretrained_model)
+        defender = AAASine(
+            pretrained_model=predict_defender,
+            loss=loss,
+            device='cuda', 
+            batch_size=1000, 
+            attractor_interval=6, 
+            reverse_step=1, 
+            num_iter=100, 
+            calibration_loss_weight=5, 
+            optimizer_lr=0.1, 
+            do_softmax=False,
+            temperature=1,
+            verbose=False,
+            output_type='torch'
+        ).cuda()
+
+        if args['defender']:
+            pretrained_model = defender
         
         # instantiate NESattack class 
         ex = NESAttack(
@@ -121,6 +142,7 @@ def main():
             image = tf.cast(rawimage, tf.float32)
             image = image[None, ...]
         
+        print("Yolo: ", image.shape)
         # calculate the original class index and choose a random adversarial index 
         y_adv_idx = random.randrange(0, len(image_cls2idx))
         y_orig_idx = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
