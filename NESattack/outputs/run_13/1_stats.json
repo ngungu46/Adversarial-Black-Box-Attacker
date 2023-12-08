@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00047505.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "861 - toilet seat",
+    "adversarial prediction": "861 - toilet seat",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 2000,
+    "top_k_predictions": {
+        "toilet_seat": "0.14085451",
+        "bib": "0.09237218",
+        "plastic_bag": "0.061110962",
+        "shower_cap": "0.046569023",
+        "mailbag": "0.043286372",
+        "shower_curtain": "0.033706013",
+        "paper_towel": "0.024787003",
+        "drum": "0.020012515",
+        "teddy": "0.019656857",
+        "bonnet": "0.016805708"
+    },
+    "runtime": "16.39040470123291",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

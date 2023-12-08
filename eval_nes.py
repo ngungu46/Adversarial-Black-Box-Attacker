@@ -86,6 +86,7 @@ def main():
         # this must be called inside the loop since we end up changing the weights of the model somehow within this loop 
         pretrained_model = getModel(args["dataset"], device)
         
+        
         # instantiate NESattack class 
         ex = NESAttack(
             target_eps = args["target_eps"],
@@ -95,7 +96,8 @@ def main():
             max_queries = args["max_queries"], 
             momentum=args["momentum"], 
             model = pretrained_model, 
-            verbose = bool(args["verbose"])
+            verbose = bool(args["verbose"]), 
+            is_torch = (args["dataset"] == "imagenet64")
         )
         
         sys.stdout.write('\r')
@@ -105,19 +107,24 @@ def main():
         time.sleep(0.25)
         
         # prepare image with pixel values in [0, 1] and shape (1, 299, 299, 3)
-        rawimage = np.array(Image.open(imgpath)) / 255
+        rawimage = Image.open(imgpath)
+        rawimage = tf.keras.preprocessing.image.img_to_array(rawimage) / 255
         rawimage = cv2.resize(rawimage, dsize=(299, 299))
         
-        image = torch.tensor(rawimage, dtype=torch.float32).to(device)
-        if image.size() == (299, 299): 
-            # if image is grayscale, then repeat the dimensions 
-            image = image.unsqueeze(-1) 
-            image = image.repeat(1, 1, 3)
-        image = torch.unsqueeze(image, 0)
+        
+        # now depending on model, convert to torch.tensor or tf.tensor
+        if args["dataset"] == "imagenet64": 
+            image = torch.tensor(rawimage, dtype=torch.float32).to(device)
+            image = torch.unsqueeze(image, 0)
+            orig_prediction = predict(image, pretrained_model)
+        elif args["dataset"] == "butterflies_and_moths": 
+            image = tf.cast(rawimage, tf.float32)
+            image = image[None, ...]
+            pass 
         
         # calculate the original class index and choose a random adversarial index 
         y_adv_idx = random.randrange(0, len(image_cls2idx))
-        y_orig_idx = torch.argmax(predict(image, pretrained_model)).detach().cpu().numpy().item()
+        y_orig_idx = torch.argmax(orig_prediction).detach().cpu().numpy().item()
 
         
         print(f"Original/Adversarial Class : {image_idx2cls[y_orig_idx]}/{image_idx2cls[y_adv_idx]}") 

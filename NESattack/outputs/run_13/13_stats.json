@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00006729.JPEG",
+    "original_label": "591 - handkerchief",
+    "adversarial_target": "624 - library",
+    "adversarial prediction": "624 - library",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 7700,
+    "top_k_predictions": {
+        "library": "0.10393961",
+        "envelope": "0.102904335",
+        "jigsaw_puzzle": "0.07316281",
+        "book_jacket": "0.04051728",
+        "handkerchief": "0.039219104",
+        "spindle": "0.037021562",
+        "sidewinder": "0.035909057",
+        "diamondback": "0.032048706",
+        "frilled_lizard": "0.02035287",
+        "binder": "0.014151464"
+    },
+    "runtime": "365.9198091030121",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

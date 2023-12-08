@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00004467.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "634 - lumbermill",
+    "adversarial prediction": "634 - lumbermill",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 2100,
+    "top_k_predictions": {
+        "lumbermill": "0.10904927",
+        "pinwheel": "0.10102712",
+        "harvester": "0.077435546",
+        "thresher": "0.059116658",
+        "half_track": "0.039245743",
+        "tank": "0.026988447",
+        "birdhouse": "0.019744294",
+        "mousetrap": "0.015190588",
+        "sewing_machine": "0.012894526",
+        "cannon": "0.011859215"
+    },
+    "runtime": "120.77185583114624",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

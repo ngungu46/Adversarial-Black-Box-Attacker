@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00016659.JPEG",
+    "original_label": "830 - stretcher",
+    "adversarial_target": "671 - mountain bike",
+    "adversarial prediction": "671 - mountain bike",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 2500,
+    "top_k_predictions": {
+        "mountain_bike": "0.08480875",
+        "shield": "0.063312165",
+        "Arabian_camel": "0.050771262",
+        "unicycle": "0.050492026",
+        "poncho": "0.043969847",
+        "bicycle-built-for-two": "0.032280523",
+        "sarong": "0.030682582",
+        "sleeping_bag": "0.021553075",
+        "parallel_bars": "0.020765893",
+        "marimba": "0.017804287"
+    },
+    "runtime": "316.6840138435364",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

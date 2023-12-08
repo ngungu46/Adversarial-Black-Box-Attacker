@@ -66,7 +66,7 @@ def main():
     image_cls2idx = class2index(args["dataset"]) 
     image_idx2cls = {v: k for k, v in image_cls2idx.items()}
     
-    for i, imgpath in enumerate(image_filepaths): 
+    for i, imgpath in enumerate(image_filepaths[4:]): 
         
         # load pretrained inception v3 model
         # this must be called inside the loop since we end up changing the weights of the model somehow within this loop 

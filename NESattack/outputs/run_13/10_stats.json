@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00018905.JPEG",
+    "original_label": "676 - muzzle",
+    "adversarial_target": "650 - microphone",
+    "adversarial prediction": "650 - microphone",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 1700,
+    "top_k_predictions": {
+        "microphone": "0.16584992",
+        "leaf_beetle": "0.08600936",
+        "Band_Aid": "0.0806882",
+        "cockroach": "0.056818277",
+        "ground_beetle": "0.04234201",
+        "lighter": "0.039170098",
+        "screwdriver": "0.02340453",
+        "hand_blower": "0.020942403",
+        "cellular_telephone": "0.018052688",
+        "muzzle": "0.0173187"
+    },
+    "runtime": "302.0441632270813",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

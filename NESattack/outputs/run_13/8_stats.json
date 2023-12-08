@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00049509.JPEG",
+    "original_label": "593 - harmonica",
+    "adversarial_target": "275 - African hunting dog",
+    "adversarial prediction": "275 - African hunting dog",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 5700,
+    "top_k_predictions": {
+        "African_hunting_dog": "0.1590519",
+        "skunk": "0.14085674",
+        "sleeping_bag": "0.12616886",
+        "ballplayer": "0.050697647",
+        "Indian_cobra": "0.03108671",
+        "night_snake": "0.027247652",
+        "polecat": "0.024763258",
+        "rock_python": "0.016833259",
+        "go-kart": "0.015554602",
+        "mortar": "0.015064827"
+    },
+    "runtime": "256.1323208808899",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

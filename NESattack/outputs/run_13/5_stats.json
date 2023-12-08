@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00008064.JPEG",
+    "original_label": "684 - ocarina",
+    "adversarial_target": "871 - trimaran",
+    "adversarial prediction": "871 - trimaran",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 1200,
+    "top_k_predictions": {
+        "trimaran": "0.12559181",
+        "catamaran": "0.105386935",
+        "nipple": "0.072110936",
+        "ocarina": "0.044847474",
+        "iron": "0.01663076",
+        "paddle": "0.016061416",
+        "mitten": "0.016027696",
+        "plastic_bag": "0.013227881",
+        "speedboat": "0.012188655",
+        "hook": "0.011627081"
+    },
+    "runtime": "128.06906390190125",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -15,16 +15,18 @@ class NESAttack:
         max_queries,
         momentum,
         model,
-        verbose
+        verbose, 
+        is_torch = True 
     ):
         self.lr = lr
         self.target_eps = target_eps
         self.n_samples = n_samples
         self.sigma = sigma
         self.max_queries = max_queries
-        self.momentum = momentum, 
+        self.momentum = momentum
         self.model = model
         self.verbose = verbose
+        self.is_torch = torch 
 
     def NES(self, x_orig, y_adv): 
         """
@@ -89,15 +91,19 @@ torch_transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
 ])    
 
-def predict(image, model, device='cuda'):
+def predict(image, model, is_torch=True, device='cuda'):
     """
     input: normalized tensor of shape (B, C, H, W)
     output: numpy array of predictions
     """
     # print("predicting")
-    with torch.no_grad():
-        preds = model(transforming(image).to(device))
-    return preds
+    if is_torch: 
+        with torch.no_grad():
+            preds = model(transforming(image).to(device))
+        return preds
+    else: 
+        pass 
+
 
 class PartialInfoAttack:
     def __init__(
@@ -150,8 +156,18 @@ class PartialInfoAttack:
         g = prob * noise
         return g.sum(dim = 0).unsqueeze(0) / (self.n_samples)
 
-    def attack(self, x_adv, y_adv, x_orig): 
-
+    def attack(
+        self,
+        x_adv,
+        y_adv,
+        x_orig
+    ):
+        """
+        x_adv: np.ndarray
+        y_adv: str
+        classifier: function
+        x_orig: np.ndarray
+        """
         epsilon = self.e_0
 
         lower = np.clip(x_orig - epsilon, 0, 1)
@@ -159,46 +175,114 @@ class PartialInfoAttack:
         x_adv = np.clip(x_adv.detach().cpu(), lower, upper)
 
         count = 0
-        while count < self.max_queries and (epsilon > self.e_adv or y_adv != torch.argmax(self.model(transforming(x_adv).cuda())).detach().cpu().numpy().item()):
-            # print(count, epsilon, torch.max(x_adv - x_orig))
-            g = self.NES(x_adv, y_adv)
+        for i in range(self.max_queries//self.n_samples):
+           # print(count, epsilon, torch.max(x_adv - x_orig))
+            g = self.NES(
+                x_adv,
+                y_adv
+            )
             count += self.n_samples
             lr = self.max_lr
             g = torch.sign(g).cpu().detach().numpy().transpose(0, 2, 3, 1)
             hat_x_adv = x_adv + lr * g
+            prop_de = self.eps_decay
 
-            # print("hey: ", get_top_k_labels(self.model, hat_x_adv, 1)[0])
-            probs = self.model(transforming(hat_x_adv).cuda())
-            topk = torch.topk(probs, self.k) # .detach().numpy()
-            while y_adv not in topk:
+            while epsilon > self.e_adv:
+                proposed_epsilon = max(epsilon - prop_de, self.e_adv)
+                lower = np.clip(x_orig - proposed_epsilon, 0, 1)
+                upper = np.clip(x_orig + proposed_epsilon, 0, 1)
+                hat_x_adv = np.clip(x_adv + lr * g, lower, upper)
+                
+                probs = self.model(transforming(hat_x_adv).cuda())
+                topk = torch.topk(probs, self.k) # .detach().numpy()
+
                 count += 1
-                if count > self.max_queries:
-                    return x_adv, y_adv, False, -1, top_k_predictions
-                if lr < self.min_lr:
-                    epsilon += self.eps_decay
-                    self.eps_decay /= 2
-                    hat_x_adv = x_adv
+                if y_adv in topk:
+
+                    if prop_de > 0:
+                        self.eps_decay = max(prop_de, 0.1)
+                    prev_adv = x_adv
+                    x_adv = hat_x_adv
+                    epsilon = max(epsilon - prop_de/2, self.e_adv)
                     break
 
-                proposed_eps = max(epsilon - self.eps_decay, self.e_adv)
-                # print(proposed_eps)
-                lower = np.clip(x_orig - proposed_eps, 0, 1)
-                upper = np.clip(x_orig + proposed_eps, 0, 1)
-                lr /= 2
-                hat_x_adv = np.clip(x_adv + lr * g, lower, upper)
-            proposed_eps = max(epsilon - self.eps_decay, self.e_adv)
+                elif lr >= self.min_lr:
+                    lr = lr/2
 
-            lower = np.clip(x_orig - proposed_eps, 0, 1)
-            upper = np.clip(x_orig + proposed_eps, 0, 1)
-            hat_x_adv = np.clip(hat_x_adv, lower, upper)
-            x_adv = hat_x_adv
-            epsilon -= self.eps_decay
-
+                else:
+                    prop_de /= 2
+                    if prop_de == 0:
+                        return x_adv, y_adv, False, count, decode_predictions(probs, top = 10)[0]
+                        raise(ValueError("Not converge"))
+                    if prop_de < 2e-3:
+                        prop_de = 0
+                    lr = self.max_lr
+                    print("[log] backtracking eps to %3f" % (epsilon-prop_de,))
+                
             probs = torch.nn.functional.softmax(self.model(transforming(x_adv).cuda())).cpu().detach().numpy()
+            print(epsilon)
             
             top_k_predictions = decode_predictions(probs, top = 10)[0]
             if self.verbose: 
                 print([x[1:] for x in decode_predictions(probs, top = 1)[0]], epsilon)
-            # print(epsilon)
 
-        return x_adv, y_adv, True, count, top_k_predictions
+            if(epsilon < self.e_adv):
+                return x_adv, y_adv, True, count, top_k_predictions
+
+        return x_adv, y_adv, False, count, top_k_predictions
+
+    # def attack(self, x_adv, y_adv, x_orig): 
+
+    #     epsilon = self.e_0
+
+    #     lower = np.clip(x_orig - epsilon, 0, 1)
+    #     upper = np.clip(x_orig + epsilon, 0, 1)
+    #     x_adv = np.clip(x_adv.detach().cpu(), lower, upper)
+
+    #     count = 0
+    #     while count < self.max_queries and (epsilon > self.e_adv or y_adv != torch.argmax(self.model(transforming(x_adv).cuda())).detach().cpu().numpy().item()):
+    #         # print(count, epsilon, torch.max(x_adv - x_orig))
+    #         g = self.NES(x_adv, y_adv)
+    #         count += self.n_samples
+    #         lr = self.max_lr
+    #         g = torch.sign(g).cpu().detach().numpy().transpose(0, 2, 3, 1)
+    #         hat_x_adv = x_adv + lr * g
+
+    #         # print("hey: ", get_top_k_labels(self.model, hat_x_adv, 1)[0])
+    #         probs = self.model(transforming(hat_x_adv).cuda())
+    #         topk = torch.topk(probs, self.k) # .detach().numpy()
+    #         while y_adv not in topk:
+    #             count += 1
+    #             if count > self.max_queries:
+    #                 return x_adv, y_adv, False, -1, top_k_predictions
+    #             if lr < self.min_lr:
+    #                 epsilon += self.eps_decay
+    #                 self.eps_decay /= 2
+    #                 hat_x_adv = x_adv
+    #                 break
+
+    #             proposed_eps = max(epsilon - self.eps_decay, self.e_adv)
+    #             # print(proposed_eps)
+    #             lower = np.clip(x_orig - proposed_eps, 0, 1)
+    #             upper = np.clip(x_orig + proposed_eps, 0, 1)
+    #             lr /= 2
+    #             hat_x_adv = np.clip(x_adv + lr * g, lower, upper)
+                
+    #             probs = self.model(transforming(hat_x_adv).cuda())
+    #             topk = torch.topk(probs, self.k) # .detach().numpy()
+    #         proposed_eps = max(epsilon - self.eps_decay, self.e_adv)
+
+    #         lower = np.clip(x_orig - proposed_eps, 0, 1)
+    #         upper = np.clip(x_orig + proposed_eps, 0, 1)
+    #         hat_x_adv = np.clip(hat_x_adv, lower, upper)
+    #         x_adv = hat_x_adv
+    #         epsilon -= self.eps_decay
+
+    #         probs = torch.nn.functional.softmax(self.model(transforming(x_adv).cuda())).cpu().detach().numpy()
+            
+    #         top_k_predictions = decode_predictions(probs, top = 10)[0]
+    #         if self.verbose: 
+    #             print([x[1:] for x in decode_predictions(probs, top = 1)[0]], epsilon)
+    #         # print(epsilon)
+
+    #     return x_adv, y_adv, True, count, top_k_predictions

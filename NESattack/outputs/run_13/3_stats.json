@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00027331.JPEG",
+    "original_label": "906 - Windsor tie",
+    "adversarial_target": "350 - ibex",
+    "adversarial prediction": "350 - ibex",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": true
+    },
+    "num_queries_needed": 12700,
+    "top_k_predictions": {
+        "ibex": "0.02516065",
+        "buckle": "0.024490543",
+        "bolo_tie": "0.02318944",
+        "Windsor_tie": "0.02094787",
+        "bloodhound": "0.019923078",
+        "hartebeest": "0.019254781",
+        "quill": "0.014850233",
+        "wallet": "0.014496704",
+        "envelope": "0.009619989",
+        "nail": "0.009003276"
+    },
+    "runtime": "108.74300050735474",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}
