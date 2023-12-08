@@ -29,7 +29,7 @@ pretrained_model.eval()
 
 def torch_transform(image):
     """
-    input: numpy images of shape (B, H, W, C), normalized to (0, 1)
+    input: numpy images of shape (B, C, H, W), normalized to (0, 1)
     output: tensor of images of shape (B, C, H, W), normalized to mean [.485, .456, .406], std [.229, .224, .225]
     """
 

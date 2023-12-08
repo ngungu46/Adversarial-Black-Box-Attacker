@@ -12,6 +12,7 @@ HSJattack/valid
 HSJattack/imagenet_val_subset
 HSJattack/__pycache__
 HSJattack/archive
+HSJattack/trash
 
 NESattack/imagenet*
 NESattack/butterfly*

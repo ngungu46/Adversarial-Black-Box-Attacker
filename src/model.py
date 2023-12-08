@@ -106,7 +106,7 @@ class NESAttack:
                 print(y_adv, probs[0][y_adv])
             
             if(cls == y_adv):
-                return x_adv, cls, probs[:, y_adv], count, True, top_k_predictions
+                return x_adv, cls, probs[:, y_adv], count, True, top_k_predictions, torch.abs(x_orig - x_adv).max()
             # print(probs[:, y_adv])
             
 
@@ -201,10 +201,9 @@ class PartialInfoAttack:
         x_orig = x_orig.cpu().detach()
         epsilon = self.e_0
 
-        lower = np.clip(x_orig - epsilon, 0, 1)
-        upper = np.clip(x_orig + epsilon, 0, 1)
-        x_adv = np.clip(x_adv.detach().cpu(), lower, upper)
-
+        lower = torch.clamp(x_orig - epsilon, 0, 1)
+        upper = torch.clamp(x_orig + epsilon, 0, 1)
+        x_adv = torch.clamp(x_adv, lower, upper)
         count = 0
         for i in range(self.max_queries//self.n_samples):
            # print(count, epsilon, torch.max(x_adv - x_orig))
@@ -214,15 +213,16 @@ class PartialInfoAttack:
             )
             count += self.n_samples
             lr = self.max_lr
-            g = torch.sign(g).cpu().detach().numpy().transpose(0, 2, 3, 1)
+            g = torch.sign(g).transpose(1, 2).transpose(2, 3)
+            # print(g.shape, x_adv.shape)
             hat_x_adv = x_adv + lr * g
             prop_de = self.eps_decay
-
+            # print(x_adv.shape)
             while epsilon > self.e_adv:
                 proposed_epsilon = max(epsilon - prop_de, self.e_adv)
-                lower = np.clip(x_orig - proposed_epsilon, 0, 1)
-                upper = np.clip(x_orig + proposed_epsilon, 0, 1)
-                hat_x_adv = np.clip(x_adv + lr * g, lower, upper)
+                lower = torch.clamp(x_orig - proposed_epsilon, 0, 1)
+                upper = torch.clamp(x_orig + proposed_epsilon, 0, 1)
+                hat_x_adv = torch.clamp(x_adv + lr * g, lower, upper)
                 
                 
                 # probs = self.model(transforming(hat_x_adv, self.is_torch).cuda())
@@ -266,7 +266,7 @@ class PartialInfoAttack:
             if self.verbose: 
                 print(top_k_predictions, epsilon)
 
-            if(epsilon < self.e_adv):
+            if(epsilon <= self.e_adv):
                 return x_adv, y_adv, True, count, top_k_predictions
 
         return x_adv, y_adv, False, count, top_k_predictions
