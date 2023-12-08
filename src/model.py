@@ -74,10 +74,11 @@ class NESAttack:
             top_k_predictions = decode_predictions(probs, top = 10)[0]
             
             if self.verbose: 
-                print([x[1:] for x in top_k_predictions])
+                if count % 5000 == 0:
+                    print(f"Process [{count*100//self.max_queries}%]", [x[1:3] for x in top_k_predictions])
             
             if(cls == y_adv):
-                return x_adv, cls, probs[:, y_adv], count, True, top_k_predictions
+                return x_adv, cls, probs[:, y_adv], count, True, top_k_predictions, torch.abs(x_orig - x_adv).max()
             # print(probs[:, y_adv])
             
 
