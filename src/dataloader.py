@@ -1,6 +1,28 @@
 import os 
 from random import shuffle
 
+def get_random_image_path(directory, orig_path):
+    if directory == "imagenet64": 
+        directory = os.path.join("data", directory, "val")
+    elif directory == "butterflies_and_moths": 
+        directory = os.path.join("data", directory, "valid")
+
+    cls = orig_path.split('/')[-2]
+    classfiles = os.listdir(directory)
+    shuffle(classfiles)
+    if classfiles[0] == cls:
+        adv_cls = classfiles[1]
+    else:
+        adv_cls = classfiles[0]
+
+    data_path = os.path.join(directory, adv_cls)
+    img_paths = os.listdir(data_path)
+    shuffle(img_paths)
+    img_path = img_paths[0]
+    f = os.path.join(data_path, img_path)
+
+    return f
+
 def find_jpeg_files(directory, num_samples, shuff=True): 
     
     subset_image_filepaths = []
@@ -10,14 +32,17 @@ def find_jpeg_files(directory, num_samples, shuff=True):
     elif directory == "butterflies_and_moths": 
         directory = os.path.join("data", directory, "valid")
     
-    all_image_filepaths = os.walk(directory) if shuff is True else os.walk(directory)
-    
-    for root, dirs, files in all_image_filepaths:
-        for file in files:
-            if file.lower().endswith('.jpeg') or file.lower().endswith('.jpg'):
-                subset_image_filepaths.append(os.path.join(root, file)) 
-                if len(subset_image_filepaths) >= num_samples: 
-                    return subset_image_filepaths
+    classfiles = os.listdir(directory)
+    shuffle(classfiles)
+    for i in range(num_samples):
+        cls = classfiles[i]
+        data_path = os.path.join(directory, cls)
+        img_paths = os.listdir(data_path)
+        shuffle(img_paths)
+        img_path = img_paths[0]
+        f = os.path.join(data_path, img_path)
+        if f.lower().endswith('.jpeg') or f.lower().endswith('.jpg'):
+            subset_image_filepaths.append(f) 
                 
     return subset_image_filepaths
             

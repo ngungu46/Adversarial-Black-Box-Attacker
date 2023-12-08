@@ -170,10 +170,9 @@ class PartialInfoAttack:
         """
         epsilon = self.e_0
 
-        lower = np.clip(x_orig - epsilon, 0, 1)
-        upper = np.clip(x_orig + epsilon, 0, 1)
-        x_adv = np.clip(x_adv.detach().cpu(), lower, upper)
-
+        lower = torch.clamp(x_orig - epsilon, 0, 1)
+        upper = torch.clamp(x_orig + epsilon, 0, 1)
+        x_adv = torch.clamp(x_adv, lower, upper)
         count = 0
         for i in range(self.max_queries//self.n_samples):
            # print(count, epsilon, torch.max(x_adv - x_orig))
@@ -183,15 +182,16 @@ class PartialInfoAttack:
             )
             count += self.n_samples
             lr = self.max_lr
-            g = torch.sign(g).cpu().detach().numpy().transpose(0, 2, 3, 1)
+            g = torch.sign(g).transpose(1, 2).transpose(2, 3)
+            # print(g.shape, x_adv.shape)
             hat_x_adv = x_adv + lr * g
             prop_de = self.eps_decay
-
+            # print(x_adv.shape)
             while epsilon > self.e_adv:
                 proposed_epsilon = max(epsilon - prop_de, self.e_adv)
-                lower = np.clip(x_orig - proposed_epsilon, 0, 1)
-                upper = np.clip(x_orig + proposed_epsilon, 0, 1)
-                hat_x_adv = np.clip(x_adv + lr * g, lower, upper)
+                lower = torch.clamp(x_orig - proposed_epsilon, 0, 1)
+                upper = torch.clamp(x_orig + proposed_epsilon, 0, 1)
+                hat_x_adv = torch.clamp(x_adv + lr * g, lower, upper)
                 
                 probs = self.model(transforming(hat_x_adv).cuda())
                 topk = torch.topk(probs, self.k) # .detach().numpy()
@@ -212,18 +212,19 @@ class PartialInfoAttack:
                 else:
                     prop_de /= 2
                     if prop_de == 0:
-                        return x_adv, y_adv, False, count, decode_predictions(probs, top = 10)[0]
-                        raise(ValueError("Not converge"))
+                        return x_adv, y_adv, False, count, ''
+                        # raise(ValueError("Not converge"))
                     if prop_de < 2e-3:
                         prop_de = 0
                     lr = self.max_lr
-                    print("[log] backtracking eps to %3f" % (epsilon-prop_de,))
+                    # print("[log] backtracking eps to %3f" % (epsilon-prop_de,))
                 
             probs = torch.nn.functional.softmax(self.model(transforming(x_adv).cuda())).cpu().detach().numpy()
-            print(epsilon)
+            # print(epsilon)
             
             top_k_predictions = decode_predictions(probs, top = 10)[0]
-            if self.verbose: 
+            if i%50 == 0 and self.verbose: 
+                print(f"[{i*100*self.n_samples//(self.max_queries)}%] attack:")
                 print([x[1:] for x in decode_predictions(probs, top = 1)[0]], epsilon)
 
             if(epsilon < self.e_adv):

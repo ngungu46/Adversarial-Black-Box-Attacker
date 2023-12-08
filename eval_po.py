@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser(description='cfg')
 parser.add_argument('--e_adv', default=0.05, type=float)
 parser.add_argument('--e_0', default=0.5, type=float)
 parser.add_argument('--sigma', default=0.001, type=float)
-parser.add_argument('--n_samples', default=50, type=int)
+parser.add_argument('--n_samples', default=100, type=int)
 parser.add_argument('--eps_decay', default=0.001, type=float)
 parser.add_argument('--max_lr', default=0.01, type=float)
 parser.add_argument('--min_lr', default=0.001, type=float)
@@ -66,12 +66,14 @@ def main():
     image_cls2idx = class2index(args["dataset"]) 
     image_idx2cls = {v: k for k, v in image_cls2idx.items()}
     
-    for i, imgpath in enumerate(image_filepaths[4:]): 
+    for i, imgpath in enumerate(image_filepaths): 
         
         # load pretrained inception v3 model
         # this must be called inside the loop since we end up changing the weights of the model somehow within this loop 
         pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=True).to(device) 
         pretrained_model.eval()
+
+        adv_path = get_random_image_path(args["dataset"], imgpath)
         
         # instantiate NESattack class 
         ex = PartialInfoAttack(
@@ -103,25 +105,35 @@ def main():
             # if image is grayscale, then repeat the dimensions 
             image = image.unsqueeze(-1) 
             image = image.repeat(1, 1, 3)
-        image = torch.unsqueeze(image, 0)
+        orig_image = torch.unsqueeze(image, 0)
         
         # calculate the original class index and choose a random adversarial index 
-        y_adv_idx = random.randrange(0, len(image_cls2idx))
-        y_orig_idx = torch.argmax(predict(image, pretrained_model)).detach().cpu().numpy().item()
+        y_orig_idx = torch.argmax(predict(orig_image, pretrained_model)).detach().cpu().numpy().item()
 
+        # prepare image with pixel values in [0, 1] and shape (1, 299, 299, 3)
+        rawimage = np.array(Image.open(adv_path)) / 255
+        rawimage = cv2.resize(rawimage, dsize=(299, 299))
+        
+        image = torch.tensor(rawimage, dtype=torch.float32).to(device)
+        if image.size() == (299, 299): 
+            # if image is grayscale, then repeat the dimensions 
+            image = image.unsqueeze(-1) 
+            image = image.repeat(1, 1, 3)
+        adv_image = torch.unsqueeze(image, 0)
+        y_adv_idx = torch.argmax(predict(adv_image, pretrained_model)).detach().cpu().numpy().item()
         
         print(f"Original/Adversarial Class : {image_idx2cls[y_orig_idx]}/{image_idx2cls[y_adv_idx]}") 
         
-        res, y_adv, succ, count, top_k_predictions = ex.attack(image, y_adv_idx, y_orig_idx) 
+        res, y_adv, succ, count, top_k_predictions = ex.attack(adv_image, y_adv_idx, orig_image) 
         
         
         # save the original and adversarial image into output files 
-        save_tensor_as_image(image, os.path.join(new_run_dir_name, f"{i+1}_original_{y_orig_idx}.jpg"))
+        save_tensor_as_image(orig_image, os.path.join(new_run_dir_name, f"{i+1}_original_{y_orig_idx}.jpg"))
         save_tensor_as_image(res, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
         
         
         # forward the pass over the two images once more to check their top probabilities 
-        orig_pred = torch.argmax(predict(image, pretrained_model)).detach().cpu().numpy().item()
+        orig_pred = torch.argmax(predict(orig_image, pretrained_model)).detach().cpu().numpy().item()
         adv_pred = torch.argmax(predict(res, pretrained_model)).detach().cpu().numpy().item()
         
         print(f"Original vs Adversarial Prediction : {image_idx2cls[orig_pred]} - {image_idx2cls[adv_pred]} ", end = "") 
