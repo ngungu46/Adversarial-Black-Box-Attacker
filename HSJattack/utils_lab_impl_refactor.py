@@ -1,43 +1,23 @@
 
 import numpy as np
-import time
 
-def hsja(model, 
-	sample, 
-	clip_max = 1, 
-	clip_min = 0, 
-	constraint = 'l2', 
-	num_iterations = 40, 
-	gamma = 1.0, 
-	max_num_evals = 1e4,
-	init_num_evals = 100,
-	verbose = True,
-	verbose_timing = True,
-):
+def hsja(model, sample, constraint = 'l2', num_iterations = 40):
 		
 	# Set parameters
 	original_label = model.label
-	params = {'clip_max': clip_max, 'clip_min': clip_min, 
-				'shape': sample.shape,
-				'original_label': original_label, 
-				'target_image': None, 
+	params = {	'original_label': original_label, 
 				'constraint': constraint,
-				'num_iterations': num_iterations, 
-				'gamma': gamma, 
 				'd': int(np.prod(sample.shape)), 
-				'max_num_evals': max_num_evals,
-				'init_num_evals': init_num_evals,
-				'verbose': verbose,
 				}
 
 	# Set binary search threshold.
 	if params['constraint'] == 'l2':
-		params['theta'] = params['gamma'] / (np.sqrt(params['d']) * params['d'])
+		params['theta'] = 1.0 / (np.sqrt(params['d']) * params['d'])
 	else:
-		params['theta'] = params['gamma'] / (params['d'] ** 2)
+		params['theta'] = 1.0 / (params['d'] ** 2)
 		
 	# Initialize.
-	perturbed = initialize(model, sample, params)
+	perturbed = initialize(model, sample)
 	
 
 	# Project the initialization to the boundary.
@@ -47,75 +27,47 @@ def hsja(model,
 		params)
 	dist = compute_distance(perturbed, sample, constraint)
 
-	for j in np.arange(params['num_iterations']):
+	for j in np.arange(num_iterations):
 		# pass
 		params['cur_iter'] = j + 1
 
-		iter_start = time.time()
-
 		# Choose delta.
-		start = time.time()
-
 		delta = select_delta(params, dist_post_update)
 
-		if verbose_timing:
-			print('Delta Time:', time.time() - start)
-
 		# Choose number of evaluations.
-		num_evals = int(params['init_num_evals'] * np.sqrt(j+1))
-		num_evals = int(min([num_evals, params['max_num_evals']]))
+		num_evals = int(100 * np.sqrt(j+1))
+		num_evals = int(min([num_evals, 1e4]))
 
 		# approximate gradient.
-		start = time.time()
-
 		gradf = approximate_gradient(model, perturbed, num_evals, delta, params)
 		if params['constraint'] == 'linf':
 			update = np.sign(gradf)
 		else:
 			update = gradf
-		
-		if verbose_timing:
-			print('Gradient Time:', time.time() - start)
-
 		# search step size.
         # find step size.
-		start = time.time()
         
 		epsilon = geometric_progression_for_stepsize(perturbed, update, dist, model, params)
 
-		if verbose_timing:
-			print('Step Size Time:', time.time() - start)
-
         # Update the sample. 
-		perturbed = clip_image(perturbed + epsilon * update, clip_min, clip_max)
+		perturbed = clip_image(perturbed + epsilon * update)
 
         # Binary search to return to the boundary. 
-		start = time.time()
-
 		perturbed, dist_post_update = binary_search_batch(sample, perturbed[None], model, params)
-
-		if verbose_timing:
-			print('Binary Search Time:', time.time() - start)
 
 		# compute new distance.
 		dist = compute_distance(perturbed, sample, constraint)
 		
-		if verbose:
-			print()
-			print('iteration: {:d}, {:s} distance {:.4E}'.format(j+1, constraint, dist))
-		
-		if verbose_timing:
-			print('Iteration Time:', time.time() - iter_start)
-			print()
+		print('iteration: {:d}, {:s} distance {:.4E}'.format(j+1, constraint, dist))
 
-	return perturbed, dist 
+	return perturbed, dist
 
-def decision_function(model, images, params):
+def decision_function(model, images):
 	"""
 	Decision function output 1 on the desired side of the boundary,
 	0 otherwise.
 	"""
-	images = clip_image(images, params['clip_min'], params['clip_max'])
+	images = clip_image(images)
 
 	decisions = model.decision(images)
 	decisions = np.array(decisions)
@@ -127,9 +79,9 @@ def decision_function(model, images, params):
 	# else:
 	# 	return np.argmax(prob, axis = 1) == params['target_label']
 
-def clip_image(image, clip_min, clip_max):
-	# Clip an image, or an image batch, with upper and lower threshold.
-	return np.minimum(np.maximum(clip_min, image), clip_max) 
+def clip_image(image):
+	# Clip (batch) images to [0, 1]
+	return np.minimum(np.maximum(0, image), 1) 
 
 
 def compute_distance(x_ori, x_pert, constraint = 'l2'):
@@ -141,10 +93,8 @@ def compute_distance(x_ori, x_pert, constraint = 'l2'):
 
 
 def approximate_gradient(model, sample, num_evals, delta, params):
-	clip_max, clip_min = params['clip_max'], params['clip_min']
-
-	# Generate random vectors.
-	noise_shape = [num_evals] + list(params['shape'])
+	# Generate gradient approximation
+	noise_shape = [num_evals] + list(sample.shape)
 	if params['constraint'] == 'l2':
 		rv = np.random.randn(*noise_shape)
 	elif params['constraint'] == 'linf':
@@ -152,12 +102,12 @@ def approximate_gradient(model, sample, num_evals, delta, params):
 
 	rv = rv / np.sqrt(np.sum(rv ** 2, axis = (1,2,3), keepdims = True))
 	perturbed = sample + delta * rv
-	perturbed = clip_image(perturbed, clip_min, clip_max)
+	perturbed = clip_image(perturbed)
 	rv = (perturbed - sample) / delta
 
 	# query the model.
-	decisions = decision_function(model, perturbed, params)
-	decision_shape = [len(decisions)] + [1] * len(params['shape'])
+	decisions = decision_function(model, perturbed)
+	decision_shape = [len(decisions)] + [1] * len(sample.shape)
 	fval = 2 * decisions.astype(float).reshape(decision_shape) - 1.0
 
 	# Baseline subtraction (when fval differs)
@@ -176,7 +126,7 @@ def approximate_gradient(model, sample, num_evals, delta, params):
 
 
 def project(original_image, perturbed_images, alphas, params):
-	alphas_shape = [len(alphas)] + [1] * len(params['shape'])
+	alphas_shape = [len(alphas)] + [1] * len(perturbed_images.shape)
 	alphas = alphas.reshape(alphas_shape)
 	if params['constraint'] == 'l2':
 		return (1-alphas) * original_image + alphas * perturbed_images
@@ -219,7 +169,7 @@ def binary_search_batch(original_image, perturbed_images, model, params):
 		mid_images = project(original_image, perturbed_images, mids, params)
 
 		# Update highs and lows based on model decisions.
-		decisions = decision_function(model, mid_images, params)
+		decisions = decision_function(model, mid_images)
 		lows = np.where(not decisions, mids, lows)
 		highs = np.where(decisions, mids, highs)
 
@@ -241,42 +191,38 @@ def binary_search_batch(original_image, perturbed_images, model, params):
 	return out_image, dist
 
 
-def initialize(model, sample, params):
+def initialize(model, sample):
 	""" 
 	Efficient Implementation of BlendedUniformNoiseAttack in Foolbox.
 	"""
 	success = 0
 	num_evals = 0
 
-	if params['target_image'] is None:
-		# Find a misclassified random noise.
-		while True:
-			random_noise = np.random.uniform(params['clip_min'], 
-				params['clip_max'], size = params['shape'])
-			success = decision_function(model,random_noise[None], params)[0]
-			num_evals += 1
-			if success:
-				break
-			assert num_evals < 1e4,"Initialization failed! "
-			"Use a misclassified image as `target_image`" 
+	# Find a misclassified random noise for untargeted attack.
+	while True:
+		random_noise = np.random.uniform(0, 
+			1, size = sample.shape)
+		success = decision_function(model,random_noise[None])[0]
+		num_evals += 1
+		if success:
+			break
+		assert num_evals < 1e4,"Initialization failed! "
+		"Use a misclassified image as `target_image`" 
 
 
-		# Binary search to minimize l2 distance to original image.
-		low = 0.0
-		high = 1.0
-		while high - low > 0.001:
-			mid = (high + low) / 2.0
-			blended = (1 - mid) * sample + mid * random_noise 
-			success = decision_function(model, blended[None], params)
-			if success:
-				high = mid
-			else:
-				low = mid
+	# Binary search to minimize l2 distance to original image.
+	low = 0.0
+	high = 1.0
+	while high - low > 0.001:
+		mid = (high + low) / 2.0
+		blended = (1 - mid) * sample + mid * random_noise 
+		success = decision_function(model, blended[None])
+		if success:
+			high = mid
+		else:
+			low = mid
 
-		initialization = (1 - high) * sample + high * random_noise 
-
-	else:
-		initialization = params['target_image']
+	initialization = (1 - high) * sample + high * random_noise 
 
 	return initialization
 
@@ -291,7 +237,7 @@ def geometric_progression_for_stepsize(x, update, dist, model, params):
 
 	def phi(epsilon):
 		new = x + epsilon * update
-		success = decision_function(model, new[None], params)
+		success = decision_function(model, new[None])
 		return success
 
 	while not phi(epsilon):
@@ -306,7 +252,7 @@ def select_delta(params, dist_post_update):
 
 	"""
 	if params['cur_iter'] == 1:
-		delta = 0.1 * (params['clip_max'] - params['clip_min'])
+		delta = 0.1
 	else:
 		if params['constraint'] == 'l2':
 			delta = np.sqrt(params['d']) * params['theta'] * dist_post_update

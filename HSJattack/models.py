@@ -1,52 +1,44 @@
 import numpy as np
 
-import torch
-from torchvision import transforms
-
 import tensorflow as tf
 decode_predictions = tf.keras.applications.inception_v3.decode_predictions
 
 class Model:
-    def __init__(self, pretrained_model, label):
+    def __init__(self, pretrained_model, label, dataset = 'imagenet'):
         self.count = 0
         self.pretrained_model = pretrained_model
         self.label = label
 
+        if dataset == 'imagenet':
+            self.get_labels = self.get_imagenet_labels
+        elif dataset == 'butterfly':
+            self.get_labels = self.get_butterflies_labels
 
-    def get_imagenet_label(self, probs):
-        if len(probs) > 1:
-            return decode_predictions(probs, top=6)
-        return decode_predictions(probs, top=6)[0]
+    def get_imagenet_labels(self, probs, top = 4):
+        return decode_predictions(probs, top = top)
+    
+    def get_butterflies_labels(self, probs, top = 4):
+        batch_size = probs.shape[0]
 
+        mapping = np.array([
+            'ADONIS', 'AFRICAN GIANT SWALLOWTAIL', 'AMERICAN SNOOT', 'AN 88', 'APPOLLO', 'ARCIGERA FLOWER MOTH', 'ATALA', 'ATLAS MOTH', 'BANDED ORANGE HELICONIAN', 'BANDED PEACOCK', 'BANDED TIGER MOTH', 'BECKERS WHITE', 'BIRD CHERRY ERMINE MOTH', 'BLACK HAIRSTREAK', 'BLUE MORPHO', 'BLUE SPOTTED CROW', 'BROOKES BIRDWING', 'BROWN ARGUS', 'BROWN SIPROETA', 'CABBAGE WHITE', 'CAIRNS BIRDWING', 'CHALK HILL BLUE', 'CHECQUERED SKIPPER', 'CHESTNUT', 'CINNABAR MOTH', 'CLEARWING MOTH', 'CLEOPATRA', 'CLODIUS PARNASSIAN', 'CLOUDED SULPHUR', 'COMET MOTH', 'COMMON BANDED AWL', 'COMMON WOOD-NYMPH', 'COPPER TAIL', 'CRECENT', 'CRIMSON PATCH', 'DANAID EGGFLY', 'EASTERN COMA', 'EASTERN DAPPLE WHITE', 'EASTERN PINE ELFIN', 'ELBOWED PIERROT', 'EMPEROR GUM MOTH', 'GARDEN TIGER MOTH', 'GIANT LEOPARD MOTH', 'GLITTERING SAPPHIRE', 'GOLD BANDED', 'GREAT EGGFLY', 'GREAT JAY', 'GREEN CELLED CATTLEHEART', 'GREEN HAIRSTREAK', 'GREY HAIRSTREAK', 'HERCULES MOTH', 'HUMMING BIRD HAWK MOTH', 'INDRA SWALLOW', 'IO MOTH', 'Iphiclus sister', 'JULIA', 'LARGE MARBLE', 'LUNA MOTH', 'MADAGASCAN SUNSET MOTH', 'MALACHITE', 'MANGROVE SKIPPER', 'MESTRA', 'METALMARK', 'MILBERTS TORTOISESHELL', 'MONARCH', 'MOURNING CLOAK', 'OLEANDER HAWK MOTH', 'ORANGE OAKLEAF', 'ORANGE TIP', 'ORCHARD SWALLOW', 'PAINTED LADY', 'PAPER KITE', 'PEACOCK', 'PINE WHITE', 'PIPEVINE SWALLOW', 'POLYPHEMUS MOTH', 'POPINJAY', 'PURPLE HAIRSTREAK', 'PURPLISH COPPER', 'QUESTION MARK', 'RED ADMIRAL', 'RED CRACKER', 'RED POSTMAN', 'RED SPOTTED PURPLE', 'ROSY MAPLE MOTH', 'SCARCE SWALLOW', 'SILVER SPOT SKIPPER', 'SIXSPOT BURNET MOTH', 'SLEEPY ORANGE', 'SOOTYWING', 'SOUTHERN DOGFACE', 'STRAITED QUEEN', 'TROPICAL LEAFWING', 'TWO BARRED FLASHER', 'ULYSES', 'VICEROY', 'WHITE LINED SPHINX MOTH', 'WOOD SATYR', 'YELLOW SWALLOW TAIL', 'ZEBRA LONG WING'
+        ], dtype=str)
 
-    def torch_transform(self, image):
-        """
-        input: numpy images of shape (B, H, W, C), normalized to (0, 1)
-        output: tensor of images of shape (B, C, H, W), normalized to mean [.485, .456, .406], std [.229, .224, .225]
-        """
+        indices = np.argsort(probs, axis=1)
+        indices = indices[:, ::-1]
+        indices = indices[:, :top]
 
-        if not isinstance(image, np.ndarray):
-            image = image.numpy()
+        # print(indices)
 
-        image = torch.tensor(image, dtype=torch.float32)
-        if len(image.shape) <= 4:
-            image = torch.unsqueeze(image, 1)
-        # B, 1, H, W, C
-        assert image.shape[-1] == 3
+        labels_top = mapping[indices]
+        probs_top = probs[np.arange(batch_size)[:, None], indices]
 
-        image = torch.transpose(image, 1, 4)
-        # B, C, H, W, 1
-        # assert image.shape[1] == 3 and image.shape[3] == 299
-
-        image = torch.squeeze(image, dim=4)
-        # B, C, H, W
-        # assert image.shape[1] == 3 and image.shape[3] == 299 and len(image.shape) == 4
-
-        transform = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-        image = transform(image)
+        out = [[(label, label, prob) for prob, label in zip(probs_row, labels_row)] \
+                for probs_row, labels_row in zip(probs_top, labels_top)]
         
-        return image
+        # print(out)
 
+        return out
 
     def get_logits(self, image):
         """
@@ -56,19 +48,25 @@ class Model:
 
         self.count += 1
 
-        with torch.no_grad():
-            preds = self.pretrained_model(self.torch_transform(image).to("cuda"))
+        preds = self.pretrained_model(image)
         
-        return preds.cpu().detach().numpy()
+        return preds
     
 
     def predict(self, image):
-        return self.get_imagenet_label(self.get_logits(image))
+        return self.get_labels(self.get_logits(image))
 
 
-    def decision(self, image):
-        check = self.predict(image)
-        if check[0][0] != self.label:
-            return True
-        else:
-            return False
+    def decision(self, image, verbose=False):
+        # batched = (image.shape[0] != 1) and (len(image.shape) == 4)
+
+        best = self.predict(image)
+        
+        if verbose:
+            print(self.label)
+            for i in range(3):
+                print(best[i])
+
+        out = [tup[0][0] != self.label for tup in best]
+
+        return out
