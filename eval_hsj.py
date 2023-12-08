@@ -13,7 +13,7 @@ from HSJattack.utils_new import load_image, display_images
 from HSJattack.utils import hsja
 from HSJattack.models import Model
 
-from AAA.models import AAALinear
+from AAA.models import AAALinear, AAASine
 from AAA.utils import loss
 
 random.seed(685)
@@ -94,12 +94,12 @@ def attack_image(model, image, num_iterations, constraint, image_file, save_dir,
     return dist, success
 
 
-num_iterations = 30
-constraint = 'l2'
-# constraint = 'linf'
+num_iterations = 5
+# constraint = 'l2'
+constraint = 'linf'
 
-# dataset = 'imagenet'
-dataset = 'butterfly'
+dataset = 'imagenet'
+# dataset = 'butterfly'
 
 if dataset == 'imagenet':
     pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=True)
@@ -107,6 +107,7 @@ if dataset == 'imagenet':
     pretrained_model.eval()
 
     image_size = 224
+    attractor_interval = 4
     predict = lambda x: predict_imagenet(x, pretrained_model)
 
     data_path = './data/imagenet_val'
@@ -115,6 +116,7 @@ elif dataset == 'butterfly':
     pretrained_model = keras.models.load_model(model_path, custom_objects={'F1_score':'F1_score'})
 
     image_size = 224
+    attractor_interval = 3
     predict = lambda x: predict_butterfly(x, pretrained_model)
 
     data_path = './data/butterfly/test'
@@ -133,18 +135,33 @@ total_dist = 0
 save_dir = "defender_trash"
 visited = set()
 
-defender = AAALinear(
+# defender = AAALinear(
+#     pretrained_model=predict,
+#     loss=loss,
+#     device='cuda', 
+#     batch_size=1000, 
+#     attractor_interval=attractor_interval, 
+#     reverse_step=1, 
+#     num_iter=100, 
+#     calibration_loss_weight=5, 
+#     optimizer_lr=0.1, 
+#     do_softmax=False,
+#     temperature=1,
+#     verbose=False,
+# )
+
+defender = AAASine(
     pretrained_model=predict,
     loss=loss,
     device='cuda', 
     batch_size=1000, 
-    attractor_interval=6, 
-    reverse_step=1, 
+    attractor_interval=attractor_interval, 
+    reverse_step=0.7, 
     num_iter=100, 
     calibration_loss_weight=5, 
     optimizer_lr=0.1, 
     do_softmax=False,
-    temperature=1,
+    temperature=1.2,
     verbose=False,
 )
 
