@@ -28,7 +28,7 @@ def get_label(probs):
         return decode_predictions(probs, top=3)
     return decode_predictions(probs, top=3)[0]
 
-def torch_transform(image):
+def torch_transform(image, is_torch):
     """
     input: numpy images of shape (B, H, W, C), normalized to (0, 1)
     output: tensor of images of shape (B, C, H, W), normalized to mean [.485, .456, .406], std [.229, .224, .225]
@@ -45,16 +45,20 @@ def torch_transform(image):
     assert image.shape[-1] == 3
     image = torch.transpose(image, 1, 4)
     # B, C, H, W, 1
-    assert image.shape[1] == 3 and image.shape[3] == 299
+    assert image.shape[1] == 3 
     image = torch.squeeze(image, dim=4)
     # B, C, H, W
-    assert image.shape[1] == 3 and image.shape[3] == 299 and len(image.shape) == 4
-    transform = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    image = transform(image)
-    return image
+    assert image.shape[1] == 3 and len(image.shape) == 4
+    
+    if is_torch: 
+        transform = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        image = transform(image)
+    else: 
+        pass 
+    
+    return image   
 
-
-def transforming(image):
+def transforming(image, is_torch=True):
     if np.shape(image) == (1, IMAGESIZE, IMAGESIZE, 1):
         image = tf.image.grayscale_to_rgb(image)
     elif np.shape(image) == (1, IMAGESIZE, IMAGESIZE): 
@@ -64,7 +68,23 @@ def transforming(image):
     elif np.shape(image) == (1, IMAGESIZE, IMAGESIZE, 4):
         image = tf.image.grayscale_to_rgb(image)
 
-    return torch_transform(image)
+    return torch_transform(image, is_torch)
+
+def predict(image, model, is_torch=True, device='cuda'):
+    """
+    input: normalized tensor of shape (B, C, H, W)
+    output: numpy array of predictions
+    """
+    # print("predicting")
+    if is_torch: 
+        with torch.no_grad():
+            preds = model(transforming(image).to(device))
+    else: 
+        preds = model.predict(tf.cast(image * 255, tf.float32), steps=1)
+        preds = torch.tensor(np.array(preds))
+    return preds
+
+
 
 def save_tensor_as_image(tensor, filename):
     """
@@ -74,8 +94,8 @@ def save_tensor_as_image(tensor, filename):
     :param filename: Filename to save the image
     """
     # Check if the input tensor is of the expected shape
-    if tensor.shape != (1, 299, 299, 3):
-        raise ValueError("Tensor shape is not (1, 299, 299, 3)")
+    if tensor.shape != (1, 299, 299, 3) and tensor.shape != (1, 224, 224, 3): 
+        raise ValueError("Tensor shape is not (1, 299/224, 299/224, 3)")
 
     # Remove the batch dimension and rearrange to HxWxC format
     tensor = tensor.squeeze(0)

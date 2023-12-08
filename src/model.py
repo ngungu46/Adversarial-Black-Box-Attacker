@@ -16,7 +16,7 @@ class NESAttack:
         momentum,
         model,
         verbose, 
-        is_torch = True 
+        is_torch
     ):
         self.lr = lr
         self.target_eps = target_eps
@@ -26,7 +26,7 @@ class NESAttack:
         self.momentum = momentum
         self.model = model
         self.verbose = verbose
-        self.is_torch = torch 
+        self.is_torch = is_torch
 
     def NES(self, x_orig, y_adv): 
         """
@@ -40,17 +40,38 @@ class NESAttack:
         k: int
         """
 
-        _, r, d, _ = x_orig.shape
-        noise = torch.normal(mean = 0, std = 1, size = (self.n_samples//2, 3, r, d))
-        noise = torch.cat([noise, -noise], axis = 0).cuda()
-        x_orig = transforming(x_orig)
-        x = x_orig.repeat((self.n_samples, 1, 1, 1)).cuda()
-        x += noise * self.sigma
-        predictions = self.model(x)
-        prob = torch.nn.functional.softmax(predictions).detach()[:, y_adv]
-        prob = prob[:, None, None, None]
-        g = prob * noise
-        return g.sum(dim = 0).unsqueeze(0) / (self.n_samples)
+        if self.is_torch: 
+            _, r, d, _ = x_orig.shape
+            noise = torch.normal(mean = 0, std = 1, size = (self.n_samples//2, 3, r, d))
+            noise = torch.cat([noise, -noise], axis = 0).cuda()
+            x_orig = transforming(x_orig, self.is_torch)
+            x = x_orig.repeat((self.n_samples, 1, 1, 1)).cuda()
+            x += noise * self.sigma
+
+            predictions = self.model(x)
+            prob = torch.nn.functional.softmax(predictions).detach()[:, y_adv]
+            prob = prob[:, None, None, None]
+            g = prob * noise
+            return g.sum(dim = 0).unsqueeze(0) / (self.n_samples)
+        else: 
+            _, r, d, _ = x_orig.shape
+            noise = torch.normal(mean = 0, std = 1, size = (self.n_samples//2, 3, r, d))
+            noise = torch.cat([noise, -noise], axis = 0).cuda()
+            x_orig = transforming(x_orig, self.is_torch)
+            x = x_orig.repeat((self.n_samples, 1, 1, 1)).cuda()
+            x += noise * self.sigma
+            x = x.detach().cpu().numpy() 
+            x = x.transpose(0, 2, 3, 1)
+            x = tf.cast(x, tf.float32)
+            
+            predictions = self.model.predict(x * 255, steps=1) 
+            predictions = torch.tensor(np.array(predictions)).cuda()
+                
+            prob = torch.nn.functional.softmax(predictions).detach()[:, y_adv]
+            prob = prob[:, None, None, None]
+            g = prob * noise
+            return g.sum(dim = 0).unsqueeze(0) / (self.n_samples)
+        
 
     def attack(self, x_orig, y_adv): 
         x_orig = x_orig.cpu().detach()
@@ -67,14 +88,22 @@ class NESAttack:
             x_adv = x_adv + self.lr * torch.sign(grad).cpu().detach().numpy().transpose(0, 2, 3, 1)
             self.lr *= 0.99
             x_adv = np.clip(x_adv, lower, upper)
-            log_probability_predictions = self.model(transforming(x_adv).cuda())
+            log_probability_predictions = predict(x_adv, self.model, self.is_torch)
             cls = torch.argmax(log_probability_predictions).detach().cpu().numpy().item()
-            probs = torch.nn.functional.softmax(log_probability_predictions).cpu().detach().numpy()
             
-            top_k_predictions = decode_predictions(probs, top = 10)[0]
+            
+            if self.is_torch: 
+                probs = torch.nn.functional.softmax(log_probability_predictions).cpu().detach().numpy()
+                top_k_predictions = decode_predictions(probs, top = 10)[0]
+            else: 
+                probs = log_probability_predictions.cpu().detach().numpy()
+                top_k_labels = list((np.argsort(probs*-1))[0])
+                
+                top_k_predictions = [("dummy", label, probs[0][label]) for label in top_k_labels][:5]
             
             if self.verbose: 
-                print([x[1:] for x in top_k_predictions])
+                print([x for x in top_k_predictions])
+                print(y_adv, probs[0][y_adv])
             
             if(cls == y_adv):
                 return x_adv, cls, probs[:, y_adv], count, True, top_k_predictions
@@ -82,27 +111,6 @@ class NESAttack:
             
 
         return x_adv, -1, probs[:, y_adv], -1, False, top_k_predictions
-
-torch_transform = transforms.Compose([
-    transforms.
-    transforms.Resize(299),
-    transforms.CenterCrop(299),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-])    
-
-def predict(image, model, is_torch=True, device='cuda'):
-    """
-    input: normalized tensor of shape (B, C, H, W)
-    output: numpy array of predictions
-    """
-    # print("predicting")
-    if is_torch: 
-        with torch.no_grad():
-            preds = model(transforming(image).to(device))
-        return preds
-    else: 
-        pass 
 
 
 class PartialInfoAttack:
@@ -118,7 +126,8 @@ class PartialInfoAttack:
         k,
         max_queries, 
         model, 
-        verbose
+        verbose, 
+        is_torch
     ):
         self.e_adv = e_adv
         self.e_0 = e_0
@@ -131,6 +140,7 @@ class PartialInfoAttack:
         self.max_queries = max_queries
         self.model = model 
         self.verbose = verbose
+        self.is_torch = is_torch
         
     def NES(self, x_orig, y_adv): 
         """
@@ -143,18 +153,38 @@ class PartialInfoAttack:
         model: tf.keras.Model
         k: int
         """
+        if self.is_torch: 
+            _, r, d, _ = x_orig.shape
+            noise = torch.normal(mean = 0, std = 1, size = (self.n_samples//2, 3, r, d))
+            noise = torch.cat([noise, -noise], axis = 0).cuda()
+            x_orig = transforming(x_orig, self.is_torch)
+            x = x_orig.repeat((self.n_samples, 1, 1, 1)).cuda()
+            x += noise * self.sigma
+            
+            predictions = self.model(x)
+            prob = torch.nn.functional.softmax(predictions).detach()[:, y_adv]
+            prob = prob[:, None, None, None]
+            g = prob * noise
+            return g.sum(dim = 0).unsqueeze(0) / (self.n_samples)
 
-        _, r, d, _ = x_orig.shape
-        noise = torch.normal(mean = 0, std = 1, size = (self.n_samples//2, 3, r, d))
-        noise = torch.cat([noise, -noise], axis = 0).cuda()
-        x_orig = transforming(x_orig)
-        x = x_orig.repeat((self.n_samples, 1, 1, 1)).cuda()
-        x += noise * self.sigma
-        predictions = self.model(x)
-        prob = torch.nn.functional.softmax(predictions).detach()[:, y_adv]
-        prob = prob[:, None, None, None]
-        g = prob * noise
-        return g.sum(dim = 0).unsqueeze(0) / (self.n_samples)
+        else: 
+            _, r, d, _ = x_orig.shape
+            noise = torch.normal(mean = 0, std = 1, size = (self.n_samples//2, 3, r, d))
+            noise = torch.cat([noise, -noise], axis = 0).cuda()
+            x_orig = transforming(x_orig, self.is_torch)
+            x = x_orig.repeat((self.n_samples, 1, 1, 1)).cuda()
+            x += noise * self.sigma
+            x = x.detach().cpu().numpy() 
+            x = x.transpose(0, 2, 3, 1)
+            x = tf.cast(x, tf.float32)
+            
+            predictions = self.model.predict(x * 255, steps=1) 
+            predictions = torch.tensor(np.array(predictions)).cuda()
+                
+            prob = torch.nn.functional.softmax(predictions).detach()[:, y_adv]
+            prob = prob[:, None, None, None]
+            g = prob * noise
+            return g.sum(dim = 0).unsqueeze(0) / (self.n_samples)
 
     def attack(
         self,
@@ -168,6 +198,7 @@ class PartialInfoAttack:
         classifier: function
         x_orig: np.ndarray
         """
+        x_orig = x_orig.cpu().detach()
         epsilon = self.e_0
 
         lower = np.clip(x_orig - epsilon, 0, 1)
@@ -193,8 +224,10 @@ class PartialInfoAttack:
                 upper = np.clip(x_orig + proposed_epsilon, 0, 1)
                 hat_x_adv = np.clip(x_adv + lr * g, lower, upper)
                 
-                probs = self.model(transforming(hat_x_adv).cuda())
-                topk = torch.topk(probs, self.k) # .detach().numpy()
+                
+                # probs = self.model(transforming(hat_x_adv, self.is_torch).cuda())
+                log_probs = predict(hat_x_adv, self.model, self.is_torch)
+                topk = torch.topk(log_probs, self.k) # .detach().numpy()
 
                 count += 1
                 if y_adv in topk:
@@ -212,19 +245,26 @@ class PartialInfoAttack:
                 else:
                     prop_de /= 2
                     if prop_de == 0:
-                        return x_adv, y_adv, False, count, decode_predictions(probs, top = 10)[0]
+                        return x_adv, y_adv, False, count, decode_predictions(log_probs, top = 10)[0]
                         raise(ValueError("Not converge"))
                     if prop_de < 2e-3:
                         prop_de = 0
                     lr = self.max_lr
                     print("[log] backtracking eps to %3f" % (epsilon-prop_de,))
+            
+            if self.is_torch: 
+                probs = torch.nn.functional.softmax(self.model(transforming(x_adv, self.is_torch).cuda())).cpu().detach().numpy()
+                top_k_predictions = decode_predictions(probs, top = 10)[0]
+            else: 
+                probs = log_probs.cpu().detach().numpy() 
+                top_k_labels = list((np.argsort(probs*-1))[0])
                 
-            probs = torch.nn.functional.softmax(self.model(transforming(x_adv).cuda())).cpu().detach().numpy()
+                top_k_predictions = [("dummy", label, probs[0][label]) for label in top_k_labels][:10]
+                
             print(epsilon)
             
-            top_k_predictions = decode_predictions(probs, top = 10)[0]
             if self.verbose: 
-                print([x[1:] for x in decode_predictions(probs, top = 1)[0]], epsilon)
+                print(top_k_predictions, epsilon)
 
             if(epsilon < self.e_adv):
                 return x_adv, y_adv, True, count, top_k_predictions

@@ -6,7 +6,6 @@ import numpy as np
 import cv2
 import time 
 import json 
-import onnx
 import keras 
 
 
@@ -64,6 +63,8 @@ def main():
     
     success = 0 
     
+    img_size = 299 if args["dataset"] == "imagenet64" else 224
+    
     # scan for output directory and create a new run name 
     curr_run_dirs = [int(name.split("_")[-1]) for name in os.listdir(os.path.join("NESattack", "outputs"))] 
     new_run_dir_name = os.path.join("NESattack", "outputs", f"run_{str(max(curr_run_dirs) + 1)}")
@@ -85,7 +86,7 @@ def main():
         # load pretrained inception v3 model
         # this must be called inside the loop since we end up changing the weights of the model somehow within this loop 
         pretrained_model = getModel(args["dataset"], device)
-        
+        is_torch = (args["dataset"] == "imagenet64")
         
         # instantiate NESattack class 
         ex = NESAttack(
@@ -97,7 +98,7 @@ def main():
             momentum=args["momentum"], 
             model = pretrained_model, 
             verbose = bool(args["verbose"]), 
-            is_torch = (args["dataset"] == "imagenet64")
+            is_torch = is_torch 
         )
         
         sys.stdout.write('\r')
@@ -109,57 +110,123 @@ def main():
         # prepare image with pixel values in [0, 1] and shape (1, 299, 299, 3)
         rawimage = Image.open(imgpath)
         rawimage = tf.keras.preprocessing.image.img_to_array(rawimage) / 255
-        rawimage = cv2.resize(rawimage, dsize=(299, 299))
+        rawimage = cv2.resize(rawimage, dsize=(img_size, img_size))
         
         
         # now depending on model, convert to torch.tensor or tf.tensor
         if args["dataset"] == "imagenet64": 
             image = torch.tensor(rawimage, dtype=torch.float32).to(device)
             image = torch.unsqueeze(image, 0)
-            orig_prediction = predict(image, pretrained_model)
         elif args["dataset"] == "butterflies_and_moths": 
             image = tf.cast(rawimage, tf.float32)
             image = image[None, ...]
-            pass 
         
         # calculate the original class index and choose a random adversarial index 
         y_adv_idx = random.randrange(0, len(image_cls2idx))
-        y_orig_idx = torch.argmax(orig_prediction).detach().cpu().numpy().item()
+        y_orig_idx = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
 
         
-        print(f"Original/Adversarial Class : {image_idx2cls[y_orig_idx]}/{image_idx2cls[y_adv_idx]}") 
+        print(f"Original/Adversarial Class : {y_orig_idx} {image_idx2cls[y_orig_idx]}/{y_adv_idx} {image_idx2cls[y_adv_idx]}") 
         
-        res, _, prob, count, succ, top_k_predictions = ex.attack(image, y_adv_idx) 
+        if is_torch: 
+            res, _, prob, count, succ, top_k_predictions = ex.attack(image, y_adv_idx) 
+            save_tensor_as_image(image, os.path.join(new_run_dir_name, f"{i+1}_original_{y_orig_idx}.jpg"))
+            save_tensor_as_image(res, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
+            
+            orig_pred = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
+            adv_pred = torch.argmax(predict(res, pretrained_model, is_torch)).detach().cpu().numpy().item()
+            
+            print(f"Original vs Adversarial Prediction : {image_idx2cls[orig_pred]} - {image_idx2cls[adv_pred]} ", end = "") 
+            
+            print(top_k_predictions)
+            
+            
+            
+            info = {
+                "status" : "SUCCESS" if succ else "FAILED", 
+                "filepath" : imgpath, 
+                "original_label" : f"{y_orig_idx} - {image_idx2cls[y_orig_idx]}", 
+                "adversarial_target" : f"{y_adv_idx} - {image_idx2cls[y_adv_idx]}", 
+                "adversarial prediction" : f"{adv_pred} - {image_idx2cls[adv_pred]}", 
+                "args" : args, 
+                "num_queries_needed" : count, 
+                "top_k_predictions" : {str(k):str(v) for (_, k, v) in top_k_predictions}, 
+                "runtime" : f"{time.time() - now}", 
+                
+                "L_inf_distance1" : torch.norm(image.squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=torch.inf).item(), 
+                
+                "L_inf_distance2" : torch.norm(torch.norm(image.squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=2, dim=(-1)), p=torch.inf).item(), 
+                
+                "L_inf_distance3" : torch.norm(torch.norm(image.squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=1, dim=(-1)), p=torch.inf).item()
+            }
+        else: 
+            res, _, prob, count, succ, top_k_predictions = ex.attack(torch.tensor(np.array(image)), y_adv_idx) 
+            save_tensor_as_image(torch.tensor(np.array(image)), os.path.join(new_run_dir_name, f"{i+1}_original_{y_orig_idx}.jpg"))
+            save_tensor_as_image(res / 255, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
+            
+            orig_pred = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
+            adv_pred = torch.argmax(predict(res, pretrained_model, is_torch)).detach().cpu().numpy().item()
+            
+            print(f"Original vs Adversarial Prediction : {image_idx2cls[orig_pred]} - {image_idx2cls[adv_pred]} ", end = "") 
+            
+            print(top_k_predictions)
+            
         
+            info = {
+                "status" : "SUCCESS" if succ else "FAILED", 
+                "filepath" : imgpath, 
+                "original_label" : f"{y_orig_idx} - {image_idx2cls[y_orig_idx]}", 
+                "adversarial_target" : f"{y_adv_idx} - {image_idx2cls[y_adv_idx]}", 
+                "adversarial prediction" : f"{adv_pred} - {image_idx2cls[adv_pred]}", 
+                "args" : args, 
+                "num_queries_needed" : count, 
+                "top_k_predictions" : {str(k):str(v) for (_, k, v) in top_k_predictions}, 
+                "runtime" : f"{time.time() - now}", 
+                
+                "L_inf_distance1" : torch.norm(torch.tensor(np.array(image)).squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=torch.inf).item(), 
+                
+                "L_inf_distance2" : torch.norm(torch.norm(torch.tensor(np.array(image)).squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=2, dim=(-1)), p=torch.inf).item(), 
+                
+                "L_inf_distance3" : torch.norm(torch.norm(torch.tensor(np.array(image)).squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=1, dim=(-1)), p=torch.inf).item()
+            }
         
-        # save the original and adversarial image into output files 
-        save_tensor_as_image(image, os.path.join(new_run_dir_name, f"{i+1}_original_{y_orig_idx}.jpg"))
-        save_tensor_as_image(res, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
+        # # save the original and adversarial image into output files 
+        # save_tensor_as_image(torch.tensor(np.array(image)), os.path.join(new_run_dir_name, f"{i+1}_original_{y_orig_idx}.jpg"))
+        
+        # if is_torch: 
+        #     save_tensor_as_image(res, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
+        # else: 
+        #     save_tensor_as_image(res / 255, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
         
         # save the L-infinity norm, probabilities of outputs, and number of queries into files
         
         # forward the pass over the two images once more to check their top probabilities 
-        orig_pred = torch.argmax(predict(image, pretrained_model)).detach().cpu().numpy().item()
-        adv_pred = torch.argmax(predict(res, pretrained_model)).detach().cpu().numpy().item()
+        # orig_pred = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
+        # adv_pred = torch.argmax(predict(res, pretrained_model, is_torch)).detach().cpu().numpy().item()
         
-        print(f"Original vs Adversarial Prediction : {image_idx2cls[orig_pred]} - {image_idx2cls[adv_pred]} ", end = "") 
+        # print(f"Original vs Adversarial Prediction : {image_idx2cls[orig_pred]} - {image_idx2cls[adv_pred]} ", end = "") 
         
-        info = {
-            "status" : "SUCCESS" if succ else "FAILED", 
-            "filepath" : imgpath, 
-            "original_label" : f"{y_orig_idx} - {image_idx2cls[y_orig_idx]}", 
-            "adversarial_target" : f"{y_adv_idx} - {image_idx2cls[y_adv_idx]}", 
-            "adversarial prediction" : f"{adv_pred} - {image_idx2cls[adv_pred]}", 
-            "args" : args, 
-            "num_queries_needed" : count, 
-            "top_k_predictions" : {key:str(val) for (_, key, val) in top_k_predictions}, 
-            "runtime" : f"{time.time() - now}", 
-            "L_inf_distance1" : torch.norm(image.squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=torch.inf).item(), 
+        # print(top_k_predictions)
+        
+        
+        
+        # info = {
+        #     "status" : "SUCCESS" if succ else "FAILED", 
+        #     "filepath" : imgpath, 
+        #     "original_label" : f"{y_orig_idx} - {image_idx2cls[y_orig_idx]}", 
+        #     "adversarial_target" : f"{y_adv_idx} - {image_idx2cls[y_adv_idx]}", 
+        #     "adversarial prediction" : f"{adv_pred} - {image_idx2cls[adv_pred]}", 
+        #     "args" : args, 
+        #     "num_queries_needed" : count, 
+        #     "top_k_predictions" : {str(k):str(v) for (_, k, v) in top_k_predictions}, 
+        #     "runtime" : f"{time.time() - now}", 
             
-            "L_inf_distance2" : torch.norm(torch.norm(image.squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=2, dim=(-1)), p=torch.inf).item(), 
+        #     "L_inf_distance1" : torch.norm(torch.tensor(np.array(image)).squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=torch.inf).item(), 
             
-            "L_inf_distance3" : torch.norm(torch.norm(image.squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=1, dim=(-1)), p=torch.inf).item()
-        }
+        #     "L_inf_distance2" : torch.norm(torch.norm(torch.tensor(np.array(image)).squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=2, dim=(-1)), p=torch.inf).item(), 
+            
+        #     "L_inf_distance3" : torch.norm(torch.norm(torch.tensor(np.array(image)).squeeze().detach().cpu() - res.squeeze().detach().cpu(), p=1, dim=(-1)), p=torch.inf).item()
+        # }
         
         with open(os.path.join(new_run_dir_name, f"{i+1}_stats.json"), "w") as f: 
             json.dump(info, f, indent=4) 
