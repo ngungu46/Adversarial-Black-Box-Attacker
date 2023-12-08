@@ -227,7 +227,7 @@ class PartialInfoAttack:
                 print(f"[{i*100*self.n_samples//(self.max_queries)}%] attack:")
                 print([x[1:] for x in decode_predictions(probs, top = 1)[0]], epsilon)
 
-            if(epsilon < self.e_adv):
+            if(epsilon <= self.e_adv):
                 return x_adv, y_adv, True, count, top_k_predictions
 
         return x_adv, y_adv, False, count, top_k_predictions
