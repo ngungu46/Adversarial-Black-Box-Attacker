@@ -129,6 +129,7 @@ defender = AAASine(
     do_softmax=False,
     temperature=1,
     verbose=False,
+    output_type='numpy'
 ).cuda()
 
 def predict_defender(image):
