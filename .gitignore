@@ -12,6 +12,7 @@ HSJattack/valid
 HSJattack/imagenet_val_subset
 HSJattack/__pycache__
 HSJattack/archive
+HSJattack/trash
 
 NESattack/imagenet*
 NESattack/butterfly*
@@ -24,7 +25,10 @@ data
 misc
 ./env.txt
 
-*.JPEG
+# *.JPEG
 *.txt
 
 NESattack/outputs/run_*/*.jpg
+
+!data/butterfly_val_100/*/*.jpg
+!data/imagenet_val_100/*/*.JPEG

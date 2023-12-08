@@ -11,10 +11,11 @@ def hsja(model, sample, constraint = 'l2', num_iterations = 40):
 				}
 
 	# Set binary search threshold.
+	d = int(np.prod(sample.shape))
 	if params['constraint'] == 'l2':
-		params['theta'] = 1.0 / (np.sqrt(params['d']) * params['d'])
+		theta = 1.0 / (np.sqrt(params['d']) * params['d'])
 	else:
-		params['theta'] = 1.0 / (params['d'] ** 2)
+		theta = 1.0 / (params['d'] ** 2)
 		
 	# Initialize.
 	perturbed = initialize(model, sample)
@@ -32,7 +33,7 @@ def hsja(model, sample, constraint = 'l2', num_iterations = 40):
 		params['cur_iter'] = j + 1
 
 		# Choose delta.
-		delta = select_delta(params, dist_post_update)
+		delta = select_delta(j+1, constraint, d, theta, dist_post_update)
 
 		# Choose number of evaluations.
 		num_evals = int(100 * np.sqrt(j+1))
@@ -245,19 +246,19 @@ def geometric_progression_for_stepsize(x, update, dist, model, params):
 
 	return epsilon
 
-def select_delta(params, dist_post_update):
+def select_delta(iteration, constraint, d, theta, dist_post_update):
 	""" 
 	Choose the delta at the scale of distance 
 	between x and perturbed sample. 
 
 	"""
-	if params['cur_iter'] == 1:
+	if iteration == 1:
 		delta = 0.1
 	else:
-		if params['constraint'] == 'l2':
-			delta = np.sqrt(params['d']) * params['theta'] * dist_post_update
-		elif params['constraint'] == 'linf':
-			delta = params['d'] * params['theta'] * dist_post_update	
+		if constraint == 'l2':
+			delta = np.sqrt(d) * theta * dist_post_update
+		elif constraint == 'linf':
+			delta = d * theta * dist_post_update	
 
 	return delta
 
