@@ -38,6 +38,8 @@ class AAALinear(nn.Module):
         self.do_softmax = do_softmax
         self.verbose = verbose
 
+        self.output_type = output_type
+
     def forward_undefended(self, x): 
         return self.pretrained_model(x)
 
@@ -124,10 +126,16 @@ class AAALinear(nn.Module):
         if return_original:
             logits_out = logits_out.cpu().numpy()
 
-        if return_original:
-            return logits, logits_out
+        if self.output_type == 'numpy':
+            if return_original:
+                return logits, logits_out
+            else:
+                return logits
         else:
-            return logits
+            if return_original:
+                return torch.tensor(logits), torch.tensor(logits_out)
+            else:
+                return torch.tensor(logits)
         
 
 class AAASine(nn.Module):
@@ -144,6 +152,7 @@ class AAASine(nn.Module):
             do_softmax=False,
             temperature=1,
             verbose=False,
+            output_type='numpy'
         ):
         super(AAASine, self).__init__()
         self.pretrained_model = pretrained_model
@@ -251,12 +260,10 @@ class AAASine(nn.Module):
             logits_out = logits_out.cpu().numpy()
 
         if self.output_type == 'numpy':
-
             if return_original:
                 return logits, logits_out
             else:
                 return logits
-            
         else:
             if return_original:
                 return torch.tensor(logits), torch.tensor(logits_out)

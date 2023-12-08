@@ -48,6 +48,7 @@ def hsja(model,
 	dist = compute_distance(perturbed, sample, constraint)
 
 	dists = []
+	counts = []
 
 	for j in np.arange(params['num_iterations']):
 		# pass
@@ -103,6 +104,7 @@ def hsja(model,
 		dist = compute_distance(perturbed, sample, constraint)
 
 		dists.append(dist)
+		counts.append(model.count)
 		
 		if verbose:
 			print()
@@ -112,7 +114,7 @@ def hsja(model,
 			print('Iteration Time:', time.time() - iter_start)
 			print()
 
-	return perturbed, dists
+	return perturbed, dists, counts
 
 def decision_function(model, images, params):
 	"""

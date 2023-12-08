@@ -20,7 +20,7 @@ def load_image(image_path, image_size):
     image = image.to(dtype=torch.float32)
     image = image / 255
 
-    transform = transforms.Resize(size=(image_size, image_size))
+    transform = transforms.Resize(size=(image_size, image_size), antialias=True)
     image = transform(image)
 
     image = image.numpy()

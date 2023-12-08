@@ -8,6 +8,9 @@ import keras
 import numpy as np
 import matplotlib as mpl
 import os
+import sys
+
+import json
 
 from HSJattack.utils_new import load_image, display_images
 from HSJattack.utils import hsja
@@ -23,10 +26,10 @@ np.random.seed(687)
 mpl.rcParams['figure.figsize'] = (8, 8)
 mpl.rcParams['axes.grid'] = False
 
-def predict_imagenet(image, pretrained_model):
+def predict_imagenet(image, pretrained_model, device):
     if not torch.is_tensor(image): 
         image = torch.tensor(image, dtype=torch.float32)
-    image = image.to(dtype=torch.float32, device='cuda')    
+    image = image.to(dtype=torch.float32, device=device)    
 
     if len(image.shape) == 3:
         image = image.unsqueeze(dim=0)
@@ -44,10 +47,10 @@ def predict_imagenet(image, pretrained_model):
     return preds
 
 
-def predict_butterfly(image, pretrained_model):
+def predict_butterfly(image, pretrained_model, device):
     if not torch.is_tensor(image): 
         image = torch.tensor(image, dtype=torch.float32)
-    image = image.to(dtype=torch.float32, device='cuda')    
+    image = image.to(dtype=torch.float32)    
 
     if len(image.shape) == 3:
         image = image.unsqueeze(dim=0)
@@ -56,28 +59,32 @@ def predict_butterfly(image, pretrained_model):
     image = image.permute((0,2,3,1))
     image = image * 255
 
-    image = tf.convert_to_tensor(image.cpu().numpy(), dtype=tf.float32)
-    
-    probs = pretrained_model(image)
+    with tf.device(device):
+        image = tf.convert_to_tensor(image.cpu().numpy(), dtype=tf.float32)
+        probs = pretrained_model(image)
+
     preds = np.log(probs)
 
     return preds
 
 
-def attack_image(model, image, num_iterations, constraint, image_file, save_dir, suffix = ''):
+def attack_image(model, image, num_iterations, constraint, image_file, save_dir, params, suffix = ''):
     if suffix != '':
         suffix = f'_{suffix}'
 
     with torch.no_grad():
-        output_image, dists = hsja(model, image, constraint=constraint, num_iterations=num_iterations)
+        output_image, dists, counts = hsja(model, image, constraint=constraint, num_iterations=num_iterations)
 
         label = model.predict(image)[0]
 
         folder_name = image_file.replace(".JPEG", "")
         os.makedirs(f"output/{save_dir}/{folder_name}", exist_ok=True)
         np.savetxt(f"output/{save_dir}/{folder_name}/distance{suffix}.txt", np.array(dists))
-        np.savetxt(f"output/{save_dir}/{folder_name}/queries{suffix}.txt", np.array([model.count]))
+        np.savetxt(f"output/{save_dir}/{folder_name}/queries{suffix}.txt", np.array(counts))
         np.savetxt(f"output/{save_dir}/{folder_name}/label{suffix}.txt", np.array(label), fmt='%s')
+
+        with open(f"output/{save_dir}/{folder_name}/params{suffix}.json", "w") as f: 
+            json.dump(params, f, indent=4) 
         
         display_images(
             model, 
@@ -88,31 +95,45 @@ def attack_image(model, image, num_iterations, constraint, image_file, save_dir,
         )
 
 if __name__ == '__main__':
+    args = sys.argv[1:]
+    device_ind = int(args[0])
+    device = f'cuda:{device_ind}'
 
-    num_iterations = 5
-    # constraint = 'l2'
-    constraint = 'linf'
+    modulo_ind = int(args[1])
 
-    dataset = 'imagenet'
-    # dataset = 'butterfly'
+    params = {
+        'save_dir': "hsja_linf_imagenet_none",
+        'num_iterations': 30,
+        # 'constraint': 'l2',
+        'constraint': 'linf',
+        'dataset': 'imagenet',
+        # 'dataset': 'butterfly',
+        'image_size': 224,
+        'defender': None,
+        # 'defender': 'linear',
+        # 'defender': 'sine',
+        'reverse_step': 0.7,
+        'defender_iter': 100,
+        'calibration_weight': 5,
+        'learning_rate': 0.1,
+        'temperature': 1.2,
+    }
 
-    if dataset == 'imagenet':
+    if params['dataset'] == 'imagenet':
         pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=True)
-        pretrained_model = pretrained_model.to("cuda")
+        pretrained_model = pretrained_model.to(device)
         pretrained_model.eval()
 
-        image_size = 224
-        attractor_interval = 4
-        predict = lambda x: predict_imagenet(x, pretrained_model)
+        params['attractor_interval'] = 4
+        predict = lambda x: predict_imagenet(x, pretrained_model, device)
 
         data_path = './data_val/imagenet_val_100'
-    elif dataset == 'butterfly':
+    elif params['dataset'] == 'butterfly':
         model_path = './data/butterfly/EfficientNetB0-100-(224 X 224)- 97.59.h5'
         pretrained_model = keras.models.load_model(model_path, custom_objects={'F1_score':'F1_score'})
 
-        image_size = 224
-        attractor_interval = 3
-        predict = lambda x: predict_butterfly(x, pretrained_model)
+        params['attractor_interval'] = 3
+        predict = lambda x: predict_butterfly(x, pretrained_model, f'/GPU:{index}')
 
         data_path = './data_val/butterfly_val_100'
 
@@ -124,61 +145,85 @@ if __name__ == '__main__':
 
 
     count = 0
-    # save_dir = "output_images_3_iter"
-    save_dir = "defender_trash"
     visited = set()
 
-    # defender = AAALinear(
-    #     pretrained_model=predict,
-    #     loss=loss,
-    #     device='cuda', 
-    #     batch_size=1000, 
-    #     attractor_interval=attractor_interval, 
-    #     reverse_step=1, 
-    #     num_iter=100, 
-    #     calibration_loss_weight=5, 
-    #     optimizer_lr=0.1, 
-    #     do_softmax=False,
-    #     temperature=1,
-    #     verbose=False,
-    # )
-
-    defender = AAASine(
-        pretrained_model=predict,
-        loss=loss,
-        device='cuda', 
-        batch_size=1000, 
-        attractor_interval=attractor_interval, 
-        reverse_step=0.7, 
-        num_iter=100, 
-        calibration_loss_weight=5, 
-        optimizer_lr=0.1, 
-        do_softmax=False,
-        temperature=1.2,
-        verbose=False,
-    )
+    if params['defender'] == 'linear':
+        defender = AAALinear(
+            pretrained_model=predict,
+            loss=loss,
+            device=device, 
+            batch_size=1000, 
+            attractor_interval=params['attractor_interval'], 
+            reverse_step=params['reverse_step'], 
+            num_iter=params['defender_iter'], 
+            calibration_loss_weight=params['calibration_weight'], 
+            optimizer_lr=params['learning_rate'], 
+            do_softmax=False,
+            temperature=params['temperature'],
+            verbose=False,
+        )
+    else:
+        defender = AAASine(
+            pretrained_model=predict,
+            loss=loss,
+            device=device, 
+            batch_size=1000, 
+            attractor_interval=params['attractor_interval'], 
+            reverse_step=params['reverse_step'], 
+            num_iter=params['defender_iter'], 
+            calibration_loss_weight=params['calibration_weight'], 
+            optimizer_lr=params['learning_rate'], 
+            do_softmax=False,
+            temperature=params['temperature'],
+            verbose=False,
+        )
 
     def predict_defender(image):
         preds = defender(image)
         return preds
 
+    i = -1
     for cls in os.listdir(data_path):
         for image_file in os.listdir(os.path.join(data_path, cls)):
+            i += 1
+            if i % 4 != modulo_ind:
+                continue
+
+            print(i)
             image_path = os.path.join(data_path, cls, image_file)
 
-            image, label = load_image(image_path, image_size)
+            image, label = load_image(image_path, params['image_size'])
 
             # print(image.shape)
 
-            model = Model(predict, label, dataset = dataset)
-            model_defense = Model(predict_defender, label, dataset = dataset)
+            model = Model(predict, label, dataset = params['dataset'])
+            model_defense = Model(predict_defender, label, dataset = params['dataset'])
 
             image_probs = model.predict(image)
             correct = image_probs[0][0][0] == label
 
             if correct:
-                attack_image(model, image, num_iterations, constraint, image_file, save_dir)
-                attack_image(model_defense, image, num_iterations, constraint, image_file, save_dir, suffix = 'defense')
+                if params['defender'] == None:
+                    attack_image(
+                        model, 
+                        image,
+                        params['num_iterations'], 
+                        params['constraint'], 
+                        image_file, 
+                        params['save_dir'],
+                        params,
+                    )
+                else:
+                    attack_image(
+                        model_defense, 
+                        image, 
+                        params['num_iterations'], 
+                        params['constraint'], 
+                        image_file, 
+                        params['save_dir'], 
+                        params,
+                        suffix = 'defense',
+                    )
 
                 count += 1
         
