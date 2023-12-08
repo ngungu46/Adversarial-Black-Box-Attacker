@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n03207941/ILSVRC2012_val_00011610.JPEG",
+    "original_label": "534 - dishwasher",
+    "adversarial_target": "477 - carpenter's kit",
+    "adversarial prediction": "477 - carpenter's kit",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 9161,
+    "top_k_predictions": {
+        "carpenter's_kit": "0.13067034",
+        "dishwasher": "0.12989609",
+        "oscilloscope": "0.062480178",
+        "screwdriver": "0.05144825",
+        "refrigerator": "0.03957238",
+        "safety_pin": "0.034176163",
+        "mousetrap": "0.02469207",
+        "lighter": "0.018275464",
+        "modem": "0.015633957",
+        "laptop": "0.01535772"
+    },
+    "runtime": "1352.9062213897705",
+    "L_inf_distance1": 0.9186843633651733,
+    "L_inf_distance2": 1.340897798538208,
+    "L_inf_distance3": 2.307819366455078
+}

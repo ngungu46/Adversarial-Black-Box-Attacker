@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00018764.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "469 - caldron",
+    "adversarial prediction": "469 - caldron",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 6500,
+    "top_k_predictions": {
+        "caldron": "0.10156659",
+        "bell_cote": "0.080797754",
+        "thatch": "0.040681534",
+        "solar_dish": "0.027561361",
+        "steam_locomotive": "0.026277497",
+        "cannon": "0.02421136",
+        "patio": "0.018831974",
+        "monastery": "0.017174745",
+        "lumbermill": "0.013783273",
+        "tile_roof": "0.013516683"
+    },
+    "runtime": "2212.5121490955353",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

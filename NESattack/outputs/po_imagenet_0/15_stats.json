@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n01770081/ILSVRC2012_val_00029801.JPEG",
+    "original_label": "313 - walking stick",
+    "adversarial_target": "467 - butcher shop",
+    "adversarial prediction": "467 - butcher shop",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28359,
+    "top_k_predictions": {
+        "butcher_shop": "0.06925799",
+        "mosquito_net": "0.053313695",
+        "bannister": "0.027739348",
+        "shovel": "0.02558724",
+        "walking_stick": "0.02536676",
+        "chainlink_fence": "0.023886215",
+        "shower_curtain": "0.018357601",
+        "mantis": "0.016880836",
+        "black_widow": "0.016389398",
+        "nail": "0.014551261"
+    },
+    "runtime": "859.9969091415405",
+    "L_inf_distance1": 0.7872493267059326,
+    "L_inf_distance2": 1.293988585472107,
+    "L_inf_distance3": 2.2390825748443604
+}

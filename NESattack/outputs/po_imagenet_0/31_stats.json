@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04467665/ILSVRC2012_val_00008391.JPEG",
+    "original_label": "867 - trailer truck",
+    "adversarial_target": "862 - torch",
+    "adversarial prediction": "862 - torch",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 20729,
+    "top_k_predictions": {
+        "torch": "0.07643745",
+        "parachute": "0.07294798",
+        "cannon": "0.05940492",
+        "golf_ball": "0.02637584",
+        "water_tower": "0.025273567",
+        "warplane": "0.023024466",
+        "recreational_vehicle": "0.021741305",
+        "missile": "0.021301938",
+        "space_shuttle": "0.020360764",
+        "mobile_home": "0.018599844"
+    },
+    "runtime": "2142.49817609787",
+    "L_inf_distance1": 0.8272786736488342,
+    "L_inf_distance2": 1.3642723560333252,
+    "L_inf_distance3": 2.3623716831207275
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03481172/ILSVRC2012_val_00015962.JPEG",
+    "original_label": "860 - tobacco shop",
+    "adversarial_target": "748 - purse",
+    "adversarial prediction": "748 - purse",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28572,
+    "top_k_predictions": {
+        "purse": "0.081352234",
+        "toyshop": "0.0706257",
+        "bath_towel": "0.042371377",
+        "lampshade": "0.03792474",
+        "birdhouse": "0.034766786",
+        "binder": "0.033622574",
+        "altar": "0.028626129",
+        "bib": "0.026294578",
+        "pencil_box": "0.019451682",
+        "jigsaw_puzzle": "0.016432403"
+    },
+    "runtime": "1098.927387714386",
+    "L_inf_distance1": 0.8050462603569031,
+    "L_inf_distance2": 1.248224139213562,
+    "L_inf_distance3": 2.155221462249756
+}

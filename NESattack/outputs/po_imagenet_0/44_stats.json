@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02727426/ILSVRC2012_val_00040479.JPEG",
+    "original_label": "410 - apiary",
+    "adversarial_target": "878 - typewriter keyboard",
+    "adversarial prediction": "878 - typewriter keyboard",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28115,
+    "top_k_predictions": {
+        "typewriter_keyboard": "0.084735245",
+        "sewing_machine": "0.06318877",
+        "apiary": "0.05309701",
+        "mailbox": "0.03886917",
+        "safe": "0.036256004",
+        "dial_telephone": "0.029138701",
+        "switch": "0.027606653",
+        "space_bar": "0.024414666",
+        "scale": "0.02269254",
+        "file": "0.021368515"
+    },
+    "runtime": "3286.2376086711884",
+    "L_inf_distance1": 0.9873509407043457,
+    "L_inf_distance2": 1.6303210258483887,
+    "L_inf_distance3": 2.822657585144043
+}

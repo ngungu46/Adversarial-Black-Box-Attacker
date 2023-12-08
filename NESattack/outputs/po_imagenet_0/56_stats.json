@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02093991/ILSVRC2012_val_00029419.JPEG",
+    "original_label": "179 - Staffordshire bullterrier",
+    "adversarial_target": "220 - Sussex spaniel",
+    "adversarial prediction": "220 - Sussex spaniel",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 7511,
+    "top_k_predictions": {},
+    "runtime": "4225.749721050262",
+    "L_inf_distance1": 0.8442345261573792,
+    "L_inf_distance2": 1.1960382461547852,
+    "L_inf_distance3": 2.0701026916503906
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03417042/ILSVRC2012_val_00034417.JPEG",
+    "original_label": "569 - garbage truck",
+    "adversarial_target": "606 - iron",
+    "adversarial prediction": "606 - iron",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 27845,
+    "top_k_predictions": {
+        "iron": "0.13243848",
+        "trailer_truck": "0.12366293",
+        "cannon": "0.12342516",
+        "tow_truck": "0.104090884",
+        "crane": "0.07782349",
+        "tank": "0.05041128",
+        "half_track": "0.03019751",
+        "harvester": "0.018647391",
+        "fountain": "0.015506567",
+        "sewing_machine": "0.015069085"
+    },
+    "runtime": "2008.3343498706818",
+    "L_inf_distance1": 0.8622652292251587,
+    "L_inf_distance2": 1.2389905452728271,
+    "L_inf_distance3": 2.141624689102173
+}

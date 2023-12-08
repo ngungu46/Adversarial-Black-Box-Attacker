@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00040462.JPEG",
+    "original_label": "672 - mountain tent",
+    "adversarial_target": "875 - trombone",
+    "adversarial prediction": "875 - trombone",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 3300,
+    "top_k_predictions": {
+        "trombone": "0.07344467",
+        "mosquito_net": "0.05797462",
+        "sunglass": "0.05028305",
+        "hamper": "0.042185742",
+        "sunglasses": "0.03990146",
+        "hamster": "0.03805587",
+        "sleeping_bag": "0.031617485",
+        "car_mirror": "0.01925909",
+        "mountain_tent": "0.015475121",
+        "mousetrap": "0.014938027"
+    },
+    "runtime": "343.5454168319702",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

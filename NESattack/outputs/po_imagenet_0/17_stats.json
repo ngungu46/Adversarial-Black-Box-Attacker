@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04049303/ILSVRC2012_val_00042854.JPEG",
+    "original_label": "756 - rain barrel",
+    "adversarial_target": "865 - toyshop",
+    "adversarial prediction": "865 - toyshop",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 10263,
+    "top_k_predictions": {
+        "toyshop": "0.062288083",
+        "balloon": "0.056546334",
+        "rain_barrel": "0.03458011",
+        "bonnet": "0.029499285",
+        "sleeping_bag": "0.02590363",
+        "vase": "0.023391515",
+        "punching_bag": "0.020253245",
+        "hippopotamus": "0.018486343",
+        "television": "0.01658443",
+        "barrel": "0.015313291"
+    },
+    "runtime": "943.4269549846649",
+    "L_inf_distance1": 0.8921810388565063,
+    "L_inf_distance2": 1.3696424961090088,
+    "L_inf_distance3": 2.369957208633423
+}

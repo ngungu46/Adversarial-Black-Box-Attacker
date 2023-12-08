@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02110806/ILSVRC2012_val_00026028.JPEG",
+    "original_label": "253 - basenji",
+    "adversarial_target": "335 - fox squirrel",
+    "adversarial prediction": "335 - fox squirrel",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 17402,
+    "top_k_predictions": {
+        "fox_squirrel": "0.15230508",
+        "patas": "0.13592766",
+        "macaque": "0.0548439",
+        "marmot": "0.020941362",
+        "tiger_cat": "0.020347074",
+        "mongoose": "0.012769355",
+        "Irish_terrier": "0.012715273",
+        "lynx": "0.010086817",
+        "wire-haired_fox_terrier": "0.009002276",
+        "tiger": "0.008264038"
+    },
+    "runtime": "915.4508113861084",
+    "L_inf_distance1": 0.9129513502120972,
+    "L_inf_distance2": 1.3894351720809937,
+    "L_inf_distance3": 2.394310474395752
+}

@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04258138/ILSVRC2012_val_00045764.JPEG",
+    "original_label": "807 - solar dish",
+    "adversarial_target": "228 - komondor",
+    "adversarial prediction": "228 - komondor",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 26298,
+    "top_k_predictions": {
+        "komondor": "0.21986206",
+        "llama": "0.1672029",
+        "solar_dish": "0.11856523",
+        "hen": "0.08600558",
+        "ostrich": "0.03289718",
+        "Angora": "0.032220088",
+        "ram": "0.018334176",
+        "West_Highland_white_terrier": "0.012492179",
+        "vulture": "0.00983942",
+        "Lakeland_terrier": "0.009539357"
+    },
+    "runtime": "2614.5028896331787",
+    "L_inf_distance1": 0.9610366225242615,
+    "L_inf_distance2": 1.4024609327316284,
+    "L_inf_distance3": 2.4271292686462402
+}

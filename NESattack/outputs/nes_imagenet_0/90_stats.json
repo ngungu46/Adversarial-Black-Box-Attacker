@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00047693.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "29 - axolotl",
+    "adversarial prediction": "29 - axolotl",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 2400,
+    "top_k_predictions": {
+        "axolotl": "0.08960878",
+        "Kerry_blue_terrier": "0.05461393",
+        "thatch": "0.03877523",
+        "curly-coated_retriever": "0.032608327",
+        "castle": "0.03004895",
+        "brain_coral": "0.027895274",
+        "rain_barrel": "0.016791096",
+        "llama": "0.014102476",
+        "komondor": "0.014002612",
+        "Irish_water_spaniel": "0.012518879"
+    },
+    "runtime": "2307.4542808532715",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

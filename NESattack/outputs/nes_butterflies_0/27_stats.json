@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ARCIGERA FLOWER MOTH/2.jpg",
+    "original_label": "5 - ARCIGERA FLOWER MOTH",
+    "adversarial_target": "40 - EMPEROR GUM MOTH",
+    "adversarial prediction": "5 - ARCIGERA FLOWER MOTH",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "5": "0.29189312",
+        "66": "0.068340234",
+        "10": "0.05311907",
+        "40": "0.025484791",
+        "97": "0.024363562"
+    },
+    "runtime": "9093.280309438705",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08608230203390121,
+    "L_inf_distance3": 0.1490934044122696
+}

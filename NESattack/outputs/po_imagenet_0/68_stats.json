@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02037110/ILSVRC2012_val_00009991.JPEG",
+    "original_label": "525 - dam",
+    "adversarial_target": "418 - ballpoint",
+    "adversarial prediction": "418 - ballpoint",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 27117,
+    "top_k_predictions": {
+        "ballpoint": "0.12695944",
+        "freight_car": "0.12218376",
+        "bannister": "0.10605947",
+        "dam": "0.045482922",
+        "crutch": "0.04453475",
+        "bullet_train": "0.033037663",
+        "solar_dish": "0.020998914",
+        "shopping_cart": "0.019803237",
+        "stretcher": "0.017000062",
+        "suspension_bridge": "0.014805491"
+    },
+    "runtime": "376.14417552948",
+    "L_inf_distance1": 0.9965012073516846,
+    "L_inf_distance2": 1.652592658996582,
+    "L_inf_distance3": 2.8623428344726562
+}

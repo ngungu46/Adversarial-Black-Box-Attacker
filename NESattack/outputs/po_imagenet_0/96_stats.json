@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03759954/ILSVRC2012_val_00023721.JPEG",
+    "original_label": "585 - hair spray",
+    "adversarial_target": "832 - stupa",
+    "adversarial prediction": "832 - stupa",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 28080,
+    "top_k_predictions": {
+        "stupa": "0.1030912",
+        "hair_spray": "0.062621966",
+        "nipple": "0.04537813",
+        "pop_bottle": "0.04400112",
+        "perfume": "0.0435559",
+        "lotion": "0.026595084",
+        "water_bottle": "0.02162184",
+        "syringe": "0.016421998",
+        "punching_bag": "0.015221166",
+        "soap_dispenser": "0.013206825"
+    },
+    "runtime": "1929.4600052833557",
+    "L_inf_distance1": 0.9986620545387268,
+    "L_inf_distance2": 1.2588943243026733,
+    "L_inf_distance3": 2.0511136054992676
+}

@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02457408/ILSVRC2012_val_00029041.JPEG",
+    "original_label": "381 - spider monkey",
+    "adversarial_target": "856 - thresher",
+    "adversarial prediction": "856 - thresher",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 6551,
+    "top_k_predictions": {},
+    "runtime": "3743.54270863533",
+    "L_inf_distance1": 0.5384038686752319,
+    "L_inf_distance2": 0.7908814549446106,
+    "L_inf_distance3": 1.3662947416305542
+}

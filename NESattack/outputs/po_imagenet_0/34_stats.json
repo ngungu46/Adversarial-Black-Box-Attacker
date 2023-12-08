@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03697007/ILSVRC2012_val_00026290.JPEG",
+    "original_label": "856 - thresher",
+    "adversarial_target": "345 - ox",
+    "adversarial prediction": "345 - ox",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28374,
+    "top_k_predictions": {
+        "ox": "0.17032698",
+        "oxcart": "0.1610163",
+        "plow": "0.09190538",
+        "lumbermill": "0.03556074",
+        "forklift": "0.027918959",
+        "horse_cart": "0.020643055",
+        "wild_boar": "0.016199876",
+        "garbage_truck": "0.015687995",
+        "water_buffalo": "0.013913328",
+        "thresher": "0.013063359"
+    },
+    "runtime": "2503.3043875694275",
+    "L_inf_distance1": 0.8284146785736084,
+    "L_inf_distance2": 1.390742301940918,
+    "L_inf_distance3": 2.408198356628418
+}

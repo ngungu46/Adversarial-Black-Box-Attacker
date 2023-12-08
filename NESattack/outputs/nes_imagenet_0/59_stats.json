@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00033019.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "829 - streetcar",
+    "adversarial prediction": "829 - streetcar",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 8600,
+    "top_k_predictions": {
+        "streetcar": "0.0764499",
+        "street_sign": "0.07392201",
+        "bell_cote": "0.06824616",
+        "traffic_light": "0.028753458",
+        "fire_engine": "0.024471574",
+        "lakeside": "0.0210398",
+        "triumphal_arch": "0.020403523",
+        "tractor": "0.018515829",
+        "palace": "0.014922405",
+        "oxcart": "0.014351264"
+    },
+    "runtime": "1544.470484495163",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

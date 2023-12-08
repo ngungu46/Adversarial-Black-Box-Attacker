@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02510455/ILSVRC2012_val_00017598.JPEG",
+    "original_label": "602 - horizontal bar",
+    "adversarial_target": "604 - hourglass",
+    "adversarial prediction": "604 - hourglass",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 11968,
+    "top_k_predictions": {
+        "hourglass": "0.16913518",
+        "window_screen": "0.1537655",
+        "television": "0.024773845",
+        "china_cabinet": "0.020274797",
+        "sliding_door": "0.01853406",
+        "guillotine": "0.01771325",
+        "balance_beam": "0.015147725",
+        "window_shade": "0.010691367",
+        "microwave": "0.009704203",
+        "racket": "0.009646885"
+    },
+    "runtime": "424.99159717559814",
+    "L_inf_distance1": 0.995312511920929,
+    "L_inf_distance2": 1.6424366235733032,
+    "L_inf_distance3": 2.844606876373291
+}

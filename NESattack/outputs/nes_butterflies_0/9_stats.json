@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/AFRICAN GIANT SWALLOWTAIL/4.jpg",
+    "original_label": "1 - AFRICAN GIANT SWALLOWTAIL",
+    "adversarial_target": "44 - GOLD BANDED",
+    "adversarial prediction": "1 - AFRICAN GIANT SWALLOWTAIL",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "1": "0.22068982",
+        "18": "0.031688225",
+        "29": "0.018225325",
+        "77": "0.018195063",
+        "35": "0.016825039"
+    },
+    "runtime": "3160.8464500904083",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660252392292023,
+    "L_inf_distance3": 0.1499999761581421
+}

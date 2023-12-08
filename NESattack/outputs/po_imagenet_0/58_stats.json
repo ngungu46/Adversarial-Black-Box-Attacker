@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n03729826/ILSVRC2012_val_00023649.JPEG",
+    "original_label": "494 - chime",
+    "adversarial_target": "699 - panpipe",
+    "adversarial prediction": "699 - panpipe",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 3545,
+    "top_k_predictions": {
+        "panpipe": "0.43082136",
+        "matchstick": "0.38946977",
+        "chime": "0.039319146",
+        "drumstick": "0.010849792",
+        "rubber_eraser": "0.010434064",
+        "slide_rule": "0.0075389445",
+        "rule": "0.006843357",
+        "packet": "0.0054601645",
+        "croquet_ball": "0.004993199",
+        "plate_rack": "0.0049040145"
+    },
+    "runtime": "4356.272675514221",
+    "L_inf_distance1": 0.9994491338729858,
+    "L_inf_distance2": 1.6628013849258423,
+    "L_inf_distance3": 2.8782973289489746
+}

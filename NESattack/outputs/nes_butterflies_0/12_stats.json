@@ -1,0 +1,30 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/AMERICAN SNOOT/2.jpg",
+    "original_label": "2 - AMERICAN SNOOT",
+    "adversarial_target": "93 - TWO BARRED FLASHER",
+    "adversarial prediction": "93 - TWO BARRED FLASHER",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 21100,
+    "top_k_predictions": {
+        "93": "0.14291339",
+        "2": "0.14191043",
+        "42": "0.062488645",
+        "18": "0.05007378",
+        "68": "0.039610356"
+    },
+    "runtime": "4063.086544275284",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

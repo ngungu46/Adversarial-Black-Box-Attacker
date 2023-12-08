@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00037701.JPEG",
+    "original_label": "856 - thresher",
+    "adversarial_target": "859 - toaster",
+    "adversarial prediction": "859 - toaster",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 9300,
+    "top_k_predictions": {
+        "toaster": "0.06029797",
+        "ashcan": "0.057617746",
+        "ox": "0.0451766",
+        "stove": "0.041303497",
+        "refrigerator": "0.04056763",
+        "rotisserie": "0.038688663",
+        "dishwasher": "0.025977883",
+        "apiary": "0.02157721",
+        "turnstile": "0.016567193",
+        "coffeepot": "0.015876966"
+    },
+    "runtime": "2525.1880128383636",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/APPOLLO/5.jpg",
+    "original_label": "4 - APPOLLO",
+    "adversarial_target": "57 - LUNA MOTH",
+    "adversarial prediction": "4 - APPOLLO",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "4": "0.22313337",
+        "32": "0.024924798",
+        "27": "0.023599135",
+        "22": "0.022715192",
+        "11": "0.015262822"
+    },
+    "runtime": "8379.546313524246",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08599326759576797,
+    "L_inf_distance3": 0.14893996715545654
+}

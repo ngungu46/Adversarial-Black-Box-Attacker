@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00017165.JPEG",
+    "original_label": "610 - jersey",
+    "adversarial_target": "22 - bald eagle",
+    "adversarial prediction": "22 - bald eagle",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 6900,
+    "top_k_predictions": {
+        "bald_eagle": "0.028958656",
+        "vacuum": "0.028529303",
+        "electric_guitar": "0.025093723",
+        "bobsled": "0.024104692",
+        "barber_chair": "0.023526764",
+        "mortarboard": "0.015421487",
+        "hand_blower": "0.015282006",
+        "book_jacket": "0.014568108",
+        "television": "0.0144756",
+        "revolver": "0.011773429"
+    },
+    "runtime": "918.6747598648071",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

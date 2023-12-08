@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00013350.JPEG",
+    "original_label": "449 - boathouse",
+    "adversarial_target": "352 - impala",
+    "adversarial prediction": "352 - impala",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 3600,
+    "top_k_predictions": {
+        "impala": "0.033306345",
+        "photocopier": "0.03204553",
+        "gazelle": "0.027098743",
+        "monastery": "0.019836927",
+        "oxcart": "0.019590184",
+        "refrigerator": "0.013143075",
+        "horse_cart": "0.01264898",
+        "parking_meter": "0.012452888",
+        "thatch": "0.012076088",
+        "cinema": "0.011519381"
+    },
+    "runtime": "2031.1925382614136",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

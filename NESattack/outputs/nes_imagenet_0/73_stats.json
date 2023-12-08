@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00025905.JPEG",
+    "original_label": "449 - boathouse",
+    "adversarial_target": "492 - chest",
+    "adversarial prediction": "492 - chest",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 10500,
+    "top_k_predictions": {
+        "chest": "0.07895665",
+        "birdhouse": "0.06931414",
+        "thatch": "0.046206318",
+        "guillotine": "0.03659701",
+        "boathouse": "0.0206414",
+        "street_sign": "0.018119983",
+        "beacon": "0.017801166",
+        "church": "0.016911661",
+        "dome": "0.016271928",
+        "tile_roof": "0.013678832"
+    },
+    "runtime": "1945.6326792240143",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02783161/ILSVRC2012_val_00045686.JPEG",
+    "original_label": "418 - ballpoint",
+    "adversarial_target": "514 - cowboy boot",
+    "adversarial prediction": "514 - cowboy boot",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 28405,
+    "top_k_predictions": {
+        "cowboy_boot": "0.17424074",
+        "ballpoint": "0.089331165",
+        "paintbrush": "0.071806654",
+        "can_opener": "0.033846922",
+        "syringe": "0.033677272",
+        "pencil_box": "0.026005778",
+        "screwdriver": "0.025636217",
+        "hair_slide": "0.01626427",
+        "rubber_eraser": "0.013356017",
+        "handkerchief": "0.013172672"
+    },
+    "runtime": "1057.2792823314667",
+    "L_inf_distance1": 0.8192409873008728,
+    "L_inf_distance2": 1.3606314659118652,
+    "L_inf_distance3": 2.356074094772339
+}

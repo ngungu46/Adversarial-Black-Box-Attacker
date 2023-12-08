@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ADONIS/1.jpg",
+    "original_label": "0 - ADONIS",
+    "adversarial_target": "98 - YELLOW SWALLOW TAIL",
+    "adversarial prediction": "0 - ADONIS",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "0": "0.41605172",
+        "21": "0.3589795",
+        "17": "0.011438597",
+        "45": "0.009807174",
+        "78": "0.0087921275"
+    },
+    "runtime": "354.8012742996216",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08659185469150543,
+    "L_inf_distance3": 0.14998149871826172
+}

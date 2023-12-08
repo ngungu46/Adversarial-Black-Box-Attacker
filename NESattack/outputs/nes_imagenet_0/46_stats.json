@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00005502.JPEG",
+    "original_label": "501 - cloak",
+    "adversarial_target": "937 - broccoli",
+    "adversarial prediction": "937 - broccoli",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 11000,
+    "top_k_predictions": {
+        "broccoli": "0.06845989",
+        "wig": "0.06281166",
+        "cloak": "0.040547486",
+        "ski_mask": "0.037039343",
+        "chain_mail": "0.036939953",
+        "fur_coat": "0.032708094",
+        "mitten": "0.029301008",
+        "poncho": "0.025745265",
+        "snowmobile": "0.019177962",
+        "sweatshirt": "0.015883422"
+    },
+    "runtime": "1181.7372150421143",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

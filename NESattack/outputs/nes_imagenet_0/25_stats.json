@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00021495.JPEG",
+    "original_label": "419 - Band Aid",
+    "adversarial_target": "99 - goose",
+    "adversarial prediction": "99 - goose",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 5200,
+    "top_k_predictions": {
+        "goose": "0.045056596",
+        "oystercatcher": "0.04295945",
+        "guinea_pig": "0.03600333",
+        "bald_eagle": "0.027370695",
+        "American_egret": "0.024898387",
+        "American_coot": "0.020926215",
+        "black_grouse": "0.019204108",
+        "spoonbill": "0.018721705",
+        "ballplayer": "0.016581727",
+        "pelican": "0.015042399"
+    },
+    "runtime": "626.9116921424866",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

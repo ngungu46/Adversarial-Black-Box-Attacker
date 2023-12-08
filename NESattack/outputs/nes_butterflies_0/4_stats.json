@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ADONIS/4.jpg",
+    "original_label": "0 - ADONIS",
+    "adversarial_target": "20 - CAIRNS BIRDWING",
+    "adversarial prediction": "0 - ADONIS",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "0": "0.1888461",
+        "58": "0.06501451",
+        "20": "0.04794199",
+        "32": "0.02345739",
+        "97": "0.022032775"
+    },
+    "runtime": "1413.4465487003326",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08646233379840851,
+    "L_inf_distance3": 0.1497567594051361
+}

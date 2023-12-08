@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/AFRICAN GIANT SWALLOWTAIL/5.jpg",
+    "original_label": "1 - AFRICAN GIANT SWALLOWTAIL",
+    "adversarial_target": "3 - AN 88",
+    "adversarial prediction": "1 - AFRICAN GIANT SWALLOWTAIL",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "1": "0.20557524",
+        "29": "0.025992993",
+        "14": "0.021686701",
+        "83": "0.017277533",
+        "35": "0.016212292"
+    },
+    "runtime": "3514.7982482910156",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08607697486877441,
+    "L_inf_distance3": 0.14908424019813538
+}

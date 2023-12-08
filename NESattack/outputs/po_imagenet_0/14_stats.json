@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n03887697/ILSVRC2012_val_00029980.JPEG",
+    "original_label": "700 - paper towel",
+    "adversarial_target": "741 - prayer rug",
+    "adversarial prediction": "741 - prayer rug",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 21549,
+    "top_k_predictions": {
+        "prayer_rug": "0.14817616",
+        "paper_towel": "0.13824339",
+        "vault": "0.10301121",
+        "guillotine": "0.08231429",
+        "fire_screen": "0.07352772",
+        "throne": "0.030749818",
+        "wool": "0.01765119",
+        "mosque": "0.014502975",
+        "monastery": "0.013550114",
+        "wardrobe": "0.012790468"
+    },
+    "runtime": "738.9157001972198",
+    "L_inf_distance1": 0.7629183530807495,
+    "L_inf_distance2": 0.900556743144989,
+    "L_inf_distance3": 1.4505860805511475
+}

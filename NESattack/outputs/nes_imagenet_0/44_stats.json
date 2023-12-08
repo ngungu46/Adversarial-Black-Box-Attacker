@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00027664.JPEG",
+    "original_label": "689 - overskirt",
+    "adversarial_target": "265 - toy poodle",
+    "adversarial prediction": "265 - toy poodle",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 4100,
+    "top_k_predictions": {
+        "toy_poodle": "0.07855355",
+        "bonnet": "0.07274795",
+        "muzzle": "0.06280689",
+        "stole": "0.050841205",
+        "overskirt": "0.041381434",
+        "swab": "0.040303234",
+        "mask": "0.028971514",
+        "cloak": "0.02388302",
+        "hoopskirt": "0.01796231",
+        "Yorkshire_terrier": "0.015753124"
+    },
+    "runtime": "1096.3697504997253",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

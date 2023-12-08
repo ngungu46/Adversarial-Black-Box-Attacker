@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00018905.JPEG",
+    "original_label": "676 - muzzle",
+    "adversarial_target": "297 - sloth bear",
+    "adversarial prediction": "297 - sloth bear",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 3000,
+    "top_k_predictions": {
+        "sloth_bear": "0.06786792",
+        "titi": "0.05190398",
+        "mink": "0.034853928",
+        "affenpinscher": "0.027652927",
+        "skunk": "0.023969758",
+        "gorilla": "0.022313705",
+        "muzzle": "0.019775398",
+        "porcupine": "0.019107642",
+        "Band_Aid": "0.01748848",
+        "chimpanzee": "0.01630905"
+    },
+    "runtime": "326.46162366867065",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

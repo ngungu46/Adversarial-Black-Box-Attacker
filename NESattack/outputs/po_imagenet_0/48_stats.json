@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02442845/ILSVRC2012_val_00029498.JPEG",
+    "original_label": "357 - mink",
+    "adversarial_target": "361 - skunk",
+    "adversarial prediction": "361 - skunk",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 23276,
+    "top_k_predictions": {},
+    "runtime": "3596.503607273102",
+    "L_inf_distance1": 0.8192055225372314,
+    "L_inf_distance2": 1.2923190593719482,
+    "L_inf_distance3": 2.2302942276000977
+}

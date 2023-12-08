@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04310018/ILSVRC2012_val_00044347.JPEG",
+    "original_label": "820 - steam locomotive",
+    "adversarial_target": "603 - horse cart",
+    "adversarial prediction": "603 - horse cart",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 24580,
+    "top_k_predictions": {
+        "horse_cart": "0.20987613",
+        "steam_locomotive": "0.14655104",
+        "maze": "0.1272017",
+        "Kerry_blue_terrier": "0.05552597",
+        "giant_schnauzer": "0.04434793",
+        "Scotch_terrier": "0.021548841",
+        "miniature_schnauzer": "0.016060378",
+        "colobus": "0.012634754",
+        "oxcart": "0.012586816",
+        "cannon": "0.009656682"
+    },
+    "runtime": "3966.8746185302734",
+    "L_inf_distance1": 0.8208444714546204,
+    "L_inf_distance2": 1.3491215705871582,
+    "L_inf_distance3": 2.3350741863250732
+}

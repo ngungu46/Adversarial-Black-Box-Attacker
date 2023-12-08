@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03424325/ILSVRC2012_val_00034204.JPEG",
+    "original_label": "465 - bulletproof vest",
+    "adversarial_target": "851 - television",
+    "adversarial prediction": "851 - television",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 27951,
+    "top_k_predictions": {
+        "television": "0.18791273",
+        "oxygen_mask": "0.1609527",
+        "crash_helmet": "0.066552304",
+        "car_mirror": "0.026205324",
+        "Band_Aid": "0.023725946",
+        "pickelhaube": "0.022127062",
+        "loupe": "0.013670939",
+        "coffee_mug": "0.011722723",
+        "bathing_cap": "0.010757034",
+        "snorkel": "0.009301325"
+    },
+    "runtime": "2258.6591360569",
+    "L_inf_distance1": 0.7772184610366821,
+    "L_inf_distance2": 1.2178434133529663,
+    "L_inf_distance3": 2.108609676361084
+}

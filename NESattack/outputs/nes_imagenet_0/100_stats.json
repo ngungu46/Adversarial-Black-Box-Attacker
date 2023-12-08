@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00043337.JPEG",
+    "original_label": "660 - mobile home",
+    "adversarial_target": "131 - little blue heron",
+    "adversarial prediction": "131 - little blue heron",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 11500,
+    "top_k_predictions": {
+        "little_blue_heron": "0.029092168",
+        "china_cabinet": "0.02838039",
+        "birdhouse": "0.018288635",
+        "picket_fence": "0.017516257",
+        "police_van": "0.014357421",
+        "church": "0.014314458",
+        "baboon": "0.012753222",
+        "limousine": "0.010179163",
+        "water_ouzel": "0.008703454",
+        "tow_truck": "0.00844256"
+    },
+    "runtime": "2570.9114861488342",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

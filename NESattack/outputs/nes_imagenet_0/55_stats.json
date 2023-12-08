@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00034142.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "440 - beer bottle",
+    "adversarial prediction": "440 - beer bottle",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 8100,
+    "top_k_predictions": {
+        "beer_bottle": "0.03889285",
+        "thatch": "0.035447247",
+        "fountain": "0.031158613",
+        "worm_fence": "0.028544746",
+        "fireboat": "0.02102019",
+        "swing": "0.017575927",
+        "horizontal_bar": "0.011947643",
+        "wreck": "0.010915436",
+        "barrel": "0.009865992",
+        "cock": "0.0094921775"
+    },
+    "runtime": "1466.3375842571259",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

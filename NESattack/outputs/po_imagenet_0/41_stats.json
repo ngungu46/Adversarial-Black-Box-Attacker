@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n09288635/ILSVRC2012_val_00030279.JPEG",
+    "original_label": "974 - geyser",
+    "adversarial_target": "904 - window screen",
+    "adversarial prediction": "904 - window screen",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 24054,
+    "top_k_predictions": {
+        "window_screen": "0.12507011",
+        "skunk": "0.10701777",
+        "geyser": "0.039981138",
+        "Angora": "0.03766429",
+        "wire-haired_fox_terrier": "0.03743145",
+        "missile": "0.02576462",
+        "volcano": "0.0192285",
+        "honeycomb": "0.018477693",
+        "axolotl": "0.016775938",
+        "chain_mail": "0.015661117"
+    },
+    "runtime": "2978.67787361145",
+    "L_inf_distance1": 0.8240823745727539,
+    "L_inf_distance2": 1.2678937911987305,
+    "L_inf_distance3": 2.1826725006103516
+}

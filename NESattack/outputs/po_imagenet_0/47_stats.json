@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n01729977/ILSVRC2012_val_00011169.JPEG",
+    "original_label": "616 - knot",
+    "adversarial_target": "900 - water tower",
+    "adversarial prediction": "900 - water tower",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 22121,
+    "top_k_predictions": {
+        "water_tower": "0.12905833",
+        "African_chameleon": "0.110800356",
+        "jellyfish": "0.044631958",
+        "electric_fan": "0.044331174",
+        "bell_pepper": "0.02585541",
+        "dragonfly": "0.025416523",
+        "cucumber": "0.015554844",
+        "chainlink_fence": "0.014796735",
+        "green_snake": "0.013853771",
+        "knot": "0.013556587"
+    },
+    "runtime": "3500.090605020523",
+    "L_inf_distance1": 0.9393894672393799,
+    "L_inf_distance2": 1.5433478355407715,
+    "L_inf_distance3": 2.672945976257324
+}

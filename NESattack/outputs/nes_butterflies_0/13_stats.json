@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/AMERICAN SNOOT/3.jpg",
+    "original_label": "2 - AMERICAN SNOOT",
+    "adversarial_target": "23 - CHESTNUT",
+    "adversarial prediction": "22 - CHECQUERED SKIPPER",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "22": "0.26322752",
+        "2": "0.1442392",
+        "23": "0.029208478",
+        "59": "0.026272418",
+        "80": "0.020456253"
+    },
+    "runtime": "4419.337140798569",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08605588227510452,
+    "L_inf_distance3": 0.14904724061489105
+}

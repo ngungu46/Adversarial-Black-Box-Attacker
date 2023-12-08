@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/AMERICAN SNOOT/1.jpg",
+    "original_label": "2 - AMERICAN SNOOT",
+    "adversarial_target": "47 - GREEN CELLED CATTLEHEART",
+    "adversarial prediction": "2 - AMERICAN SNOOT",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "2": "0.13988654",
+        "14": "0.02342028",
+        "8": "0.021442764",
+        "0": "0.020039182",
+        "72": "0.01937758"
+    },
+    "runtime": "3870.346745491028",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08598432689905167,
+    "L_inf_distance3": 0.14892160892486572
+}

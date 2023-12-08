@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04392985/ILSVRC2012_val_00036753.JPEG",
+    "original_label": "482 - cassette player",
+    "adversarial_target": "904 - window screen",
+    "adversarial prediction": "620 - laptop",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 114,
+    "top_k_predictions": {},
+    "runtime": "531.0787343978882",
+    "L_inf_distance1": 0.46783167123794556,
+    "L_inf_distance2": 0.741258442401886,
+    "L_inf_distance3": 1.2825380563735962
+}

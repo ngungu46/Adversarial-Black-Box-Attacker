@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00036624.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "567 - frying pan",
+    "adversarial prediction": "567 - frying pan",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 8400,
+    "top_k_predictions": {
+        "frying_pan": "0.16135277",
+        "waffle_iron": "0.15119237",
+        "spatula": "0.08204949",
+        "birdhouse": "0.073853455",
+        "meat_loaf": "0.020040385",
+        "chest": "0.01950527",
+        "mortarboard": "0.01794454",
+        "hatchet": "0.013696545",
+        "wallet": "0.010803147",
+        "stove": "0.009721699"
+    },
+    "runtime": "1685.0984556674957",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00014451.JPEG",
+    "original_label": "502 - clog",
+    "adversarial_target": "381 - spider monkey",
+    "adversarial prediction": "381 - spider monkey",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 5500,
+    "top_k_predictions": {
+        "spider_monkey": "0.03996518",
+        "clog": "0.035745636",
+        "safety_pin": "0.027808022",
+        "barracouta": "0.01954271",
+        "quill": "0.01800914",
+        "ocarina": "0.01796004",
+        "sea_lion": "0.016006485",
+        "maraca": "0.013505822",
+        "common_newt": "0.012220297",
+        "hook": "0.010407421"
+    },
+    "runtime": "779.0245327949524",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

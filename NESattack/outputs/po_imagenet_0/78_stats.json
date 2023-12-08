@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03976467/ILSVRC2012_val_00032721.JPEG",
+    "original_label": "528 - dial telephone",
+    "adversarial_target": "800 - slot",
+    "adversarial prediction": "800 - slot",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 27968,
+    "top_k_predictions": {
+        "slot": "0.09064754",
+        "Polaroid_camera": "0.082138084",
+        "sewing_machine": "0.07525606",
+        "reflex_camera": "0.068959005",
+        "projector": "0.057528347",
+        "pay-phone": "0.0278665",
+        "pencil_sharpener": "0.027388096",
+        "parking_meter": "0.021979444",
+        "gas_pump": "0.020244457",
+        "chain_saw": "0.015632302"
+    },
+    "runtime": "844.9503853321075",
+    "L_inf_distance1": 0.9201681613922119,
+    "L_inf_distance2": 1.5523871183395386,
+    "L_inf_distance3": 2.688040256500244
+}

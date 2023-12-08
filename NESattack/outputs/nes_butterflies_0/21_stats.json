@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/APPOLLO/1.jpg",
+    "original_label": "4 - APPOLLO",
+    "adversarial_target": "49 - GREY HAIRSTREAK",
+    "adversarial prediction": "4 - APPOLLO",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "4": "0.39722705",
+        "27": "0.022013905",
+        "19": "0.014420002",
+        "32": "0.013792269",
+        "11": "0.011958755"
+    },
+    "runtime": "6959.480875253677",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.0860716924071312,
+    "L_inf_distance3": 0.1490749716758728
+}

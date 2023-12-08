@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04311004/ILSVRC2012_val_00027288.JPEG",
+    "original_label": "821 - steel arch bridge",
+    "adversarial_target": "564 - four-poster",
+    "adversarial prediction": "564 - four-poster",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 27525,
+    "top_k_predictions": {},
+    "runtime": "1291.3684895038605",
+    "L_inf_distance1": 0.8994860649108887,
+    "L_inf_distance2": 1.4947842359542847,
+    "L_inf_distance3": 2.588796615600586
+}

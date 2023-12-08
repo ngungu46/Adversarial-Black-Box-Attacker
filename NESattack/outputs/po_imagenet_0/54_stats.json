@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n07718747/ILSVRC2012_val_00012744.JPEG",
+    "original_label": "804 - soap dispenser",
+    "adversarial_target": "468 - cab",
+    "adversarial prediction": "468 - cab",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28336,
+    "top_k_predictions": {
+        "cab": "0.061996307",
+        "military_uniform": "0.061180484",
+        "oxygen_mask": "0.044997517",
+        "hand_blower": "0.041627195",
+        "car_mirror": "0.037213393",
+        "half_track": "0.029436715",
+        "assault_rifle": "0.025832014",
+        "mosquito_net": "0.017061794",
+        "projector": "0.01408965",
+        "golfcart": "0.01195418"
+    },
+    "runtime": "4085.4903841018677",
+    "L_inf_distance1": 0.8004858493804932,
+    "L_inf_distance2": 1.2309961318969727,
+    "L_inf_distance3": 2.1230082511901855
+}

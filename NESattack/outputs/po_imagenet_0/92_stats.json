@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04296562/ILSVRC2012_val_00045883.JPEG",
+    "original_label": "413 - assault rifle",
+    "adversarial_target": "856 - thresher",
+    "adversarial prediction": "856 - thresher",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 7606,
+    "top_k_predictions": {
+        "thresher": "0.1341375",
+        "assault_rifle": "0.1256123",
+        "tractor": "0.075051144",
+        "half_track": "0.039395545",
+        "Model_T": "0.038970843",
+        "sewing_machine": "0.024566209",
+        "tobacco_shop": "0.015615992",
+        "chain_saw": "0.014843251",
+        "tank": "0.014094727",
+        "jinrikisha": "0.013929251"
+    },
+    "runtime": "1490.0205426216125",
+    "L_inf_distance1": 0.9552053809165955,
+    "L_inf_distance2": 1.628769040107727,
+    "L_inf_distance3": 2.8210277557373047
+}

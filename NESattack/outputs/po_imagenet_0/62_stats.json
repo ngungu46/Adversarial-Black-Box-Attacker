@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02514041/ILSVRC2012_val_00045278.JPEG",
+    "original_label": "0 - tench",
+    "adversarial_target": "135 - limpkin",
+    "adversarial prediction": "135 - limpkin",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28019,
+    "top_k_predictions": {
+        "limpkin": "0.0752826",
+        "macaw": "0.047124423",
+        "proboscis_monkey": "0.04470949",
+        "patas": "0.034903433",
+        "baboon": "0.034032118",
+        "coucal": "0.033708576",
+        "vulture": "0.028457254",
+        "hornbill": "0.02279086",
+        "red_wolf": "0.017275726",
+        "turnstile": "0.01521965"
+    },
+    "runtime": "4642.250328063965",
+    "L_inf_distance1": 0.8643760681152344,
+    "L_inf_distance2": 1.2053356170654297,
+    "L_inf_distance3": 2.036789894104004
+}

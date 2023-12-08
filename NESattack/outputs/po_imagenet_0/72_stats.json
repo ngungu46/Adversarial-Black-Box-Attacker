@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04136333/ILSVRC2012_val_00030078.JPEG",
+    "original_label": "856 - thresher",
+    "adversarial_target": "158 - toy terrier",
+    "adversarial prediction": "187 - Yorkshire terrier",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 114,
+    "top_k_predictions": {},
+    "runtime": "535.1204042434692",
+    "L_inf_distance1": 0.48642292618751526,
+    "L_inf_distance2": 0.7320387363433838,
+    "L_inf_distance3": 1.252162218093872
+}

@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03492542/ILSVRC2012_val_00001107.JPEG",
+    "original_label": "482 - cassette player",
+    "adversarial_target": "139 - ruddy turnstone",
+    "adversarial prediction": "73 - barn spider",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 114,
+    "top_k_predictions": {},
+    "runtime": "4357.098894119263",
+    "L_inf_distance1": 0.4143468141555786,
+    "L_inf_distance2": 0.6694071292877197,
+    "L_inf_distance3": 1.1578500270843506
+}

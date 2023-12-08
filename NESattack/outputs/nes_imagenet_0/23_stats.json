@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00048416.JPEG",
+    "original_label": "419 - Band Aid",
+    "adversarial_target": "731 - plunger",
+    "adversarial prediction": "731 - plunger",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 3900,
+    "top_k_predictions": {
+        "plunger": "0.13375406",
+        "water_bottle": "0.12859763",
+        "parachute": "0.09985777",
+        "spatula": "0.05402707",
+        "sleeping_bag": "0.0316556",
+        "nipple": "0.028484618",
+        "swab": "0.026647434",
+        "lighter": "0.020671522",
+        "knee_pad": "0.017438987",
+        "rubber_eraser": "0.011711122"
+    },
+    "runtime": "577.2865881919861",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

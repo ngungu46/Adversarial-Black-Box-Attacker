@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00017064.JPEG",
+    "original_label": "912 - worm fence",
+    "adversarial_target": "509 - confectionery",
+    "adversarial prediction": "509 - confectionery",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 7900,
+    "top_k_predictions": {
+        "confectionery": "0.049626905",
+        "thatch": "0.0480208",
+        "stone_wall": "0.047454145",
+        "barn": "0.04538729",
+        "lampshade": "0.03862475",
+        "umbrella": "0.031583928",
+        "castle": "0.018003006",
+        "worm_fence": "0.014440008",
+        "solar_dish": "0.011826555",
+        "tank": "0.009398324"
+    },
+    "runtime": "2170.263543844223",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02105056/ILSVRC2012_val_00017117.JPEG",
+    "original_label": "224 - groenendael",
+    "adversarial_target": "977 - sandbar",
+    "adversarial prediction": "977 - sandbar",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 27842,
+    "top_k_predictions": {
+        "sandbar": "0.03977346",
+        "baboon": "0.039248146",
+        "broccoli": "0.03038868",
+        "fox_squirrel": "0.029732523",
+        "West_Highland_white_terrier": "0.02805404",
+        "axolotl": "0.023467047",
+        "sea_slug": "0.01942041",
+        "Kerry_blue_terrier": "0.01801328",
+        "groom": "0.017280811",
+        "Irish_water_spaniel": "0.016499924"
+    },
+    "runtime": "239.7244074344635",
+    "L_inf_distance1": 0.8059664368629456,
+    "L_inf_distance2": 1.3514660596847534,
+    "L_inf_distance3": 2.3401455879211426
+}
