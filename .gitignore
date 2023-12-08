@@ -25,10 +25,7 @@ data
 misc
 ./env.txt
 
-*.JPEG
+# *.JPEG
 *.txt
 
 NESattack/outputs/run_*/*.jpg
-
-!data/butterfly_val_100/*/*.jpg
-!data/imagenet_val_100/*/*.JPEG
