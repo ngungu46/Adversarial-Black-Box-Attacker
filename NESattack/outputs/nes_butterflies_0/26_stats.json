@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ARCIGERA FLOWER MOTH/1.jpg",
+    "original_label": "5 - ARCIGERA FLOWER MOTH",
+    "adversarial_target": "80 - RED ADMIRAL",
+    "adversarial prediction": "25 - CLEARWING MOTH",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "25": "0.1113704",
+        "80": "0.052015014",
+        "89": "0.03137508",
+        "60": "0.02747985",
+        "70": "0.02167736"
+    },
+    "runtime": "8737.724548578262",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08658219128847122,
+    "L_inf_distance3": 0.14996474981307983
+}

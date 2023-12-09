@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02356798/ILSVRC2012_val_00046102.JPEG",
+    "original_label": "335 - fox squirrel",
+    "adversarial_target": "865 - toyshop",
+    "adversarial prediction": "865 - toyshop",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 8108,
+    "top_k_predictions": {
+        "toyshop": "0.09908273",
+        "fox_squirrel": "0.09899626",
+        "Irish_water_spaniel": "0.05343787",
+        "American_black_bear": "0.049492065",
+        "titi": "0.0396026",
+        "Kerry_blue_terrier": "0.036228374",
+        "marmoset": "0.028144758",
+        "indri": "0.026541289",
+        "Bouvier_des_Flandres": "0.023786195",
+        "book_jacket": "0.017336078"
+    },
+    "runtime": "975.926417350769",
+    "L_inf_distance1": 0.9208945035934448,
+    "L_inf_distance2": 1.465058445930481,
+    "L_inf_distance3": 2.5327212810516357
+}

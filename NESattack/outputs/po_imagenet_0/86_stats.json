@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02494079/ILSVRC2012_val_00018253.JPEG",
+    "original_label": "684 - ocarina",
+    "adversarial_target": "287 - lynx",
+    "adversarial prediction": "287 - lynx",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 28193,
+    "top_k_predictions": {
+        "lynx": "0.26182225",
+        "tabby": "0.20140603",
+        "tiger_cat": "0.093605846",
+        "cougar": "0.043792963",
+        "wall_clock": "0.039310623",
+        "loupe": "0.034135263",
+        "toilet_seat": "0.024276335",
+        "bolo_tie": "0.012013842",
+        "chocolate_sauce": "0.011654391",
+        "bubble": "0.011449004"
+    },
+    "runtime": "1176.697284936905",
+    "L_inf_distance1": 1.0,
+    "L_inf_distance2": 1.5651297569274902,
+    "L_inf_distance3": 2.702388286590576
+}

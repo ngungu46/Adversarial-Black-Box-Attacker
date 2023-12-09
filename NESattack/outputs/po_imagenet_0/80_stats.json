@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03903868/ILSVRC2012_val_00044198.JPEG",
+    "original_label": "708 - pedestal",
+    "adversarial_target": "872 - tripod",
+    "adversarial prediction": "644 - matchstick",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 114,
+    "top_k_predictions": {},
+    "runtime": "916.27383852005",
+    "L_inf_distance1": 0.4068511724472046,
+    "L_inf_distance2": 0.6634148359298706,
+    "L_inf_distance3": 1.1478328704833984
+}

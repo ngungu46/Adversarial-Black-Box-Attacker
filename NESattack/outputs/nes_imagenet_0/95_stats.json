@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00046924.JPEG",
+    "original_label": "663 - monastery",
+    "adversarial_target": "163 - bloodhound",
+    "adversarial prediction": "163 - bloodhound",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 12200,
+    "top_k_predictions": {
+        "bloodhound": "0.0795157",
+        "thatch": "0.07915288",
+        "beacon": "0.03239909",
+        "mosque": "0.028037643",
+        "monastery": "0.027239753",
+        "church": "0.024269799",
+        "submarine": "0.018483138",
+        "promontory": "0.013883642",
+        "castle": "0.012571934",
+        "vizsla": "0.011651781"
+    },
+    "runtime": "2413.577219724655",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660255372524261,
+    "L_inf_distance3": 0.15000002086162567
+}

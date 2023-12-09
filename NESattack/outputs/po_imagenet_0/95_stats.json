@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n03649909/ILSVRC2012_val_00036641.JPEG",
+    "original_label": "621 - lawn mower",
+    "adversarial_target": "299 - meerkat",
+    "adversarial prediction": "299 - meerkat",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 20979,
+    "top_k_predictions": {
+        "meerkat": "0.14287904",
+        "harvester": "0.13014024",
+        "lawn_mower": "0.0677013",
+        "thresher": "0.05259839",
+        "barrow": "0.04188599",
+        "horse_cart": "0.021283656",
+        "mongoose": "0.018201385",
+        "trailer_truck": "0.017813839",
+        "golfcart": "0.016171835",
+        "baboon": "0.015865065"
+    },
+    "runtime": "1810.8293371200562",
+    "L_inf_distance1": 0.8711691498756409,
+    "L_inf_distance2": 1.3488558530807495,
+    "L_inf_distance3": 2.3245227336883545
+}

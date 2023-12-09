@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/BIRD CHERRY ERMINE MOTH/3.jpg",
+    "original_label": "12 - BIRD CHERRY ERMINE MOTH",
+    "adversarial_target": "36 - EASTERN COMA",
+    "adversarial prediction": "36 - EASTERN COMA",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 37404,
+    "top_k_predictions": {
+        "EASTERN COMA": "0.22712575",
+        "BIRD CHERRY ERMINE MOTH": "0.19249456",
+        "EASTERN PINE ELFIN": "0.07485448",
+        "COPPER TAIL": "0.033959333",
+        "MOURNING CLOAK": "0.020312035",
+        "QUESTION MARK": "0.017299639",
+        "GIANT LEOPARD MOTH": "0.01721838",
+        "GLITTERING SAPPHIRE": "0.016839536",
+        "PURPLISH COPPER": "0.015889214",
+        "TROPICAL LEAFWING": "0.015127317"
+    },
+    "runtime": "736.7871868610382",
+    "L_inf_distance1": 0.1823125183582306,
+    "L_inf_distance2": 0.315774530172348,
+    "L_inf_distance3": 0.5469375848770142
+}

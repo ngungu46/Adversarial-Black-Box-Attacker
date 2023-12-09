@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02114855/ILSVRC2012_val_00016443.JPEG",
+    "original_label": "271 - red wolf",
+    "adversarial_target": "317 - leafhopper",
+    "adversarial prediction": "317 - leafhopper",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 10524,
+    "top_k_predictions": {
+        "leafhopper": "0.15595147",
+        "cricket": "0.10872174",
+        "cicada": "0.07326801",
+        "isopod": "0.07076477",
+        "coyote": "0.049278628",
+        "grasshopper": "0.03602078",
+        "timber_wolf": "0.017106932",
+        "wolf_spider": "0.016796816",
+        "hermit_crab": "0.01322727",
+        "crayfish": "0.009840172"
+    },
+    "runtime": "902.7249567508698",
+    "L_inf_distance1": 0.9940605163574219,
+    "L_inf_distance2": 1.1678539514541626,
+    "L_inf_distance3": 1.8809750080108643
+}

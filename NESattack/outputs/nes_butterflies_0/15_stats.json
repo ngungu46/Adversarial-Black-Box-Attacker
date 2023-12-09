@@ -1,0 +1,30 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/AMERICAN SNOOT/5.jpg",
+    "original_label": "2 - AMERICAN SNOOT",
+    "adversarial_target": "12 - BIRD CHERRY ERMINE MOTH",
+    "adversarial prediction": "12 - BIRD CHERRY ERMINE MOTH",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 27900,
+    "top_k_predictions": {
+        "12": "0.07047594",
+        "40": "0.06682287",
+        "2": "0.06513462",
+        "30": "0.056213196",
+        "59": "0.049767397"
+    },
+    "runtime": "4862.008288145065",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

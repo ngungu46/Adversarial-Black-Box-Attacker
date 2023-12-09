@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00020017.JPEG",
+    "original_label": "663 - monastery",
+    "adversarial_target": "231 - collie",
+    "adversarial prediction": "231 - collie",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 6600,
+    "top_k_predictions": {
+        "collie": "0.03449869",
+        "worm_fence": "0.03411848",
+        "harp": "0.029169813",
+        "birdhouse": "0.024500364",
+        "half_track": "0.012480869",
+        "picket_fence": "0.012136297",
+        "rocking_chair": "0.012015905",
+        "bonnet": "0.01096438",
+        "bannister": "0.008852833",
+        "window_screen": "0.008649747"
+    },
+    "runtime": "1333.7351756095886",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

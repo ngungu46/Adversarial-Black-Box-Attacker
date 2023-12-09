@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02859443/ILSVRC2012_val_00025453.JPEG",
+    "original_label": "975 - lakeside",
+    "adversarial_target": "765 - rocking chair",
+    "adversarial prediction": "765 - rocking chair",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 27834,
+    "top_k_predictions": {
+        "rocking_chair": "0.17891696",
+        "paddlewheel": "0.100991674",
+        "lakeside": "0.04512124",
+        "boathouse": "0.033500683",
+        "picket_fence": "0.02965816",
+        "barrow": "0.025135303",
+        "pot": "0.019436907",
+        "wreck": "0.017388165",
+        "fountain": "0.016275084",
+        "television": "0.014038067"
+    },
+    "runtime": "1549.7471807003021",
+    "L_inf_distance1": 0.9545348286628723,
+    "L_inf_distance2": 1.4978801012039185,
+    "L_inf_distance3": 2.5895161628723145
+}

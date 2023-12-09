@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00047505.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "275 - African hunting dog",
+    "adversarial prediction": "275 - African hunting dog",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 4200,
+    "top_k_predictions": {
+        "African_hunting_dog": "0.07163657",
+        "hyena": "0.06758408",
+        "bib": "0.047233876",
+        "tiger_cat": "0.0435417",
+        "Cardigan": "0.028227387",
+        "mitten": "0.028026007",
+        "malinois": "0.018289113",
+        "sleeping_bag": "0.017252058",
+        "cougar": "0.016201561",
+        "tabby": "0.014331814"
+    },
+    "runtime": "20.911139011383057",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03929660/ILSVRC2012_val_00008406.JPEG",
+    "original_label": "402 - acoustic guitar",
+    "adversarial_target": "101 - tusker",
+    "adversarial prediction": "101 - tusker",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28202,
+    "top_k_predictions": {
+        "tusker": "0.15421392",
+        "American_black_bear": "0.09267278",
+        "African_elephant": "0.04897469",
+        "monitor": "0.035012223",
+        "brown_bear": "0.025011394",
+        "ice_bear": "0.024901304",
+        "badger": "0.024368675",
+        "zebra": "0.024305347",
+        "Indian_elephant": "0.020349987",
+        "television": "0.01713782"
+    },
+    "runtime": "2876.0436024665833",
+    "L_inf_distance1": 0.9688844084739685,
+    "L_inf_distance2": 1.593924641609192,
+    "L_inf_distance3": 2.759838581085205
+}

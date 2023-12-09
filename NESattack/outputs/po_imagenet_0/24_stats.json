@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n03445924/ILSVRC2012_val_00022795.JPEG",
+    "original_label": "675 - moving van",
+    "adversarial_target": "249 - malamute",
+    "adversarial prediction": "249 - malamute",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 19026,
+    "top_k_predictions": {
+        "malamute": "0.19162363",
+        "skunk": "0.14176066",
+        "moving_van": "0.039920542",
+        "mousetrap": "0.029068",
+        "mobile_home": "0.026624927",
+        "Eskimo_dog": "0.020058937",
+        "grey_fox": "0.018759746",
+        "badger": "0.017217435",
+        "garbage_truck": "0.014376673",
+        "polecat": "0.013937653"
+    },
+    "runtime": "1433.0953767299652",
+    "L_inf_distance1": 0.9332677125930786,
+    "L_inf_distance2": 1.4905160665512085,
+    "L_inf_distance3": 2.5767786502838135
+}

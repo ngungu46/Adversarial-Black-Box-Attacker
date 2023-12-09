@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04509417/ILSVRC2012_val_00025697.JPEG",
+    "original_label": "534 - dishwasher",
+    "adversarial_target": "417 - balloon",
+    "adversarial prediction": "417 - balloon",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28441,
+    "top_k_predictions": {
+        "balloon": "0.11037203",
+        "planetarium": "0.100483425",
+        "fountain": "0.057982095",
+        "space_shuttle": "0.052499857",
+        "unicycle": "0.04821774",
+        "bubble": "0.040931094",
+        "mosque": "0.028978152",
+        "ping-pong_ball": "0.024144996",
+        "fireboat": "0.023128351",
+        "crane": "0.022405246"
+    },
+    "runtime": "529.4849514961243",
+    "L_inf_distance1": 0.9644494652748108,
+    "L_inf_distance2": 1.5094047784805298,
+    "L_inf_distance3": 2.613762855529785
+}

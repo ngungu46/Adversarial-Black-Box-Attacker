@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/AN 88/4.jpg",
+    "original_label": "3 - AN 88",
+    "adversarial_target": "97 - WOOD SATYR",
+    "adversarial prediction": "3 - AN 88",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "3": "0.5750989",
+        "97": "0.00944972",
+        "51": "0.008097052",
+        "63": "0.008094307",
+        "16": "0.007905498"
+    },
+    "runtime": "6253.870114326477",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.086082324385643,
+    "L_inf_distance3": 0.14909344911575317
+}

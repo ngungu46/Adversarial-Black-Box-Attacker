@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/IO MOTH/3.jpg",
+    "original_label": "53 - IO MOTH",
+    "adversarial_target": "71 - PAPER KITE",
+    "adversarial prediction": "71 - PAPER KITE",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.01,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 25898,
+    "top_k_predictions": {
+        "PAPER KITE": "0.34105098",
+        "IO MOTH": "0.3073305",
+        "CHECQUERED SKIPPER": "0.014393692",
+        "POLYPHEMUS MOTH": "0.012084413",
+        "SILVER SPOT SKIPPER": "0.011325511",
+        "POPINJAY": "0.010240936",
+        "HUMMING BIRD HAWK MOTH": "0.009921941",
+        "PURPLISH COPPER": "0.009075117",
+        "WHITE LINED SPHINX MOTH": "0.008923582",
+        "COPPER TAIL": "0.008752914"
+    },
+    "runtime": "870.6114370822906",
+    "L_inf_distance1": 0.15418753027915955,
+    "L_inf_distance2": 0.26706060767173767,
+    "L_inf_distance3": 0.46256253123283386
+}

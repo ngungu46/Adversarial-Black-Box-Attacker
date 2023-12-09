@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02134084/ILSVRC2012_val_00036763.JPEG",
+    "original_label": "296 - ice bear",
+    "adversarial_target": "986 - yellow lady's slipper",
+    "adversarial prediction": "986 - yellow lady's slipper",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 27556,
+    "top_k_predictions": {
+        "yellow_lady's_slipper": "0.06147107",
+        "axolotl": "0.047620475",
+        "goldfish": "0.039876472",
+        "cock": "0.025117267",
+        "feather_boa": "0.020808268",
+        "sea_slug": "0.016901072",
+        "hen": "0.012902667",
+        "bee": "0.012775885",
+        "pot": "0.01211755",
+        "conch": "0.012063981"
+    },
+    "runtime": "1782.379769563675",
+    "L_inf_distance1": 0.6901910901069641,
+    "L_inf_distance2": 1.1195327043533325,
+    "L_inf_distance3": 1.938269019126892
+}

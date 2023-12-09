@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04487394/ILSVRC2012_val_00029969.JPEG",
+    "original_label": "875 - trombone",
+    "adversarial_target": "379 - howler monkey",
+    "adversarial prediction": "379 - howler monkey",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 26222,
+    "top_k_predictions": {
+        "howler_monkey": "0.17586717",
+        "trombone": "0.13878183",
+        "bee": "0.06467263",
+        "spider_monkey": "0.06309619",
+        "muzzle": "0.041816916",
+        "squirrel_monkey": "0.028205255",
+        "apiary": "0.023269337",
+        "honeycomb": "0.01728185",
+        "rock_python": "0.013673605",
+        "titi": "0.013102972"
+    },
+    "runtime": "1893.5151100158691",
+    "L_inf_distance1": 0.9984375238418579,
+    "L_inf_distance2": 1.5249799489974976,
+    "L_inf_distance3": 2.6368906497955322
+}

@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/PIPEVINE SWALLOW/4.jpg",
+    "original_label": "74 - PIPEVINE SWALLOW",
+    "adversarial_target": "62 - METALMARK",
+    "adversarial prediction": "62 - METALMARK",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 25715,
+    "top_k_predictions": {
+        "METALMARK": "0.36383802",
+        "PIPEVINE SWALLOW": "0.3510554",
+        "LARGE MARBLE": "0.010516637",
+        "HERCULES MOTH": "0.008600155",
+        "CRIMSON PATCH": "0.007515097",
+        "ULYSES": "0.0074542128",
+        "INDRA SWALLOW": "0.0070895413",
+        "PURPLISH COPPER": "0.007086869",
+        "SIXSPOT BURNET MOTH": "0.0067297937",
+        "RED POSTMAN": "0.0066863545"
+    },
+    "runtime": "10807.457578897476",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

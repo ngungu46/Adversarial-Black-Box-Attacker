@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03956157/ILSVRC2012_val_00007347.JPEG",
+    "original_label": "727 - planetarium",
+    "adversarial_target": "68 - sidewinder",
+    "adversarial prediction": "68 - sidewinder",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28072,
+    "top_k_predictions": {
+        "sidewinder": "0.29069355",
+        "planetarium": "0.20382553",
+        "night_snake": "0.1398411",
+        "diamondback": "0.051815473",
+        "water_snake": "0.02344598",
+        "garter_snake": "0.023260262",
+        "alligator_lizard": "0.020296331",
+        "rock_python": "0.016540866",
+        "Indian_cobra": "0.015509074",
+        "horned_viper": "0.01547313"
+    },
+    "runtime": "4523.301855802536",
+    "L_inf_distance1": 0.7652426958084106,
+    "L_inf_distance2": 1.2591525316238403,
+    "L_inf_distance3": 2.1806416511535645
+}

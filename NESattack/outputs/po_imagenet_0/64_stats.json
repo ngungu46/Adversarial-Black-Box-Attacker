@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n07579787/ILSVRC2012_val_00023009.JPEG",
+    "original_label": "923 - plate",
+    "adversarial_target": "744 - projectile",
+    "adversarial prediction": "470 - candle",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 114,
+    "top_k_predictions": {},
+    "runtime": "32.32858324050903",
+    "L_inf_distance1": 0.4375896751880646,
+    "L_inf_distance2": 0.6049416065216064,
+    "L_inf_distance3": 1.0279698371887207
+}

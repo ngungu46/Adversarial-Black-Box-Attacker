@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04153751/ILSVRC2012_val_00046660.JPEG",
+    "original_label": "783 - screw",
+    "adversarial_target": "230 - Shetland sheepdog",
+    "adversarial prediction": "166 - Walker hound",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 114,
+    "top_k_predictions": {},
+    "runtime": "530.2768898010254",
+    "L_inf_distance1": 0.4476591944694519,
+    "L_inf_distance2": 0.7472114562988281,
+    "L_inf_distance3": 1.2935125827789307
+}

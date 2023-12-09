@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00025499.JPEG",
+    "original_label": "723 - pinwheel",
+    "adversarial_target": "149 - dugong",
+    "adversarial prediction": "149 - dugong",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 8800,
+    "top_k_predictions": {
+        "dugong": "0.05249511",
+        "tiger_shark": "0.048688818",
+        "starfish": "0.04212348",
+        "hammerhead": "0.04180231",
+        "goldfish": "0.040505856",
+        "barracouta": "0.03870066",
+        "puffer": "0.036766622",
+        "pinwheel": "0.036167778",
+        "loggerhead": "0.027353762",
+        "gar": "0.025518512"
+    },
+    "runtime": "686.5313277244568",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

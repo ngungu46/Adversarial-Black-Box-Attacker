@@ -1,0 +1,35 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00028112.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "275 - African hunting dog",
+    "adversarial prediction": "442 - bell cote",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "bell_cote": "0.12928054",
+        "African_hunting_dog": "0.07745703",
+        "stupa": "0.063923724",
+        "thatch": "0.036101494",
+        "coyote": "0.013692386",
+        "dishrag": "0.013314575",
+        "tile_roof": "0.012208951",
+        "red_wolf": "0.01086642",
+        "breakwater": "0.010688409",
+        "hyena": "0.009475158"
+    },
+    "runtime": "1852.9380598068237",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.0860256776213646,
+    "L_inf_distance3": 0.1489943265914917
+}

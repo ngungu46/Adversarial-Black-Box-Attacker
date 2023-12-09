@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n03127925/ILSVRC2012_val_00017591.JPEG",
+    "original_label": "519 - crate",
+    "adversarial_target": "779 - school bus",
+    "adversarial prediction": "779 - school bus",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 26691,
+    "top_k_predictions": {
+        "school_bus": "0.33862108",
+        "crate": "0.3096139",
+        "prison": "0.05528251",
+        "forklift": "0.043734502",
+        "chainlink_fence": "0.011246625",
+        "moving_van": "0.009739378",
+        "library": "0.008995012",
+        "freight_car": "0.0071990644",
+        "barrow": "0.005819065",
+        "greenhouse": "0.004703342"
+    },
+    "runtime": "4197.912859201431",
+    "L_inf_distance1": 0.8957593441009521,
+    "L_inf_distance2": 1.454635500907898,
+    "L_inf_distance3": 2.5180089473724365
+}

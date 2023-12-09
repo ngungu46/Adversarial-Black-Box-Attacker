@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/POPINJAY/3.jpg",
+    "original_label": "76 - POPINJAY",
+    "adversarial_target": "37 - EASTERN DAPPLE WHITE",
+    "adversarial prediction": "37 - EASTERN DAPPLE WHITE",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.01,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 25757,
+    "top_k_predictions": {
+        "EASTERN DAPPLE WHITE": "0.3085975",
+        "POPINJAY": "0.26202667",
+        "CHALK HILL BLUE": "0.0218943",
+        "LARGE MARBLE": "0.019381631",
+        "PURPLISH COPPER": "0.016462505",
+        "GIANT LEOPARD MOTH": "0.013405368",
+        "BROWN ARGUS": "0.012597881",
+        "GARDEN TIGER MOTH": "0.011671665",
+        "ADONIS": "0.011619616",
+        "RED CRACKER": "0.01120006"
+    },
+    "runtime": "2598.7005972862244",
+    "L_inf_distance1": 0.1573125123977661,
+    "L_inf_distance2": 0.2724732756614685,
+    "L_inf_distance3": 0.47193753719329834
+}

@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00019879.JPEG",
+    "original_label": "930 - French loaf",
+    "adversarial_target": "11 - goldfinch",
+    "adversarial prediction": "11 - goldfinch",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 3900,
+    "top_k_predictions": {
+        "goldfinch": "0.11481",
+        "French_loaf": "0.11153524",
+        "whistle": "0.068995796",
+        "flamingo": "0.046044357",
+        "ice_cream": "0.045086566",
+        "butternut_squash": "0.01949766",
+        "head_cabbage": "0.019417137",
+        "goldfish": "0.016749948",
+        "tiger_cat": "0.011175113",
+        "Pembroke": "0.009972304"
+    },
+    "runtime": "748.9997622966766",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

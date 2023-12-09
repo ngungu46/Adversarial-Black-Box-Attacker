@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02124075/ILSVRC2012_val_00038683.JPEG",
+    "original_label": "281 - tabby",
+    "adversarial_target": "661 - Model T",
+    "adversarial prediction": "661 - Model T",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28058,
+    "top_k_predictions": {
+        "Model_T": "0.070880584",
+        "half_track": "0.06235487",
+        "barber_chair": "0.055061314",
+        "tank": "0.032831315",
+        "cuirass": "0.031777322",
+        "guillotine": "0.022399092",
+        "jeep": "0.022269782",
+        "barrow": "0.019281253",
+        "Komodo_dragon": "0.016948413",
+        "assault_rifle": "0.015576287"
+    },
+    "runtime": "3405.46897149086",
+    "L_inf_distance1": 0.8795484900474548,
+    "L_inf_distance2": 1.3682782649993896,
+    "L_inf_distance3": 2.357913017272949
+}

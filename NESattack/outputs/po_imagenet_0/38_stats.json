@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02692877/ILSVRC2012_val_00003670.JPEG",
+    "original_label": "733 - pole",
+    "adversarial_target": "127 - white stork",
+    "adversarial prediction": "127 - white stork",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 16613,
+    "top_k_predictions": {
+        "white_stork": "0.13405654",
+        "pole": "0.11927642",
+        "crane": "0.07267795",
+        "spoonbill": "0.047792584",
+        "flamingo": "0.03214146",
+        "jellyfish": "0.03151869",
+        "American_egret": "0.027971344",
+        "Arctic_fox": "0.01704996",
+        "peacock": "0.013758017",
+        "goose": "0.013060029"
+    },
+    "runtime": "2739.0355739593506",
+    "L_inf_distance1": 0.8808139562606812,
+    "L_inf_distance2": 1.2227753400802612,
+    "L_inf_distance3": 2.080819606781006
+}

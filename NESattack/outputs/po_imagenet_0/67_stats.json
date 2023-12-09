@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03016953/ILSVRC2012_val_00011727.JPEG",
+    "original_label": "493 - chiffonier",
+    "adversarial_target": "869 - trench coat",
+    "adversarial prediction": "869 - trench coat",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 27860,
+    "top_k_predictions": {
+        "trench_coat": "0.05955603",
+        "shower_curtain": "0.036659",
+        "water_jug": "0.03307056",
+        "crate": "0.026699435",
+        "wool": "0.021656428",
+        "measuring_cup": "0.021023838",
+        "coffee_mug": "0.018301971",
+        "chest": "0.017950788",
+        "cardigan": "0.01765094",
+        "toilet_tissue": "0.016358063"
+    },
+    "runtime": "261.8532302379608",
+    "L_inf_distance1": 0.8717756271362305,
+    "L_inf_distance2": 1.33405339717865,
+    "L_inf_distance3": 2.310137987136841
+}

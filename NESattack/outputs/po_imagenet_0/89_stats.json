@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02018795/ILSVRC2012_val_00030392.JPEG",
+    "original_label": "351 - hartebeest",
+    "adversarial_target": "708 - pedestal",
+    "adversarial prediction": "708 - pedestal",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 13043,
+    "top_k_predictions": {
+        "pedestal": "0.06065562",
+        "cliff_dwelling": "0.054954264",
+        "hyena": "0.03207015",
+        "hartebeest": "0.025160398",
+        "monastery": "0.019920064",
+        "African_elephant": "0.018703854",
+        "bustard": "0.017649991",
+        "missile": "0.017319717",
+        "langur": "0.016298998",
+        "obelisk": "0.016018074"
+    },
+    "runtime": "1345.940390586853",
+    "L_inf_distance1": 0.7141067981719971,
+    "L_inf_distance2": 1.0924174785614014,
+    "L_inf_distance3": 1.8901708126068115
+}

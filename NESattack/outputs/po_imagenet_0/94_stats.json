@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n01980166/ILSVRC2012_val_00001985.JPEG",
+    "original_label": "120 - fiddler crab",
+    "adversarial_target": "860 - tobacco shop",
+    "adversarial prediction": "860 - tobacco shop",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 27739,
+    "top_k_predictions": {
+        "tobacco_shop": "0.08167457",
+        "tusker": "0.050601944",
+        "spiny_lobster": "0.04166982",
+        "crayfish": "0.037067827",
+        "king_crab": "0.031509858",
+        "rock_python": "0.0246303",
+        "toyshop": "0.024426986",
+        "fiddler_crab": "0.021739502",
+        "Dungeness_crab": "0.018448668",
+        "triceratops": "0.018360427"
+    },
+    "runtime": "1722.2546470165253",
+    "L_inf_distance1": 0.9259100556373596,
+    "L_inf_distance2": 1.4616143703460693,
+    "L_inf_distance3": 2.528656005859375
+}

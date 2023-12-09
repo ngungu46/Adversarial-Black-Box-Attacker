@@ -17,7 +17,6 @@ from HSJattack.utils import hsja
 from HSJattack.models import Model
 
 from AAA.models import AAALinear, AAASine
-from AAA.utils import loss
 
 random.seed(685)
 torch.manual_seed(686)
@@ -59,16 +58,17 @@ def predict_butterfly(image, pretrained_model, device):
     image = image.permute((0,2,3,1))
     image = image * 255
 
-    with tf.device(device):
-        image = tf.convert_to_tensor(image.cpu().numpy(), dtype=tf.float32)
-        probs = pretrained_model(image)
+    # with tf.device(device):
+    # image = tf.convert_to_tensor(image.cpu().numpy(), dtype=tf.float32)
+    image = image.cpu().numpy()
+    probs = pretrained_model(image)
 
     preds = np.log(probs)
 
     return preds
 
 
-def attack_image(model, image, num_iterations, constraint, image_file, save_dir, params, suffix = ''):
+def attack_image(model, image, num_iterations, constraint, image_file, save_dir, cls, params, suffix = ''):
     if suffix != '':
         suffix = f'_{suffix}'
 
@@ -78,6 +78,7 @@ def attack_image(model, image, num_iterations, constraint, image_file, save_dir,
         label = model.predict(image)[0]
 
         folder_name = image_file.replace(".JPEG", "")
+        folder_name = f'{cls}_{folder_name}'
         os.makedirs(f"output/{save_dir}/{folder_name}", exist_ok=True)
         np.savetxt(f"output/{save_dir}/{folder_name}/distance{suffix}.txt", np.array(dists))
         np.savetxt(f"output/{save_dir}/{folder_name}/queries{suffix}.txt", np.array(counts))
@@ -102,12 +103,12 @@ if __name__ == '__main__':
     modulo_ind = int(args[1])
 
     params = {
-        'save_dir': "hsja_linf_imagenet_none",
+        'save_dir': "hsja_linf_butterfly_none",
         'num_iterations': 30,
         # 'constraint': 'l2',
         'constraint': 'linf',
-        'dataset': 'imagenet',
-        # 'dataset': 'butterfly',
+        # 'dataset': 'imagenet',
+        'dataset': 'butterfly',
         'image_size': 224,
         'defender': None,
         # 'defender': 'linear',
@@ -129,11 +130,14 @@ if __name__ == '__main__':
 
         data_path = './data_val/imagenet_val_100'
     elif params['dataset'] == 'butterfly':
+        gpus = tf.config.list_physical_devices('GPU')
+        tf.config.set_visible_devices(gpus[device_ind], 'GPU')
+
         model_path = './data/butterfly/EfficientNetB0-100-(224 X 224)- 97.59.h5'
         pretrained_model = keras.models.load_model(model_path, custom_objects={'F1_score':'F1_score'})
 
-        params['attractor_interval'] = 3
-        predict = lambda x: predict_butterfly(x, pretrained_model, f'/GPU:{index}')
+        params['attractor_interval'] = 4
+        predict = lambda x: predict_butterfly(x, pretrained_model, f'/GPU:{device_ind}')
 
         data_path = './data_val/butterfly_val_100'
 
@@ -150,7 +154,6 @@ if __name__ == '__main__':
     if params['defender'] == 'linear':
         defender = AAALinear(
             pretrained_model=predict,
-            loss=loss,
             device=device, 
             batch_size=1000, 
             attractor_interval=params['attractor_interval'], 
@@ -165,7 +168,6 @@ if __name__ == '__main__':
     else:
         defender = AAASine(
             pretrained_model=predict,
-            loss=loss,
             device=device, 
             batch_size=1000, 
             attractor_interval=params['attractor_interval'], 
@@ -211,6 +213,7 @@ if __name__ == '__main__':
                         params['constraint'], 
                         image_file, 
                         params['save_dir'],
+                        label,
                         params,
                     )
                 else:
@@ -222,6 +225,7 @@ if __name__ == '__main__':
                         image_file, 
                         params['save_dir'], 
                         params,
+                        label,
                         suffix = 'defense',
                     )
 

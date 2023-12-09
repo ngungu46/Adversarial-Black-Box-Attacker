@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/AN 88/2.jpg",
+    "original_label": "3 - AN 88",
+    "adversarial_target": "30 - COMMON BANDED AWL",
+    "adversarial prediction": "3 - AN 88",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "3": "0.65393895",
+        "51": "0.010417356",
+        "63": "0.007906303",
+        "33": "0.006822735",
+        "95": "0.006765599"
+    },
+    "runtime": "5555.891861200333",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08582785725593567,
+    "L_inf_distance3": 0.14864687621593475
+}

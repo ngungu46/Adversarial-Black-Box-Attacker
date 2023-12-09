@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n07742313/ILSVRC2012_val_00023948.JPEG",
+    "original_label": "948 - Granny Smith",
+    "adversarial_target": "769 - rule",
+    "adversarial prediction": "769 - rule",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28303,
+    "top_k_predictions": {
+        "rule": "0.1698413",
+        "Granny_Smith": "0.10265086",
+        "pencil_sharpener": "0.07189394",
+        "bathing_cap": "0.05898291",
+        "maraca": "0.044464886",
+        "drumstick": "0.038422097",
+        "paintbrush": "0.022276014",
+        "syringe": "0.016427333",
+        "mask": "0.015919533",
+        "banjo": "0.012427419"
+    },
+    "runtime": "2380.8324871063232",
+    "L_inf_distance1": 0.9580103754997253,
+    "L_inf_distance2": 1.5498104095458984,
+    "L_inf_distance3": 2.6818833351135254
+}

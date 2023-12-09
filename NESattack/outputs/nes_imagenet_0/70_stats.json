@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00012631.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "154 - Pekinese",
+    "adversarial prediction": "154 - Pekinese",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 2600,
+    "top_k_predictions": {
+        "Pekinese": "0.075727314",
+        "upright": "0.07496865",
+        "thatch": "0.043980032",
+        "triumphal_arch": "0.034145333",
+        "swab": "0.022974342",
+        "bannister": "0.01586184",
+        "china_cabinet": "0.014378409",
+        "Pomeranian": "0.01314203",
+        "poncho": "0.01287403",
+        "organ": "0.012521415"
+    },
+    "runtime": "1864.00324177742",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

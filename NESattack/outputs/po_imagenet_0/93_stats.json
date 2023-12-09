@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04392985/ILSVRC2012_val_00008846.JPEG",
+    "original_label": "590 - hand-held computer",
+    "adversarial_target": "864 - tow truck",
+    "adversarial prediction": "864 - tow truck",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 28354,
+    "top_k_predictions": {
+        "tow_truck": "0.070187844",
+        "space_heater": "0.05606621",
+        "garbage_truck": "0.052857652",
+        "mousetrap": "0.044673905",
+        "amphibian": "0.03878526",
+        "pencil_sharpener": "0.036352202",
+        "crane": "0.028262526",
+        "half_track": "0.027026182",
+        "Polaroid_camera": "0.021461887",
+        "ashcan": "0.018704507"
+    },
+    "runtime": "1610.0719029903412",
+    "L_inf_distance1": 0.9712845087051392,
+    "L_inf_distance2": 1.2492707967758179,
+    "L_inf_distance3": 2.134819984436035
+}

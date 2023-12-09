@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/AN 88/1.jpg",
+    "original_label": "3 - AN 88",
+    "adversarial_target": "9 - BANDED PEACOCK",
+    "adversarial prediction": "3 - AN 88",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "3": "0.113499105",
+        "24": "0.048093658",
+        "27": "0.018635347",
+        "11": "0.01785772",
+        "10": "0.017325204"
+    },
+    "runtime": "5207.488794326782",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660253882408142,
+    "L_inf_distance3": 0.15000000596046448
+}

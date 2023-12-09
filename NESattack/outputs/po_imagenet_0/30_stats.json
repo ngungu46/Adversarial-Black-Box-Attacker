@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04133789/ILSVRC2012_val_00038588.JPEG",
+    "original_label": "574 - golf ball",
+    "adversarial_target": "937 - broccoli",
+    "adversarial prediction": "937 - broccoli",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 12182,
+    "top_k_predictions": {
+        "broccoli": "0.10920162",
+        "gasmask": "0.09683653",
+        "hair_slide": "0.06328859",
+        "running_shoe": "0.045591503",
+        "swab": "0.040938832",
+        "binoculars": "0.03245994",
+        "buckle": "0.025095506",
+        "sandal": "0.015960168",
+        "spatula": "0.012214839",
+        "custard_apple": "0.010248053"
+    },
+    "runtime": "2056.20587348938",
+    "L_inf_distance1": 0.9605532288551331,
+    "L_inf_distance2": 1.575284719467163,
+    "L_inf_distance3": 2.72395658493042
+}

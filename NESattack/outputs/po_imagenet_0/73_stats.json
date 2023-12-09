@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02877765/ILSVRC2012_val_00018153.JPEG",
+    "original_label": "455 - bottlecap",
+    "adversarial_target": "903 - wig",
+    "adversarial prediction": "973 - coral reef",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 114,
+    "top_k_predictions": {},
+    "runtime": "535.9118702411652",
+    "L_inf_distance1": 0.3807898163795471,
+    "L_inf_distance2": 0.5390543937683105,
+    "L_inf_distance3": 0.9121453166007996
+}

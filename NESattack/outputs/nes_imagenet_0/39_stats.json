@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00004033.JPEG",
+    "original_label": "797 - sleeping bag",
+    "adversarial_target": "568 - fur coat",
+    "adversarial prediction": "568 - fur coat",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 2900,
+    "top_k_predictions": {
+        "fur_coat": "0.22458093",
+        "sleeping_bag": "0.20637871",
+        "feather_boa": "0.04049319",
+        "jean": "0.018388152",
+        "toy_poodle": "0.017256083",
+        "cloak": "0.011777814",
+        "standard_poodle": "0.009762611",
+        "miniskirt": "0.008551421",
+        "stole": "0.00803711",
+        "Pembroke": "0.00725208"
+    },
+    "runtime": "946.589239358902",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

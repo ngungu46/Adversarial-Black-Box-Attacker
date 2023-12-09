@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/EASTERN PINE ELFIN/1.jpg",
+    "original_label": "38 - EASTERN PINE ELFIN",
+    "adversarial_target": "84 - ROSY MAPLE MOTH",
+    "adversarial prediction": "84 - ROSY MAPLE MOTH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 29214,
+    "top_k_predictions": {
+        "ROSY MAPLE MOTH": "0.13448407",
+        "EASTERN PINE ELFIN": "0.12578827",
+        "CHECQUERED SKIPPER": "0.096998185",
+        "PURPLISH COPPER": "0.05299425",
+        "COMET MOTH": "0.027559089",
+        "EASTERN COMA": "0.026746916",
+        "QUESTION MARK": "0.019825099",
+        "LUNA MOTH": "0.015028632",
+        "COPPER TAIL": "0.014333793",
+        "MOURNING CLOAK": "0.013346063"
+    },
+    "runtime": "3974.6336073875427",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

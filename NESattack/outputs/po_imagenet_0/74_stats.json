@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02490219/ILSVRC2012_val_00024140.JPEG",
+    "original_label": "378 - capuchin",
+    "adversarial_target": "675 - moving van",
+    "adversarial prediction": "675 - moving van",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 27726,
+    "top_k_predictions": {
+        "moving_van": "0.14074692",
+        "mosquito_net": "0.11208622",
+        "minibus": "0.093400866",
+        "four-poster": "0.04083971",
+        "recreational_vehicle": "0.034610797",
+        "garbage_truck": "0.020792985",
+        "ambulance": "0.017837515",
+        "bulletproof_vest": "0.014167635",
+        "stretcher": "0.011790099",
+        "half_track": "0.011349415"
+    },
+    "runtime": "647.246654510498",
+    "L_inf_distance1": 0.6869468688964844,
+    "L_inf_distance2": 1.157729983329773,
+    "L_inf_distance3": 2.004645824432373
+}

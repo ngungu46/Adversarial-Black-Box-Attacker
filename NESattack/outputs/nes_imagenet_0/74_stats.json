@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00048192.JPEG",
+    "original_label": "853 - thatch",
+    "adversarial_target": "571 - gas pump",
+    "adversarial prediction": "571 - gas pump",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 5900,
+    "top_k_predictions": {
+        "gas_pump": "0.061973784",
+        "thatch": "0.045309216",
+        "parking_meter": "0.015267578",
+        "tank": "0.014182312",
+        "solar_dish": "0.013896983",
+        "hay": "0.012792543",
+        "tripod": "0.01101039",
+        "binoculars": "0.009859341",
+        "pole": "0.0089249825",
+        "ashcan": "0.008853944"
+    },
+    "runtime": "1968.1819190979004",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

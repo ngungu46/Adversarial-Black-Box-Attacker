@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02113023/ILSVRC2012_val_00010244.JPEG",
+    "original_label": "263 - Pembroke",
+    "adversarial_target": "4 - hammerhead",
+    "adversarial prediction": "4 - hammerhead",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 24167,
+    "top_k_predictions": {
+        "hammerhead": "0.06306123",
+        "Siamese_cat": "0.05946739",
+        "nail": "0.05354998",
+        "whippet": "0.051253144",
+        "platypus": "0.033699404",
+        "Band_Aid": "0.021429421",
+        "Chesapeake_Bay_retriever": "0.02088818",
+        "cougar": "0.019663664",
+        "hummingbird": "0.018085446",
+        "Pembroke": "0.017750803"
+    },
+    "runtime": "1201.068243265152",
+    "L_inf_distance1": 0.9299677610397339,
+    "L_inf_distance2": 1.2415043115615845,
+    "L_inf_distance3": 2.105315923690796
+}

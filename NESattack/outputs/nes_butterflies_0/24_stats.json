@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/APPOLLO/4.jpg",
+    "original_label": "4 - APPOLLO",
+    "adversarial_target": "83 - RED SPOTTED PURPLE",
+    "adversarial prediction": "4 - APPOLLO",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "4": "0.39726993",
+        "27": "0.020136219",
+        "63": "0.014901686",
+        "85": "0.013489669",
+        "32": "0.01318689"
+    },
+    "runtime": "8026.957152605057",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08649934828281403,
+    "L_inf_distance3": 0.14982105791568756
+}

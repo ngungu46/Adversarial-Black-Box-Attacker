@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n02106382/ILSVRC2012_val_00047727.JPEG",
+    "original_label": "183 - Kerry blue terrier",
+    "adversarial_target": "759 - reflex camera",
+    "adversarial prediction": "759 - reflex camera",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 20332,
+    "top_k_predictions": {
+        "reflex_camera": "0.11719416",
+        "briard": "0.11238757",
+        "tripod": "0.087820835",
+        "assault_rifle": "0.043069106",
+        "Polaroid_camera": "0.036980778",
+        "half_track": "0.0313391",
+        "Bouvier_des_Flandres": "0.026536131",
+        "projector": "0.023076568",
+        "Kerry_blue_terrier": "0.021219054",
+        "car_mirror": "0.01557006"
+    },
+    "runtime": "623.2764587402344",
+    "L_inf_distance1": 0.9947287440299988,
+    "L_inf_distance2": 1.66764497756958,
+    "L_inf_distance3": 2.888110876083374
+}

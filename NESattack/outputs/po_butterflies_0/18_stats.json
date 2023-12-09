@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/AMERICAN SNOOT/4.jpg",
+    "original_label": "2 - AMERICAN SNOOT",
+    "adversarial_target": "36 - EASTERN COMA",
+    "adversarial prediction": "36 - EASTERN COMA",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 2,
+        "verbose": false
+    },
+    "num_queries_needed": 19889,
+    "top_k_predictions": {
+        "EASTERN COMA": "0.28194165",
+        "AMERICAN SNOOT": "0.22640574",
+        "SOUTHERN DOGFACE": "0.042447373",
+        "DANAID EGGFLY": "0.03730513",
+        "PAINTED LADY": "0.025874604",
+        "MILBERTS TORTOISESHELL": "0.018624132",
+        "TWO BARRED FLASHER": "0.01821051",
+        "GREAT EGGFLY": "0.017782224",
+        "QUESTION MARK": "0.013232205",
+        "ORANGE OAKLEAF": "0.012306908"
+    },
+    "runtime": "1134.577024936676",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

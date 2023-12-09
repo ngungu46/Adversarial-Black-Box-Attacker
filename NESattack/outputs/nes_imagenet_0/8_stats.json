@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00049509.JPEG",
+    "original_label": "593 - harmonica",
+    "adversarial_target": "210 - German short-haired pointer",
+    "adversarial prediction": "210 - German short-haired pointer",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 2800,
+    "top_k_predictions": {
+        "German_short-haired_pointer": "0.0815643",
+        "sleeping_bag": "0.05123342",
+        "vizsla": "0.04020203",
+        "ballplayer": "0.036547057",
+        "Indian_cobra": "0.031248447",
+        "potter's_wheel": "0.016920941",
+        "skunk": "0.013597931",
+        "barbershop": "0.013388014",
+        "football_helmet": "0.013181323",
+        "photocopier": "0.012468048"
+    },
+    "runtime": "278.9807469844818",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00038097.JPEG",
+    "original_label": "912 - worm fence",
+    "adversarial_target": "355 - llama",
+    "adversarial prediction": "355 - llama",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 1800,
+    "top_k_predictions": {
+        "llama": "0.093035474",
+        "worm_fence": "0.06069536",
+        "Arabian_camel": "0.0486572",
+        "bell_cote": "0.04425371",
+        "birdhouse": "0.0316848",
+        "thatch": "0.020972727",
+        "lakeside": "0.019294962",
+        "picket_fence": "0.018294439",
+        "sorrel": "0.014541535",
+        "alp": "0.0129170595"
+    },
+    "runtime": "2320.9166584014893",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

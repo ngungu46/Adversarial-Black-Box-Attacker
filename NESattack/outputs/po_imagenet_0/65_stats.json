@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03379051/ILSVRC2012_val_00021745.JPEG",
+    "original_label": "560 - football helmet",
+    "adversarial_target": "140 - red-backed sandpiper",
+    "adversarial prediction": "140 - red-backed sandpiper",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 27986,
+    "top_k_predictions": {
+        "red-backed_sandpiper": "0.41890818",
+        "football_helmet": "0.23306459",
+        "ruddy_turnstone": "0.111035734",
+        "unicycle": "0.024255056",
+        "stretcher": "0.013066827",
+        "cornet": "0.011710324",
+        "dowitcher": "0.011384494",
+        "brambling": "0.008589996",
+        "knee_pad": "0.008233795",
+        "rugby_ball": "0.006810762"
+    },
+    "runtime": "147.33922791481018",
+    "L_inf_distance1": 0.8567188382148743,
+    "L_inf_distance2": 1.3388376235961914,
+    "L_inf_distance3": 2.3172338008880615
+}

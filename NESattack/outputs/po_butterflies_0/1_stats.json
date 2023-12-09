@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/HUMMING BIRD HAWK MOTH/3.jpg",
+    "original_label": "51 - HUMMING BIRD HAWK MOTH",
+    "adversarial_target": "6 - ATALA",
+    "adversarial prediction": "6 - ATALA",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 3726,
+    "top_k_predictions": {
+        "PURPLE HAIRSTREAK": "0.12981063",
+        "ATALA": "0.12803002",
+        "CLEARWING MOTH": "0.09577362",
+        "SOOTYWING": "0.071596995",
+        "HUMMING BIRD HAWK MOTH": "0.052078925",
+        "CHECQUERED SKIPPER": "0.04238901",
+        "CHALK HILL BLUE": "0.020632846",
+        "MILBERTS TORTOISESHELL": "0.016779032",
+        "BANDED ORANGE HELICONIAN": "0.016569141",
+        "BROWN ARGUS": "0.015707908"
+    },
+    "runtime": "65.57157874107361",
+    "L_inf_distance1": 0.13700002431869507,
+    "L_inf_distance2": 0.23729099333286285,
+    "L_inf_distance3": 0.4110000431537628
+}

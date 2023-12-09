@@ -1,0 +1,27 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n01828970/ILSVRC2012_val_00000051.JPEG",
+    "original_label": "693 - paddle",
+    "adversarial_target": "359 - black-footed ferret",
+    "adversarial prediction": "359 - black-footed ferret",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 2443,
+    "top_k_predictions": {},
+    "runtime": "539.5025029182434",
+    "L_inf_distance1": 0.8150829672813416,
+    "L_inf_distance2": 0.9309914708137512,
+    "L_inf_distance3": 1.5779024362564087
+}

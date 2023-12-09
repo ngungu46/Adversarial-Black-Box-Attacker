@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04592741/ILSVRC2012_val_00026026.JPEG",
+    "original_label": "782 - screen",
+    "adversarial_target": "45 - Gila monster",
+    "adversarial prediction": "45 - Gila monster",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 7850,
+    "top_k_predictions": {
+        "Gila_monster": "0.04784623",
+        "monitor": "0.04657294",
+        "television": "0.040077858",
+        "screen": "0.03762701",
+        "iPod": "0.0370245",
+        "car_mirror": "0.028805245",
+        "home_theater": "0.02541361",
+        "tank": "0.014459897",
+        "window_screen": "0.014217932",
+        "ambulance": "0.014028853"
+    },
+    "runtime": "31.481664896011353",
+    "L_inf_distance1": 0.9893792867660522,
+    "L_inf_distance2": 1.5752830505371094,
+    "L_inf_distance3": 2.727461814880371
+}

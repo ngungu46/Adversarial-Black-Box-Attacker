@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02098286/ILSVRC2012_val_00027017.JPEG",
+    "original_label": "203 - West Highland white terrier",
+    "adversarial_target": "694 - paddlewheel",
+    "adversarial prediction": "694 - paddlewheel",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 27912,
+    "top_k_predictions": {
+        "paddlewheel": "0.10139882",
+        "bulletproof_vest": "0.0821406",
+        "birdhouse": "0.071495205",
+        "snow_leopard": "0.022882076",
+        "wreck": "0.013913121",
+        "crate": "0.011880999",
+        "amphibian": "0.01108793",
+        "lynx": "0.010360999",
+        "white_wolf": "0.010163075",
+        "oxcart": "0.01014526"
+    },
+    "runtime": "1316.568611383438",
+    "L_inf_distance1": 0.9207578301429749,
+    "L_inf_distance2": 1.486660122871399,
+    "L_inf_distance3": 2.574699640274048
+}

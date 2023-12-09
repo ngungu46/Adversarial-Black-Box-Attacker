@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/SLEEPY ORANGE/1.jpg",
+    "original_label": "88 - SLEEPY ORANGE",
+    "adversarial_target": "5 - ARCIGERA FLOWER MOTH",
+    "adversarial prediction": "5 - ARCIGERA FLOWER MOTH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 37284,
+    "top_k_predictions": {
+        "ARCIGERA FLOWER MOTH": "0.18306251",
+        "SLEEPY ORANGE": "0.10993639",
+        "IO MOTH": "0.074884884",
+        "CRECENT": "0.042456653",
+        "CLOUDED SULPHUR": "0.04055091",
+        "SOUTHERN DOGFACE": "0.027490105",
+        "CLODIUS PARNASSIAN": "0.025715766",
+        "GOLD BANDED": "0.02040707",
+        "COMMON BANDED AWL": "0.017946158",
+        "COMET MOTH": "0.017247248"
+    },
+    "runtime": "1368.7441246509552",
+    "L_inf_distance1": 0.08543750643730164,
+    "L_inf_distance2": 0.14798210561275482,
+    "L_inf_distance3": 0.2563125193119049
+}

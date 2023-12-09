@@ -1,0 +1,30 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/ARCIGERA FLOWER MOTH/3.jpg",
+    "original_label": "5 - ARCIGERA FLOWER MOTH",
+    "adversarial_target": "49 - GREY HAIRSTREAK",
+    "adversarial prediction": "49 - GREY HAIRSTREAK",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 27700,
+    "top_k_predictions": {
+        "49": "0.14786242",
+        "5": "0.12903774",
+        "66": "0.0843245",
+        "10": "0.054343604",
+        "0": "0.020397043"
+    },
+    "runtime": "9345.459598302841",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

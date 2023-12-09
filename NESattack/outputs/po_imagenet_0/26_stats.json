@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02701002/ILSVRC2012_val_00011417.JPEG",
+    "original_label": "407 - ambulance",
+    "adversarial_target": "491 - chain saw",
+    "adversarial prediction": "491 - chain saw",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28037,
+    "top_k_predictions": {
+        "chain_saw": "0.17145905",
+        "ambulance": "0.16920061",
+        "harvester": "0.15108332",
+        "police_van": "0.05884551",
+        "lawn_mower": "0.0386534",
+        "moving_van": "0.027860984",
+        "tow_truck": "0.023597697",
+        "forklift": "0.019781763",
+        "crane": "0.019402174",
+        "golfcart": "0.018567825"
+    },
+    "runtime": "1667.749927997589",
+    "L_inf_distance1": 0.843946099281311,
+    "L_inf_distance2": 1.3294782638549805,
+    "L_inf_distance3": 2.302701950073242
+}

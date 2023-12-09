@@ -1,0 +1,30 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ADONIS/3.jpg",
+    "original_label": "0 - ADONIS",
+    "adversarial_target": "57 - LUNA MOTH",
+    "adversarial prediction": "0 - ADONIS",
+    "args": {
+        "lr": 0.05,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 40000,
+        "momentum": 0.9,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "0": "0.20898722",
+        "97": "0.049057268",
+        "57": "0.047550373",
+        "32": "0.02713447",
+        "75": "0.02378328"
+    },
+    "runtime": "1068.3519403934479",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08608231693506241,
+    "L_inf_distance3": 0.14909343421459198
+}

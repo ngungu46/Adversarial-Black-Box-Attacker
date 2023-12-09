@@ -1,0 +1,35 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00028067.JPEG",
+    "original_label": "940 - spaghetti squash",
+    "adversarial_target": "265 - toy poodle",
+    "adversarial prediction": "475 - car mirror",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": -1,
+    "top_k_predictions": {
+        "car_mirror": "0.077127345",
+        "wine_bottle": "0.058287572",
+        "screwdriver": "0.049572468",
+        "toy_poodle": "0.04162488",
+        "soap_dispenser": "0.036869284",
+        "ballpoint": "0.03224427",
+        "hand_blower": "0.026673555",
+        "hair_slide": "0.022120856",
+        "thimble": "0.019366294",
+        "lipstick": "0.018941432"
+    },
+    "runtime": "1025.3483259677887",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08580498397350311,
+    "L_inf_distance3": 0.14860551059246063
+}

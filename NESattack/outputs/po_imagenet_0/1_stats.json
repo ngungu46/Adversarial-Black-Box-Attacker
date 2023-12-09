@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n01775062/ILSVRC2012_val_00037280.JPEG",
+    "original_label": "73 - barn spider",
+    "adversarial_target": "969 - eggnog",
+    "adversarial prediction": "969 - eggnog",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28225,
+    "top_k_predictions": {
+        "eggnog": "0.124073066",
+        "black_widow": "0.11954515",
+        "wolf_spider": "0.11656481",
+        "starfish": "0.100911245",
+        "lotion": "0.0412138",
+        "packet": "0.030551108",
+        "ant": "0.019998996",
+        "tarantula": "0.018757615",
+        "barn_spider": "0.014576591",
+        "ice_cream": "0.012707162"
+    },
+    "runtime": "122.04767799377441",
+    "L_inf_distance1": 0.9972452521324158,
+    "L_inf_distance2": 1.6645886898040771,
+    "L_inf_distance3": 2.8830246925354004
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n04266014/ILSVRC2012_val_00025483.JPEG",
+    "original_label": "812 - space shuttle",
+    "adversarial_target": "731 - plunger",
+    "adversarial prediction": "731 - plunger",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 27959,
+    "top_k_predictions": {
+        "plunger": "0.07537718",
+        "missile": "0.07100171",
+        "projectile": "0.06024041",
+        "space_shuttle": "0.05928241",
+        "drumstick": "0.04944662",
+        "trailer_truck": "0.031505313",
+        "matchstick": "0.02181834",
+        "torch": "0.019673968",
+        "candle": "0.01811845",
+        "freight_car": "0.012067745"
+    },
+    "runtime": "1460.4450912475586",
+    "L_inf_distance1": 0.7833536863327026,
+    "L_inf_distance2": 1.284665822982788,
+    "L_inf_distance3": 2.222952127456665
+}

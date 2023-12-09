@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02116738/ILSVRC2012_val_00026167.JPEG",
+    "original_label": "275 - African hunting dog",
+    "adversarial_target": "44 - alligator lizard",
+    "adversarial prediction": "44 - alligator lizard",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28194,
+    "top_k_predictions": {
+        "alligator_lizard": "0.23235643",
+        "whiptail": "0.1841238",
+        "African_hunting_dog": "0.105178766",
+        "African_chameleon": "0.053744707",
+        "banded_gecko": "0.047516413",
+        "American_chameleon": "0.03804218",
+        "common_iguana": "0.017545447",
+        "green_lizard": "0.017538138",
+        "agama": "0.016610604",
+        "triceratops": "0.013703134"
+    },
+    "runtime": "4344.59021282196",
+    "L_inf_distance1": 0.9604895114898682,
+    "L_inf_distance2": 1.4257371425628662,
+    "L_inf_distance3": 2.4653351306915283
+}

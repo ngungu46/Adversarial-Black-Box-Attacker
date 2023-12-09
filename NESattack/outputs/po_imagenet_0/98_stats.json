@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n09229709/ILSVRC2012_val_00032373.JPEG",
+    "original_label": "514 - cowboy boot",
+    "adversarial_target": "912 - worm fence",
+    "adversarial prediction": "912 - worm fence",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 38,
+        "verbose": false
+    },
+    "num_queries_needed": 28106,
+    "top_k_predictions": {
+        "worm_fence": "0.031501744",
+        "brassiere": "0.03048879",
+        "maraca": "0.028717728",
+        "balance_beam": "0.022895671",
+        "overskirt": "0.021839993",
+        "bikini": "0.021582399",
+        "hair_spray": "0.021465952",
+        "sarong": "0.02145869",
+        "swimming_trunks": "0.021311626",
+        "binoculars": "0.01685945"
+    },
+    "runtime": "2049.2567117214203",
+    "L_inf_distance1": 0.9179674983024597,
+    "L_inf_distance2": 1.4901686906814575,
+    "L_inf_distance3": 2.5779190063476562
+}

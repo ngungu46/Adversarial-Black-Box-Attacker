@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00036902.JPEG",
+    "original_label": "807 - solar dish",
+    "adversarial_target": "882 - vacuum",
+    "adversarial prediction": "882 - vacuum",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 6300,
+    "top_k_predictions": {
+        "vacuum": "0.06944564",
+        "coil": "0.06835572",
+        "umbrella": "0.042171177",
+        "shopping_cart": "0.0319643",
+        "unicycle": "0.031492595",
+        "electric_fan": "0.029664775",
+        "knot": "0.023954803",
+        "tricycle": "0.017217541",
+        "shopping_basket": "0.017044732",
+        "space_heater": "0.015852159"
+    },
+    "runtime": "1708.3940687179565",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660255372524261,
+    "L_inf_distance3": 0.15000003576278687
+}

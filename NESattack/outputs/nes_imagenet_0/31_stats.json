@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04235860/ILSVRC2012_val_00042952.JPEG",
+    "original_label": "80 - black grouse",
+    "adversarial_target": "476 - carousel",
+    "adversarial prediction": "476 - carousel",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 2100,
+    "top_k_predictions": {
+        "carousel": "0.06751206",
+        "assault_rifle": "0.06578432",
+        "peacock": "0.037454624",
+        "black_grouse": "0.032907974",
+        "macaw": "0.032678287",
+        "cuirass": "0.023310883",
+        "prairie_chicken": "0.01707373",
+        "comic_book": "0.014874164",
+        "tusker": "0.012997864",
+        "rock_python": "0.012059132"
+    },
+    "runtime": "757.7770917415619",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

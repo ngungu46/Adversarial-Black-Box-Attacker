@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n02492660/ILSVRC2012_val_00041294.JPEG",
+    "original_label": "103 - platypus",
+    "adversarial_target": "769 - rule",
+    "adversarial prediction": "769 - rule",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28104,
+    "top_k_predictions": {
+        "rule": "0.13897431",
+        "platypus": "0.12705274",
+        "American_black_bear": "0.08884564",
+        "howler_monkey": "0.08020061",
+        "mink": "0.035158508",
+        "spider_monkey": "0.03251435",
+        "sloth_bear": "0.01743381",
+        "black_stork": "0.014609963",
+        "beaver": "0.014471088",
+        "siamang": "0.01254831"
+    },
+    "runtime": "3098.358733177185",
+    "L_inf_distance1": 0.8616517186164856,
+    "L_inf_distance2": 1.4119970798492432,
+    "L_inf_distance3": 2.4436066150665283
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03220513/ILSVRC2012_val_00005065.JPEG",
+    "original_label": "635 - magnetic compass",
+    "adversarial_target": "936 - head cabbage",
+    "adversarial prediction": "936 - head cabbage",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28007,
+    "top_k_predictions": {
+        "head_cabbage": "0.09069732",
+        "dome": "0.06132532",
+        "strainer": "0.06063164",
+        "shield": "0.05015502",
+        "Petri_dish": "0.023208186",
+        "racket": "0.02041371",
+        "cicada": "0.019718844",
+        "breastplate": "0.018559664",
+        "cauliflower": "0.014848574",
+        "tray": "0.011948382"
+    },
+    "runtime": "3716.7504575252533",
+    "L_inf_distance1": 0.8275739550590515,
+    "L_inf_distance2": 1.1709498167037964,
+    "L_inf_distance3": 1.993008017539978
+}

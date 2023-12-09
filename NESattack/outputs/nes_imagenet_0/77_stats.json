@@ -1,0 +1,35 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n04417672/ILSVRC2012_val_00025908.JPEG",
+    "original_label": "912 - worm fence",
+    "adversarial_target": "958 - hay",
+    "adversarial prediction": "958 - hay",
+    "args": {
+        "lr": 0.01,
+        "target_eps": 0.05,
+        "n_samples": 100,
+        "sigma": 0.001,
+        "max_queries": 20000,
+        "momentum": 0.9,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 700,
+    "top_k_predictions": {
+        "hay": "0.10604477",
+        "worm_fence": "0.09087049",
+        "thatch": "0.06403371",
+        "plow": "0.059336517",
+        "llama": "0.05912627",
+        "Arabian_camel": "0.042898234",
+        "thresher": "0.042011518",
+        "stone_wall": "0.025220664",
+        "stretcher": "0.01713411",
+        "chain_saw": "0.01710881"
+    },
+    "runtime": "2016.7759823799133",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

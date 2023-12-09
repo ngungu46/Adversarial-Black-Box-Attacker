@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/imagenet64/val/n03930630/ILSVRC2012_val_00018700.JPEG",
+    "original_label": "675 - moving van",
+    "adversarial_target": "322 - ringlet",
+    "adversarial prediction": "322 - ringlet",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 28305,
+    "top_k_predictions": {
+        "ringlet": "0.107751474",
+        "house_finch": "0.05462628",
+        "birdhouse": "0.036951736",
+        "tarantula": "0.03593387",
+        "grille": "0.02828794",
+        "sulphur_butterfly": "0.022275103",
+        "worm_fence": "0.021901103",
+        "indigo_bunting": "0.017597847",
+        "shopping_basket": "0.016432215",
+        "toyshop": "0.016108"
+    },
+    "runtime": "3865.111802816391",
+    "L_inf_distance1": 0.815789520740509,
+    "L_inf_distance2": 0.9909303784370422,
+    "L_inf_distance3": 1.6375675201416016
+}

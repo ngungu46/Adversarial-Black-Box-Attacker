@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/imagenet64/val/n03832673/ILSVRC2012_val_00045627.JPEG",
+    "original_label": "782 - screen",
+    "adversarial_target": "906 - Windsor tie",
+    "adversarial prediction": "906 - Windsor tie",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "imagenet64",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 14005,
+    "top_k_predictions": {
+        "Windsor_tie": "0.098273054",
+        "lab_coat": "0.094355844",
+        "oscilloscope": "0.081655495",
+        "screen": "0.05504953",
+        "suit": "0.047444336",
+        "notebook": "0.04166579",
+        "monitor": "0.03424082",
+        "cash_machine": "0.023301883",
+        "desktop_computer": "0.020798394",
+        "television": "0.02011188"
+    },
+    "runtime": "2671.520831346512",
+    "L_inf_distance1": 0.9916954636573792,
+    "L_inf_distance2": 1.643210530281067,
+    "L_inf_distance3": 2.8449501991271973
+}
