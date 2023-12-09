@@ -106,7 +106,7 @@ class NESAttack:
                 print(y_adv, probs[0][y_adv])
             
             if(cls == y_adv):
-                return x_adv, cls, probs[:, y_adv], count, True, top_k_predictions, torch.abs(x_orig - x_adv).max()
+                return x_adv, cls, probs[:, y_adv], count, True, top_k_predictions
             # print(probs[:, y_adv])
             
 
@@ -200,6 +200,9 @@ class PartialInfoAttack:
         """
         x_orig = x_orig.cpu().detach()
         epsilon = self.e_0
+        
+        x_orig = x_orig.cuda() 
+        x_adv = x_adv.cuda() 
 
         lower = torch.clamp(x_orig - epsilon, 0, 1)
         upper = torch.clamp(x_orig + epsilon, 0, 1)
@@ -245,7 +248,18 @@ class PartialInfoAttack:
                 else:
                     prop_de /= 2
                     if prop_de == 0:
-                        return x_adv, y_adv, False, count, decode_predictions(log_probs, top = 10)[0]
+                        if self.is_torch: 
+                            return x_adv, y_adv, False, count, decode_predictions(log_probs, top = 10)[0]
+                            
+                        else: 
+                            log_probs = predict(hat_x_adv, self.model, self.is_torch)
+                            probs = log_probs.cpu().detach().numpy() 
+                            top_k_labels = list((np.argsort(probs*-1))[0])
+                            
+                            top_k_predictions = [("dummy", label, probs[0][label]) for label in top_k_labels][:10]
+                        
+                            return x_adv, y_adv, False, count, top_k_predictions
+                        
                         raise(ValueError("Not converge"))
                     if prop_de < 2e-3:
                         prop_de = 0

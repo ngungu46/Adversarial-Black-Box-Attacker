@@ -75,7 +75,8 @@ def main():
     device = set_device() 
     
     # get a random subset of "dataset_size" validation dataset image filepaths and store them in a list 
-    image_filepaths = getSubset(args["dataset"], args["dataset_size"], True)
+    image_filepaths = ["data/imagenet64/val/n02492660/ILSVRC2012_val_00039295.JPEG"]
+    # getSubset(args["dataset"], args["dataset_size"], True)
     
     # get class2index and index2 class dictionaries for easy querying 
     image_cls2idx = class2index(args["dataset"]) 
@@ -122,7 +123,7 @@ def main():
             image = image[None, ...]
         
         # calculate the original class index and choose a random adversarial index 
-        y_adv_idx = random.randrange(0, len(image_cls2idx))
+        y_adv_idx = 304
         y_orig_idx = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
 
         
@@ -131,7 +132,7 @@ def main():
         if is_torch: 
             res, _, prob, count, succ, top_k_predictions = ex.attack(image, y_adv_idx) 
             save_tensor_as_image(image, os.path.join(new_run_dir_name, f"{i+1}_original_{y_orig_idx}.jpg"))
-            save_tensor_as_image(res, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
+            save_tensor_as_image(res * 255, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
             
             orig_pred = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
             adv_pred = torch.argmax(predict(res, pretrained_model, is_torch)).detach().cpu().numpy().item()
