@@ -103,16 +103,16 @@ if __name__ == '__main__':
     modulo_ind = int(args[1])
 
     params = {
-        'save_dir': "hsja_linf_butterfly_none",
+        'save_dir': "hsja_linf_butterfly_sine",
         'num_iterations': 30,
         # 'constraint': 'l2',
         'constraint': 'linf',
         # 'dataset': 'imagenet',
         'dataset': 'butterfly',
         'image_size': 224,
-        'defender': None,
+        # 'defender': None,
         # 'defender': 'linear',
-        # 'defender': 'sine',
+        'defender': 'sine',
         'reverse_step': 0.7,
         'defender_iter': 100,
         'calibration_weight': 5,
@@ -224,8 +224,8 @@ if __name__ == '__main__':
                         params['constraint'], 
                         image_file, 
                         params['save_dir'], 
-                        params,
                         label,
+                        params,
                         suffix = 'defense',
                     )
 
