@@ -30,3 +30,7 @@ To run NES, go back into the main directory and run
 ```
 python eval_nes.py --lr 0.01 --target_eps 0.05 --n_samples 100 --sigma 0.001 --dataset_size 100 --dataset imagenet64 --max_queries 20000
 ```
+
+## Instructions for HopSkipJumpAttack
+
+To run the HopSkipJumpAttack, create a new conda environment and install `pytorch, tensorflow==2.8.0, keras==2.8.0, `

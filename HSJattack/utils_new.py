@@ -49,6 +49,8 @@ def display_images(model, image, save_path = None, image_name = None, suffix = '
     if save_path is not None:
         plt.savefig(f"{save_path}/{image_name}{suffix}.jpg")
 
+    plt.clf()
+
 #
 def norm(image, image2):
     y = image[0]
