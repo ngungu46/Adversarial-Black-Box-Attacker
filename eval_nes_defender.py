@@ -15,8 +15,9 @@ from HSJattack.models import Model
 from src.model import *
 from src.model import *
 from src.dataloader import *
+import keras 
 
-from AAA.models import AAALinear
+from AAA.models import AAALinear, AAASine
 from AAA.utils import loss
 
 random.seed(685)
@@ -27,6 +28,8 @@ mpl.rcParams['axes.grid'] = False
 pretrained_model = torch.hub.load('pytorch/vision:v0.10.0', 'inception_v3', pretrained=True)
 pretrained_model = pretrained_model.to("cuda")
 pretrained_model.eval()
+
+
 
 def load_image2(image_path, imagesize=299):
     rawimage = np.array(Image.open(image_path)) / 255
@@ -44,12 +47,32 @@ def sub_transform(image):
         image = tf.image.grayscale_to_rgb(image)
     return image
 
+# def predict(image):
+#     """
+#     input: normalized tensor of shape (B, C, H, W)
+#     output: numpy array of predictions
+#     """
+#     preds = pretrained_model(image)
+#     return preds
+
 def predict(image):
-    """
-    input: normalized tensor of shape (B, C, H, W)
-    output: numpy array of predictions
-    """
-    preds = pretrained_model(image)
+    if not torch.is_tensor(image): 
+        image = torch.tensor(image, dtype=torch.float32)
+    image = image.to(dtype=torch.float32)    
+
+    if len(image.shape) == 3:
+        image = image.unsqueeze(dim=0)
+
+    image = torch.clamp(image, 0, 1)
+    image = image.permute((0,2,3,1))
+    image = image * 255
+
+    with tf.device(device):
+        image = tf.convert_to_tensor(image.cpu().numpy(), dtype=tf.float32)
+        probs = pretrained_model(image)
+
+    preds = np.log(probs)
+
     return preds
 
 def attack_image(model, image, num_iterations, image_file, save_dir, suffix = ''):
