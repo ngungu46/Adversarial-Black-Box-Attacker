@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/GREEN HAIRSTREAK/4.jpg",
+    "original_label": "48 - GREEN HAIRSTREAK",
+    "adversarial_target": "65 - MOURNING CLOAK",
+    "adversarial prediction": "65 - MOURNING CLOAK",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 37548,
+    "top_k_predictions": {
+        "MOURNING CLOAK": "0.1764694",
+        "BLACK HAIRSTREAK": "0.11472966",
+        "GREEN HAIRSTREAK": "0.113279045",
+        "INDRA SWALLOW": "0.040165193",
+        "POPINJAY": "0.037143476",
+        "BROWN SIPROETA": "0.020880805",
+        "SLEEPY ORANGE": "0.017309422",
+        "ELBOWED PIERROT": "0.015339386",
+        "CLOUDED SULPHUR": "0.01445499",
+        "PINE WHITE": "0.013662177"
+    },
+    "runtime": "1573.8987250328064",
+    "L_inf_distance1": 0.09325000643730164,
+    "L_inf_distance2": 0.16151374578475952,
+    "L_inf_distance3": 0.2797500193119049
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/MADAGASCAN SUNSET MOTH/4.jpg",
+    "original_label": "58 - MADAGASCAN SUNSET MOTH",
+    "adversarial_target": "56 - LARGE MARBLE",
+    "adversarial prediction": "76 - POPINJAY",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 5,
+        "verbose": false
+    },
+    "num_queries_needed": 64,
+    "top_k_predictions": {
+        "POPINJAY": "0.07627958",
+        "BECKERS WHITE": "0.052263014",
+        "CLODIUS PARNASSIAN": "0.051837552",
+        "MADAGASCAN SUNSET MOTH": "0.04026418",
+        "GIANT LEOPARD MOTH": "0.03961758",
+        "GARDEN TIGER MOTH": "0.030362388",
+        "EASTERN DAPPLE WHITE": "0.030351968",
+        "PAINTED LADY": "0.02950764",
+        "LARGE MARBLE": "0.027618892",
+        "LUNA MOTH": "0.026425114"
+    },
+    "runtime": "5.647977828979492",
+    "L_inf_distance1": 0.5,
+    "L_inf_distance2": 0.8660253882408142,
+    "L_inf_distance3": 1.5
+}

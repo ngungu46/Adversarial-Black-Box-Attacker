@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/MADAGASCAN SUNSET MOTH/3.jpg",
+    "original_label": "58 - MADAGASCAN SUNSET MOTH",
+    "adversarial_target": "75 - POLYPHEMUS MOTH",
+    "adversarial prediction": "75 - POLYPHEMUS MOTH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 32893,
+    "top_k_predictions": {
+        "MADAGASCAN SUNSET MOTH": "0.44921574",
+        "POLYPHEMUS MOTH": "0.44665787",
+        "BANDED TIGER MOTH": "0.0069974414",
+        "GARDEN TIGER MOTH": "0.0060295607",
+        "EMPEROR GUM MOTH": "0.004792532",
+        "EASTERN COMA": "0.0042233006",
+        "RED ADMIRAL": "0.004115165",
+        "MOURNING CLOAK": "0.0037556973",
+        "Iphiclus sister": "0.0033351565",
+        "LARGE MARBLE": "0.0031824284"
+    },
+    "runtime": "2028.5392327308655",
+    "L_inf_distance1": 0.07762500643730164,
+    "L_inf_distance2": 0.13445045053958893,
+    "L_inf_distance3": 0.2328750193119049
+}

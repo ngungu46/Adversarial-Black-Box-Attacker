@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/STRAITED QUEEN/5.jpg",
+    "original_label": "91 - STRAITED QUEEN",
+    "adversarial_target": "89 - SOOTYWING",
+    "adversarial prediction": "89 - SOOTYWING",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 37535,
+    "top_k_predictions": {
+        "SOOTYWING": "0.4238931",
+        "STRAITED QUEEN": "0.17680877",
+        "COPPER TAIL": "0.029404579",
+        "CRIMSON PATCH": "0.024806896",
+        "BLUE SPOTTED CROW": "0.02405707",
+        "GREAT EGGFLY": "0.014622727",
+        "RED ADMIRAL": "0.010423871",
+        "MONARCH": "0.009712844",
+        "MOURNING CLOAK": "0.008754185",
+        "BANDED PEACOCK": "0.007741456"
+    },
+    "runtime": "5488.177942037582",
+    "L_inf_distance1": 0.06512501835823059,
+    "L_inf_distance2": 0.11279984563589096,
+    "L_inf_distance3": 0.19537505507469177
+}

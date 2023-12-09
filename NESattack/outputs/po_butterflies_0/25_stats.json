@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/RED CRACKER/5.jpg",
+    "original_label": "81 - RED CRACKER",
+    "adversarial_target": "56 - LARGE MARBLE",
+    "adversarial prediction": "56 - LARGE MARBLE",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 37634,
+    "top_k_predictions": {
+        "LARGE MARBLE": "0.38003734",
+        "RED CRACKER": "0.20042226",
+        "MADAGASCAN SUNSET MOTH": "0.036495153",
+        "POPINJAY": "0.024098335",
+        "CRIMSON PATCH": "0.019843685",
+        "EASTERN DAPPLE WHITE": "0.015292546",
+        "CRECENT": "0.013267354",
+        "CLODIUS PARNASSIAN": "0.012110088",
+        "PINE WHITE": "0.011709435",
+        "BANDED TIGER MOTH": "0.01160741"
+    },
+    "runtime": "7292.14441204071",
+    "L_inf_distance1": 0.12450000643730164,
+    "L_inf_distance2": 0.2156403362751007,
+    "L_inf_distance3": 0.3735000193119049
+}

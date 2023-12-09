@@ -1,0 +1,33 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/SILVER SPOT SKIPPER/2.jpg",
+    "original_label": "86 - SILVER SPOT SKIPPER",
+    "adversarial_target": "13 - BLACK HAIRSTREAK",
+    "adversarial prediction": "13 - BLACK HAIRSTREAK",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.01,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 24735,
+    "top_k_predictions": {
+        "13": "0.2039312",
+        "86": "0.15763392",
+        "44": "0.07562816",
+        "49": "0.02898868",
+        "65": "0.026399203"
+    },
+    "runtime": "712.4962885379791",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

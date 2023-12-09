@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/EASTERN PINE ELFIN/4.jpg",
+    "original_label": "38 - EASTERN PINE ELFIN",
+    "adversarial_target": "29 - COMET MOTH",
+    "adversarial prediction": "29 - COMET MOTH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 5573,
+    "top_k_predictions": {
+        "COMET MOTH": "0.24538746",
+        "EASTERN PINE ELFIN": "0.21229951",
+        "EASTERN COMA": "0.07844603",
+        "EMPEROR GUM MOTH": "0.027358096",
+        "PURPLISH COPPER": "0.021927001",
+        "QUESTION MARK": "0.020484956",
+        "GLITTERING SAPPHIRE": "0.019823484",
+        "TROPICAL LEAFWING": "0.018557366",
+        "LUNA MOTH": "0.013820982",
+        "MILBERTS TORTOISESHELL": "0.01235622"
+    },
+    "runtime": "186.6296637058258",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/BANDED ORANGE HELICONIAN/4.jpg",
+    "original_label": "8 - BANDED ORANGE HELICONIAN",
+    "adversarial_target": "17 - BROWN ARGUS",
+    "adversarial prediction": "17 - BROWN ARGUS",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 21984,
+    "top_k_predictions": {
+        "BANDED ORANGE HELICONIAN": "0.37154418",
+        "BROWN ARGUS": "0.36963448",
+        "MILBERTS TORTOISESHELL": "0.021653252",
+        "CHALK HILL BLUE": "0.02161157",
+        "PURPLE HAIRSTREAK": "0.0139989015",
+        "ADONIS": "0.009718952",
+        "COMMON BANDED AWL": "0.0068857973",
+        "GREAT EGGFLY": "0.006401132",
+        "GARDEN TIGER MOTH": "0.006201474",
+        "STRAITED QUEEN": "0.0058477162"
+    },
+    "runtime": "4481.20397233963",
+    "L_inf_distance1": 0.16200003027915955,
+    "L_inf_distance2": 0.28059226274490356,
+    "L_inf_distance3": 0.48600003123283386
+}

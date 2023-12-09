@@ -27,5 +27,9 @@ misc
 
 *.JPEG
 *.txt
-NESattack/outputs/
+NESattack/outputs/run*
+NESattack/outputs/nes_butterflies_0/*.jpg
+NESattack/outputs/nes_imagenet_0/*.jpg
+NESattack/outputs/po_imagenet_0/*.jpg
+NESattack/outputs/po_butterflies_0/*.jpg
 NESattack/outputs/run_*/*.jpg

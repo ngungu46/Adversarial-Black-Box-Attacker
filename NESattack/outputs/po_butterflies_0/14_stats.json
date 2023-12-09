@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/ORCHARD SWALLOW/4.jpg",
+    "original_label": "69 - ORCHARD SWALLOW",
+    "adversarial_target": "46 - GREAT JAY",
+    "adversarial prediction": "46 - GREAT JAY",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 19230,
+    "top_k_predictions": {
+        "GREAT JAY": "0.3869603",
+        "ORCHARD SWALLOW": "0.33993357",
+        "MALACHITE": "0.04689165",
+        "ADONIS": "0.023841761",
+        "DANAID EGGFLY": "0.02319698",
+        "INDRA SWALLOW": "0.012613461",
+        "MESTRA": "0.011845947",
+        "PURPLE HAIRSTREAK": "0.008946579",
+        "CHALK HILL BLUE": "0.008055399",
+        "GREAT EGGFLY": "0.005383043"
+    },
+    "runtime": "1865.2728600502014",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

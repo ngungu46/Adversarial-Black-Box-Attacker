@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/GREY HAIRSTREAK/4.jpg",
+    "original_label": "49 - GREY HAIRSTREAK",
+    "adversarial_target": "55 - JULIA",
+    "adversarial prediction": "55 - JULIA",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 33095,
+    "top_k_predictions": {
+        "JULIA": "0.35331365",
+        "GREY HAIRSTREAK": "0.28857705",
+        "PURPLE HAIRSTREAK": "0.045464575",
+        "HERCULES MOTH": "0.035804905",
+        "BANDED ORANGE HELICONIAN": "0.014932489",
+        "COPPER TAIL": "0.012575099",
+        "TWO BARRED FLASHER": "0.012269828",
+        "ADONIS": "0.011458303",
+        "EMPEROR GUM MOTH": "0.009276792",
+        "OLEANDER HAWK MOTH": "0.009200418"
+    },
+    "runtime": "8541.365364789963",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

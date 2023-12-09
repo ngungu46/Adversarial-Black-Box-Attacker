@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/COMET MOTH/2.jpg",
+    "original_label": "29 - COMET MOTH",
+    "adversarial_target": "99 - ZEBRA LONG WING",
+    "adversarial prediction": "99 - ZEBRA LONG WING",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 37392,
+    "top_k_predictions": {
+        "ZEBRA LONG WING": "0.15454221",
+        "CLOUDED SULPHUR": "0.13856241",
+        "COMET MOTH": "0.1254721",
+        "RED SPOTTED PURPLE": "0.049547013",
+        "MALACHITE": "0.046349466",
+        "INDRA SWALLOW": "0.03864645",
+        "SOUTHERN DOGFACE": "0.03353245",
+        "LARGE MARBLE": "0.027005292",
+        "POPINJAY": "0.024816226",
+        "LUNA MOTH": "0.023280378"
+    },
+    "runtime": "1488.5512206554413",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

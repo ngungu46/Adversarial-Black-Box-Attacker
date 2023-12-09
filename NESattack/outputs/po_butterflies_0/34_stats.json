@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/BLACK HAIRSTREAK/2.jpg",
+    "original_label": "13 - BLACK HAIRSTREAK",
+    "adversarial_target": "7 - ATLAS MOTH",
+    "adversarial prediction": "7 - ATLAS MOTH",
+    "args": {
+        "e_adv": 0.1,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 15724,
+    "top_k_predictions": {
+        "ATLAS MOTH": "0.29965362",
+        "BLACK HAIRSTREAK": "0.27903253",
+        "QUESTION MARK": "0.029004881",
+        "MALACHITE": "0.025939666",
+        "PURPLE HAIRSTREAK": "0.02122875",
+        "COMMON BANDED AWL": "0.01600602",
+        "CLOUDED SULPHUR": "0.010518997",
+        "AMERICAN SNOOT": "0.010123167",
+        "COPPER TAIL": "0.009717465",
+        "EASTERN COMA": "0.009275429"
+    },
+    "runtime": "562.750082731247",
+    "L_inf_distance1": 0.10000002384185791,
+    "L_inf_distance2": 0.17320512235164642,
+    "L_inf_distance3": 0.30000007152557373
+}

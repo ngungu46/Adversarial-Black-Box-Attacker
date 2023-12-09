@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ORANGE OAKLEAF/2.jpg",
+    "original_label": "67 - ORANGE OAKLEAF",
+    "adversarial_target": "47 - GREEN CELLED CATTLEHEART",
+    "adversarial prediction": "47 - GREEN CELLED CATTLEHEART",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 2,
+        "verbose": false
+    },
+    "num_queries_needed": 37609,
+    "top_k_predictions": {
+        "GREEN CELLED CATTLEHEART": "0.15106137",
+        "ORANGE OAKLEAF": "0.14617603",
+        "ATALA": "0.08834233",
+        "RED POSTMAN": "0.081381835",
+        "MILBERTS TORTOISESHELL": "0.047122035",
+        "CINNABAR MOTH": "0.037194613",
+        "SLEEPY ORANGE": "0.027210338",
+        "PURPLE HAIRSTREAK": "0.020193327",
+        "BANDED TIGER MOTH": "0.018631972",
+        "SIXSPOT BURNET MOTH": "0.015035814"
+    },
+    "runtime": "748.8355360031128",
+    "L_inf_distance1": 0.10262501239776611,
+    "L_inf_distance2": 0.17775173485279083,
+    "L_inf_distance3": 0.30787503719329834
+}

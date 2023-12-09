@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/BROWN SIPROETA/1.jpg",
+    "original_label": "18 - BROWN SIPROETA",
+    "adversarial_target": "68 - ORANGE TIP",
+    "adversarial prediction": "68 - ORANGE TIP",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 37552,
+    "top_k_predictions": {
+        "ORANGE TIP": "0.53804666",
+        "BROWN SIPROETA": "0.34661782",
+        "JULIA": "0.0063152392",
+        "HUMMING BIRD HAWK MOTH": "0.0060476237",
+        "PIPEVINE SWALLOW": "0.0054877508",
+        "AFRICAN GIANT SWALLOWTAIL": "0.0053666197",
+        "DANAID EGGFLY": "0.004058315",
+        "MESTRA": "0.003976857",
+        "TWO BARRED FLASHER": "0.003952779",
+        "PAINTED LADY": "0.0036672177"
+    },
+    "runtime": "2951.029451608658",
+    "L_inf_distance1": 0.07606253027915955,
+    "L_inf_distance2": 0.1317441314458847,
+    "L_inf_distance3": 0.22818753123283386
+}

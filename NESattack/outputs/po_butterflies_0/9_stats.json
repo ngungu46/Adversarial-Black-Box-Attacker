@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/CHESTNUT/1.jpg",
+    "original_label": "23 - CHESTNUT",
+    "adversarial_target": "95 - VICEROY",
+    "adversarial prediction": "95 - VICEROY",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 37686,
+    "top_k_predictions": {
+        "VICEROY": "0.14791054",
+        "CHESTNUT": "0.109002806",
+        "MESTRA": "0.05135379",
+        "CLODIUS PARNASSIAN": "0.044848517",
+        "INDRA SWALLOW": "0.043566823",
+        "BROWN SIPROETA": "0.03739449",
+        "PINE WHITE": "0.032738067",
+        "BANDED PEACOCK": "0.026970519",
+        "YELLOW SWALLOW TAIL": "0.026404446",
+        "GREAT JAY": "0.023752445"
+    },
+    "runtime": "4730.869433641434",
+    "L_inf_distance1": 0.060437530279159546,
+    "L_inf_distance2": 0.10468082129955292,
+    "L_inf_distance3": 0.18131250143051147
+}

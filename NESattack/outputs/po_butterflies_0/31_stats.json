@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/GREEN HAIRSTREAK/3.jpg",
+    "original_label": "48 - GREEN HAIRSTREAK",
+    "adversarial_target": "40 - EMPEROR GUM MOTH",
+    "adversarial prediction": "40 - EMPEROR GUM MOTH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.01,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 25719,
+    "top_k_predictions": {
+        "EMPEROR GUM MOTH": "0.2578177",
+        "GREEN HAIRSTREAK": "0.14704569",
+        "WOOD SATYR": "0.035031933",
+        "CLOUDED SULPHUR": "0.027124383",
+        "IO MOTH": "0.019592524",
+        "CHECQUERED SKIPPER": "0.016573053",
+        "EASTERN DAPPLE WHITE": "0.016566403",
+        "CLEOPATRA": "0.014341345",
+        "CRECENT": "0.01403579",
+        "BANDED TIGER MOTH": "0.012515464"
+    },
+    "runtime": "1724.3072500228882",
+    "L_inf_distance1": 0.060437530279159546,
+    "L_inf_distance2": 0.10468084365129471,
+    "L_inf_distance3": 0.18131253123283386
+}

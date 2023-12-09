@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/CLODIUS PARNASSIAN/3.jpg",
+    "original_label": "27 - CLODIUS PARNASSIAN",
+    "adversarial_target": "58 - MADAGASCAN SUNSET MOTH",
+    "adversarial prediction": "58 - MADAGASCAN SUNSET MOTH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 98,
+        "verbose": false
+    },
+    "num_queries_needed": 37650,
+    "top_k_predictions": {
+        "MADAGASCAN SUNSET MOTH": "0.35035872",
+        "CLODIUS PARNASSIAN": "0.29642934",
+        "YELLOW SWALLOW TAIL": "0.022061046",
+        "GARDEN TIGER MOTH": "0.014758107",
+        "LARGE MARBLE": "0.012156509",
+        "COPPER TAIL": "0.010679708",
+        "PAINTED LADY": "0.009555198",
+        "BANDED TIGER MOTH": "0.009213829",
+        "WOOD SATYR": "0.009159655",
+        "BANDED PEACOCK": "0.008811844"
+    },
+    "runtime": "741.6599051952362",
+    "L_inf_distance1": 0.05731251835823059,
+    "L_inf_distance2": 0.09926818311214447,
+    "L_inf_distance3": 0.17193754017353058
+}

@@ -1,0 +1,33 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/GIANT LEOPARD MOTH/1.jpg",
+    "original_label": "42 - GIANT LEOPARD MOTH",
+    "adversarial_target": "98 - YELLOW SWALLOW TAIL",
+    "adversarial prediction": "98 - YELLOW SWALLOW TAIL",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.01,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 25463,
+    "top_k_predictions": {
+        "98": "0.25516027",
+        "42": "0.24706276",
+        "52": "0.039118063",
+        "12": "0.019278875",
+        "81": "0.015711952"
+    },
+    "runtime": "1517.4369983673096",
+    "L_inf_distance1": 0.16043752431869507,
+    "L_inf_distance2": 0.27788594365119934,
+    "L_inf_distance3": 0.4813125729560852
+}
