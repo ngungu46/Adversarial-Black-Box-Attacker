@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/CLEOPATRA/1.jpg",
+    "original_label": "26 - CLEOPATRA",
+    "adversarial_target": "24 - CINNABAR MOTH",
+    "adversarial prediction": "24 - CINNABAR MOTH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 28946,
+    "top_k_predictions": {
+        "CINNABAR MOTH": "0.38218522",
+        "CLEOPATRA": "0.3078383",
+        "SOUTHERN DOGFACE": "0.02662374",
+        "OLEANDER HAWK MOTH": "0.020707833",
+        "CLOUDED SULPHUR": "0.013456211",
+        "GOLD BANDED": "0.012682008",
+        "ROSY MAPLE MOTH": "0.012654533",
+        "CABBAGE WHITE": "0.008761344",
+        "RED POSTMAN": "0.008500512",
+        "SLEEPY ORANGE": "0.007914279"
+    },
+    "runtime": "3392.6257281303406",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

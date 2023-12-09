@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ROSY MAPLE MOTH/2.jpg",
+    "original_label": "84 - ROSY MAPLE MOTH",
+    "adversarial_target": "93 - TWO BARRED FLASHER",
+    "adversarial prediction": "93 - TWO BARRED FLASHER",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 21131,
+    "top_k_predictions": {
+        "ORANGE OAKLEAF": "0.059725903",
+        "TWO BARRED FLASHER": "0.05907099",
+        "ROSY MAPLE MOTH": "0.042287655",
+        "SOUTHERN DOGFACE": "0.03881143",
+        "EMPEROR GUM MOTH": "0.032779533",
+        "CLEARWING MOTH": "0.03201559",
+        "ARCIGERA FLOWER MOTH": "0.02315551",
+        "POLYPHEMUS MOTH": "0.022536041",
+        "CHALK HILL BLUE": "0.021451524",
+        "ADONIS": "0.02005334"
+    },
+    "runtime": "9317.027060985565",
+    "L_inf_distance1": 0.10575002431869507,
+    "L_inf_distance2": 0.18316440284252167,
+    "L_inf_distance3": 0.3172500729560852
+}

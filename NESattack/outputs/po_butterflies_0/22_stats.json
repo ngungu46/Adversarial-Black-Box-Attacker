@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/CLODIUS PARNASSIAN/2.jpg",
+    "original_label": "27 - CLODIUS PARNASSIAN",
+    "adversarial_target": "13 - BLACK HAIRSTREAK",
+    "adversarial prediction": "13 - BLACK HAIRSTREAK",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 20120,
+    "top_k_predictions": {
+        "QUESTION MARK": "0.13450569",
+        "BLACK HAIRSTREAK": "0.13398214",
+        "CLOUDED SULPHUR": "0.119628906",
+        "CLODIUS PARNASSIAN": "0.06596473",
+        "INDRA SWALLOW": "0.030365769",
+        "GREAT JAY": "0.027296307",
+        "BANDED PEACOCK": "0.02589936",
+        "COMET MOTH": "0.02530631",
+        "ELBOWED PIERROT": "0.017680123",
+        "SLEEPY ORANGE": "0.017604074"
+    },
+    "runtime": "3685.7275729179382",
+    "L_inf_distance1": 0.10575000941753387,
+    "L_inf_distance2": 0.18316438794136047,
+    "L_inf_distance3": 0.31725001335144043
+}

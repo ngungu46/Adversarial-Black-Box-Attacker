@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ARCIGERA FLOWER MOTH/2.jpg",
+    "original_label": "5 - ARCIGERA FLOWER MOTH",
+    "adversarial_target": "16 - BROOKES BIRDWING",
+    "adversarial prediction": "16 - BROOKES BIRDWING",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 37173,
+    "top_k_predictions": {
+        "BROOKES BIRDWING": "0.41739434",
+        "ARCIGERA FLOWER MOTH": "0.19038382",
+        "GARDEN TIGER MOTH": "0.01590901",
+        "COMMON WOOD-NYMPH": "0.01437004",
+        "POLYPHEMUS MOTH": "0.0114091635",
+        "ADONIS": "0.01139685",
+        "ZEBRA LONG WING": "0.011282321",
+        "MOURNING CLOAK": "0.011045911",
+        "BANDED TIGER MOTH": "0.0104756225",
+        "INDRA SWALLOW": "0.010222205"
+    },
+    "runtime": "2611.1818470954895",
+    "L_inf_distance1": 0.14481252431869507,
+    "L_inf_distance2": 0.25082266330718994,
+    "L_inf_distance3": 0.4344375729560852
+}

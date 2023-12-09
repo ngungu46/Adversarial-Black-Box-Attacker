@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/BLUE SPOTTED CROW/1.jpg",
+    "original_label": "15 - BLUE SPOTTED CROW",
+    "adversarial_target": "64 - MONARCH",
+    "adversarial prediction": "64 - MONARCH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 1203,
+    "top_k_predictions": {
+        "CHESTNUT": "0.10434769",
+        "MONARCH": "0.103917986",
+        "CRECENT": "0.05955317",
+        "SOOTYWING": "0.050319687",
+        "INDRA SWALLOW": "0.045956023",
+        "CHECQUERED SKIPPER": "0.034431387",
+        "CRIMSON PATCH": "0.034233175",
+        "ZEBRA LONG WING": "0.03381215",
+        "POPINJAY": "0.025437076",
+        "PAINTED LADY": "0.02356697"
+    },
+    "runtime": "2045.9462478160858",
+    "L_inf_distance1": 0.1963750123977661,
+    "L_inf_distance2": 0.3401314914226532,
+    "L_inf_distance3": 0.5891250371932983
+}

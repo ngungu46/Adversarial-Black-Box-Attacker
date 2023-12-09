@@ -80,8 +80,8 @@ def predict(image, model, is_torch=True, device='cuda'):
         with torch.no_grad():
             preds = model(transforming(image).to(device))
     else: 
-        preds = model.predict(tf.cast(image * 255, tf.float32), steps=1)
-        preds = torch.tensor(np.array(preds))
+        preds = model.predict(tf.cast((image * 255).cpu(), tf.float32), steps=1)
+        preds = torch.tensor(np.array(preds)).to(device)
     return preds
 
 

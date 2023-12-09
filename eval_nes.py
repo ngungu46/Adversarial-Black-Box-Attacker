@@ -14,8 +14,6 @@ from src.model import *
 from src.dataloader import * 
 from src.utils import * 
 
-from AAA.models import AAALinear, AAASine
-from AAA.utils import loss
 
 cudnn.benchmark = True 
 
@@ -31,7 +29,7 @@ parser.add_argument('--momentum', default=0.9, type=float)
 parser.add_argument('--dataset', default="imagenet_val", type=str)
 parser.add_argument('--dataset_size', default=100, type=int)
 parser.add_argument('--verbose', default=False, type=bool)
-parser.add_argument('--defender', default=False, type=bool)
+
 
 args = vars(parser.parse_args())
 
@@ -77,7 +75,8 @@ def main():
     device = set_device() 
     
     # get a random subset of "dataset_size" validation dataset image filepaths and store them in a list 
-    image_filepaths = getSubset(args["dataset"], args["dataset_size"], True)
+    image_filepaths = ["data/imagenet64/val/n02492660/ILSVRC2012_val_00039295.JPEG"]
+    # getSubset(args["dataset"], args["dataset_size"], True)
     
     # get class2index and index2 class dictionaries for easy querying 
     image_cls2idx = class2index(args["dataset"]) 
@@ -89,25 +88,6 @@ def main():
         # this must be called inside the loop since we end up changing the weights of the model somehow within this loop 
         pretrained_model = getModel(args["dataset"], device)
         is_torch = (args["dataset"] == "imagenet64")
-        predict_defender = lambda x: predict_model(x, pretrained_model)
-        defender = AAASine(
-            pretrained_model=predict_defender,
-            loss=loss,
-            device='cuda', 
-            batch_size=1000, 
-            attractor_interval=6, 
-            reverse_step=1, 
-            num_iter=100, 
-            calibration_loss_weight=5, 
-            optimizer_lr=0.1, 
-            do_softmax=False,
-            temperature=1,
-            verbose=False,
-            output_type='torch'
-        ).cuda()
-
-        if args['defender']:
-            pretrained_model = defender
         
         # instantiate NESattack class 
         ex = NESAttack(
@@ -142,9 +122,8 @@ def main():
             image = tf.cast(rawimage, tf.float32)
             image = image[None, ...]
         
-        print("Yolo: ", image.shape)
         # calculate the original class index and choose a random adversarial index 
-        y_adv_idx = random.randrange(0, len(image_cls2idx))
+        y_adv_idx = 304
         y_orig_idx = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
 
         
@@ -153,7 +132,7 @@ def main():
         if is_torch: 
             res, _, prob, count, succ, top_k_predictions = ex.attack(image, y_adv_idx) 
             save_tensor_as_image(image, os.path.join(new_run_dir_name, f"{i+1}_original_{y_orig_idx}.jpg"))
-            save_tensor_as_image(res, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
+            save_tensor_as_image(res * 255, os.path.join(new_run_dir_name, f"{i+1}_adversarial_{y_adv_idx}.jpg"))
             
             orig_pred = torch.argmax(predict(image, pretrained_model, is_torch)).detach().cpu().numpy().item()
             adv_pred = torch.argmax(predict(res, pretrained_model, is_torch)).detach().cpu().numpy().item()

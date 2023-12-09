@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/METALMARK/5.jpg",
+    "original_label": "62 - METALMARK",
+    "adversarial_target": "44 - GOLD BANDED",
+    "adversarial prediction": "44 - GOLD BANDED",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 100,
+        "eps_decay": 0.001,
+        "max_lr": 0.01,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 25490,
+    "top_k_predictions": {
+        "GOLD BANDED": "0.45400771",
+        "METALMARK": "0.06674031",
+        "SILVER SPOT SKIPPER": "0.052682918",
+        "COMMON BANDED AWL": "0.023940017",
+        "COPPER TAIL": "0.017236907",
+        "MOURNING CLOAK": "0.01634024",
+        "CHECQUERED SKIPPER": "0.015139103",
+        "GARDEN TIGER MOTH": "0.01443322",
+        "BANDED TIGER MOTH": "0.0130611565",
+        "MANGROVE SKIPPER": "0.012259848"
+    },
+    "runtime": "3442.942288160324",
+    "L_inf_distance1": 0.13700002431869507,
+    "L_inf_distance2": 0.23729097843170166,
+    "L_inf_distance3": 0.4110000431537628
+}

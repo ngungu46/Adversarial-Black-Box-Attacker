@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/GOLD BANDED/5.jpg",
+    "original_label": "44 - GOLD BANDED",
+    "adversarial_target": "9 - BANDED PEACOCK",
+    "adversarial prediction": "9 - BANDED PEACOCK",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 29130,
+    "top_k_predictions": {
+        "BANDED PEACOCK": "0.34033495",
+        "GOLD BANDED": "0.32529542",
+        "RED POSTMAN": "0.029749965",
+        "BROWN SIPROETA": "0.0180994",
+        "MILBERTS TORTOISESHELL": "0.010178622",
+        "MOURNING CLOAK": "0.009384429",
+        "CLODIUS PARNASSIAN": "0.008170236",
+        "GARDEN TIGER MOTH": "0.007970894",
+        "ZEBRA LONG WING": "0.006764651",
+        "ELBOWED PIERROT": "0.0067619807"
+    },
+    "runtime": "636.4758224487305",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}

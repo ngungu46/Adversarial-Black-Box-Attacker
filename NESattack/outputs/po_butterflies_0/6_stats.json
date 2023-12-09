@@ -1,0 +1,38 @@
+{
+    "status": "FAILED",
+    "filepath": "data/butterflies_and_moths/valid/ADONIS/3.jpg",
+    "original_label": "0 - ADONIS",
+    "adversarial_target": "42 - GIANT LEOPARD MOTH",
+    "adversarial prediction": "42 - GIANT LEOPARD MOTH",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 10,
+        "verbose": false
+    },
+    "num_queries_needed": 37818,
+    "top_k_predictions": {
+        "GIANT LEOPARD MOTH": "0.37269884",
+        "ADONIS": "0.22803502",
+        "COMET MOTH": "0.026654325",
+        "BIRD CHERRY ERMINE MOTH": "0.02318953",
+        "QUESTION MARK": "0.021365652",
+        "LUNA MOTH": "0.018937537",
+        "PURPLE HAIRSTREAK": "0.015378711",
+        "COPPER TAIL": "0.012923607",
+        "PURPLISH COPPER": "0.01235481",
+        "PAINTED LADY": "0.009721369"
+    },
+    "runtime": "2815.459360599518",
+    "L_inf_distance1": 0.07137501239776611,
+    "L_inf_distance2": 0.12362514436244965,
+    "L_inf_distance3": 0.21412503719329834
+}

@@ -1,0 +1,38 @@
+{
+    "status": "SUCCESS",
+    "filepath": "data/butterflies_and_moths/valid/PURPLE HAIRSTREAK/3.jpg",
+    "original_label": "77 - PURPLE HAIRSTREAK",
+    "adversarial_target": "6 - ATALA",
+    "adversarial prediction": "6 - ATALA",
+    "args": {
+        "e_adv": 0.05,
+        "e_0": 0.5,
+        "sigma": 0.001,
+        "n_samples": 50,
+        "eps_decay": 0.001,
+        "max_lr": 0.05,
+        "min_lr": 0.001,
+        "k": 1,
+        "max_queries": 20000,
+        "dataset": "butterflies_and_moths",
+        "dataset_size": 100,
+        "verbose": false
+    },
+    "num_queries_needed": 15211,
+    "top_k_predictions": {
+        "ATALA": "0.44643393",
+        "PURPLE HAIRSTREAK": "0.44105077",
+        "SOOTYWING": "0.009402675",
+        "GREY HAIRSTREAK": "0.008600435",
+        "BLUE MORPHO": "0.00502767",
+        "COPPER TAIL": "0.004164511",
+        "MANGROVE SKIPPER": "0.0037558994",
+        "ADONIS": "0.0031957144",
+        "BLACK HAIRSTREAK": "0.002685078",
+        "WOOD SATYR": "0.0026370718"
+    },
+    "runtime": "9872.699963092804",
+    "L_inf_distance1": 0.050000011920928955,
+    "L_inf_distance2": 0.08660256117582321,
+    "L_inf_distance3": 0.15000003576278687
+}
