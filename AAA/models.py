@@ -9,7 +9,6 @@ import math
 class AAALinear(nn.Module):
     def __init__(self, 
             pretrained_model,
-            loss,
             device='cuda', 
             batch_size=1000, 
             attractor_interval=6, 
@@ -24,7 +23,6 @@ class AAALinear(nn.Module):
         ):
         super(AAALinear, self).__init__()
         self.pretrained_model = pretrained_model
-        self.loss = loss
         self.batch_size = batch_size
         self.device = device
 
@@ -141,7 +139,6 @@ class AAALinear(nn.Module):
 class AAASine(nn.Module):
     def __init__(self, 
             pretrained_model,
-            loss,
             device='cuda', 
             batch_size=1000, 
             attractor_interval=6, 
@@ -156,7 +153,6 @@ class AAASine(nn.Module):
         ):
         super(AAASine, self).__init__()
         self.pretrained_model = pretrained_model
-        self.loss = loss
         self.batch_size = batch_size
         self.device = device
 
